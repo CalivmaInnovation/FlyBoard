@@ -15,7 +15,9 @@ before_install:
   - cd cpctelera
   - git checkout tags/v1.2.3
   - chmod +x setup.sh
+  - echo $CXX
   - sudo ./setup.sh
+  - echo $CXX
   - cd ..
   - cat /home/travis/build/aalmiramolla/CPCRetroDev-2015/cpctelera/cpctelera/logs/tool_building.log
 
