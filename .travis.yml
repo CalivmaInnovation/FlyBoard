@@ -6,6 +6,8 @@ compiler:
 sudo: true
 
 before_install:
+  - gcc --version
+  - g++ --version
   - sudo apt-get install libboost-all-dev libfreeimage-dev gcc g++
   - git clone https://github.com/lronaldo/cpctelera.git
   - cd cpctelera
