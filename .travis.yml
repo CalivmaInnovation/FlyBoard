@@ -9,6 +9,7 @@ before_install:
   - sudo apt-get install libboost-all-dev libfreeimage-dev
   - git clone https://github.com/lronaldo/cpctelera.git
   - cd cpctelera
+  - git checkout tags/v1.2.3
   - chmod +x setup.sh
   - sudo ./setup.sh
   - cd ..
