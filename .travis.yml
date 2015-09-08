@@ -23,6 +23,8 @@ install:
   - ./setup.sh
   - cd ..
   - source ~/.bashrc
+  - echo $CPCT_PATH
+  - cat ~/.bashrc
 
 script:
   - make
