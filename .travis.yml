@@ -14,13 +14,13 @@ before_install:
   - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
   - sudo apt-get update -qq
   - git clone https://github.com/lronaldo/cpctelera.git
-  
+
 install:
   - sudo apt-get install -qq "g++-${GCC_VERSION}"
   - cd cpctelera
   - sed -i s/g++/g++-4.8/g cpctelera/tools/img2cpc/Makefile.others
   - chmod +x setup.sh
-  - ./setup.sh
+  - "./setup.sh"
   - cd ..
   - sed -i '/[ -z "$PS1" ] && return/d' ~/.bashrc
   - source ~/.bashrc
@@ -30,3 +30,14 @@ script:
 
 os:
   - linux
+
+deploy:
+  provider: releases
+  api_key:
+    secure: dTQFihc9LGC/zw1HP2EFqRyO/Ix2mxPldSmviQhRb4zuZZQFDH1aoDFVhcgwLVQgSBrpP52o4fuCHnVLB3NqPi9KnIC4HI1GljUtitwmSSNTEIdPCXiPNGZ8h5MAvzWXlDhc3I9f3dKmp4L2rGwQfv0Yyucp8dEdRcuLAfpk1lZhxcSwMFp0reJVaPwCKWOIVhfxJ4xtqIdZ5Ke9uDC/t69sRHIMtGWjkSdVu+VVBPnpTdVv1UsWP8qaVOTCkc+KF4Kyw8pxPel5rVfDO6PAvd/tOBWW73U9GbZ6XQ0cpo0FWfC4CZxiurGwZYguZiT8lT8c+90MZiabLacQVS2u/khIRg/g4TjkZF8WfE2/Kk+4qqf+Om2pCpKIfDCR5pmcHDXHss2Jfc9va3dS9tgl+DCU5mrp0vbzMSVVTqm+p3j09y6ru0/BAx9zT+kRL7wbcqY6p22mNBROh/NtOvETdnml3GQTGiuzCjhSw1f7cYQMZ1xP6q90EFogbAY3q/ztujrs/pxTZdqArGIrjEVV79pd9RHpR2/zyx2gSyClRdMSNJaj+gylKT/Rv02ltuV5BHBgkjVkEkbs6YmhvVOWTOJmC+12Ie3gnhginTf5AYyprbeds4MMelDSjR3f9qM+BZsX2lhLsI/dcmAKQ0zKLEnUbFteTHyH6wzCnO78SVo=
+  file:
+    - "*.dsk"
+    - "*.cdt"
+  on:
+    repo: aalmiramolla/CPCRetroDev-2015
+    tags: true
