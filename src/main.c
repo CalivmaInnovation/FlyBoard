@@ -26,7 +26,7 @@ void main(void) {
    cpct_memset(video_memory_start, 0, 0x4000);
 
    // Draw String on the middle of the screen
-   cpct_drawStringM1("Welcome to CPCtelera!\nDevelop by CalivGames\nAlex and Cesar",
+   cpct_drawStringM1("CPCRetroDev Game!\nDevelop by CalivGames\nAlex and Cesar",
                      video_memory_start + character_line_size * 12,
                      1, 0);
    // Loop forever
