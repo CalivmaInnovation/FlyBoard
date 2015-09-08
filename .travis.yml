@@ -24,7 +24,6 @@ install:
   - chmod +x setup.sh
   - sudo ./setup.sh
   - cd ..
-  - cat /home/travis/build/aalmiramolla/CPCRetroDev-2015/cpctelera/cpctelera/logs/tool_building.log
 
 script:
   - make
