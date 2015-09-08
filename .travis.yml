@@ -24,8 +24,6 @@ install:
   - cd ..
   - sed -i '/[ -z "$PS1" ] && return/d' ~/.bashrc
   - source ~/.bashrc
-  - echo $CPCT_PATH
-  - cat ~/.bashrc
 
 script:
   - make
