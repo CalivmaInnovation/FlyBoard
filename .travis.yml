@@ -4,8 +4,11 @@ compiler:
   - gcc
 
 before_install:
-  - echo $LANG
-  - echo $LC_ALL
+  - git clone https://github.com/lronaldo/cpctelera.git
+  - cd cpctelera
+  - chmod +x setup.sh
+  - ./setup.sh
+  - cd ..
 
 script:
   - make
