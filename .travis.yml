@@ -10,8 +10,9 @@ before_install:
   - git clone https://github.com/lronaldo/cpctelera.git
   - cd cpctelera
   - chmod +x setup.sh
-  - ./setup.sh
+  - sudo ./setup.sh
   - cd ..
+  - cat /home/travis/build/aalmiramolla/CPCRetroDev-2015/cpctelera/cpctelera/logs/tool_building.log
 
 script:
   - make
