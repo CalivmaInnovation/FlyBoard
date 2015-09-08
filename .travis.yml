@@ -20,6 +20,7 @@ install:
   - if [ "$CXX" = "g++" ]; then sudo apt-get install -qq "g++-${GCC_VERSION}"; fi
   - if [ "$CXX" = "g++" ]; then export CXX="g++-${GCC_VERSION}" CC="gcc-${GCC_VERSION}"; fi
   - cd cpctelera
+  - sed -i s/g++/g++-4.8/g cpctelera/tools/img2cpc/Makefile.others
   - chmod +x setup.sh
   - sudo ./setup.sh
   - cd ..
