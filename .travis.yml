@@ -13,7 +13,6 @@ before_install:
   - export CXX=g++-4.8
   - git clone https://github.com/lronaldo/cpctelera.git
   - cd cpctelera
-  - git checkout tags/v1.2.3
   - chmod +x setup.sh
   - echo $CXX
   - sudo ./setup.sh
