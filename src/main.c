@@ -18,27 +18,23 @@
 
 #include <cpctelera.h>
 
-u8* video_memory_start  = (u8*)0xC000;
-u8  character_line_size = 0x050;
+void main(void) {
+   u8* video_memory_start  = (u8*)0xC000;
+   u8  character_line_size = 0x050;
 
-
-void credits(void) {
-
-	// Clear Screen
+   // Clear Screen
    cpct_memset(video_memory_start, 0, 0x4000);
 
    // Draw String on the middle of the screen
-   cpct_drawStringM1("CPCRetroDev Game!\nDevelop by CalivGames\nAlex and Cesar",
+   cpct_drawStringM1("Welcome to CPCtelera",
                      video_memory_start + character_line_size * 12,
                      1, 0);
-
-} 
-
-void main(void) {
-
-   cpct_disableFirmware();
-   
-   credits();
+   cpct_drawStringM1("This is a probe for printing strings",
+                     video_memory_start + character_line_size * 13,
+                     1, 0);
+   cpct_drawStringM1("by Caliv Games",
+                     video_memory_start + character_line_size * 14,
+                     1, 0);
    // Loop forever
    while (1);
 }
