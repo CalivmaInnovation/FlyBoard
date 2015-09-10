@@ -41,3 +41,4 @@ deploy:
   on:
     repo: CalivGames/CPCRetroDev-2015
     tags: true
+    branch: master
