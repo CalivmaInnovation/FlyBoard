@@ -22,6 +22,8 @@ There will be a special consiterations (namely, some points) to game including g
 
 For build, you have to type on your terminal:
 
+    git clone https://github.com/CalivGames/CPCRetroDev-2015.git
+	cd CPCRetroDev-2015/
     make
 
-'name\_of\_game.dsk' and 'name\_of\_game.cdt' will be genered in the prohect's root.
+'name\_of\_game.dsk' and 'name\_of\_game.cdt' will be generated in project's root.
