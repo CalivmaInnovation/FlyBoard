@@ -12,3 +12,7 @@ There will be a special consiterations (namely, some points) to game including g
 
 - Almira Mollá, Alejandro
 - Ivorra, Cesar
+
+## Third-party libraries/tools
+
+- [Cpctelera](https://github.com/lronaldo/cpctelera) - [Francisco Gallego](https://github.com/lronaldo) - License: [GPLv3](https://github.com/lronaldo/cpctelera/blob/master/LICENSE)
