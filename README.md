@@ -9,6 +9,9 @@ Deadline: friday, 23rd of october 2015 (UTC+2)
 
 There will be a special consiterations (namely, some points) to game including gestures to the movie Back to the Future.
 
+- [Official Webpage](http://cpcretrodev.byterealms.com/contest-en/cpcretrodev-2015/)
+- [Rules](http://cpcretrodev.byterealms.com/wp-content/uploads/2015/06/bases_cpcretrodev_2015.pdf)
+
 ## Authors
 
 - Almira Mollá, Alejandro
@@ -22,8 +25,8 @@ There will be a special consiterations (namely, some points) to game including g
 
 For build, you have to type on your terminal:
 
-    git clone https://github.com/CalivGames/CPCRetroDev-2015.git
+	git clone https://github.com/CalivGames/CPCRetroDev-2015.git
 	cd CPCRetroDev-2015/
-    make
+	make
 
 'name\_of\_game.dsk' and 'name\_of\_game.cdt' will be generated in project's root.
