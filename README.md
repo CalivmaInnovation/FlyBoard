@@ -15,11 +15,15 @@ There will be a special consiterations (namely, some points) to game including g
 ## Authors
 
 - Almira Mollá, Alejandro
-- Ivorra, Cesar
+- Ivorra Oliver, Cesar Francisco
 
 ## Third-party libraries/tools
 
-- [Cpctelera](https://github.com/lronaldo/cpctelera) - [Francisco Gallego](https://github.com/lronaldo) - License: [GPLv3](https://github.com/lronaldo/cpctelera/blob/master/LICENSE)
+- Libraries
+  - [Cpctelera](https://github.com/lronaldo/cpctelera) - [Francisco Gallego](https://github.com/lronaldo) - License: [GPLv3](https://github.com/lronaldo/cpctelera/blob/master/LICENSE)
+- Tools
+  - [Gimp](www.gimp.org) - License: [GPLv3](http://www.gimp.org/about/COPYING)
+  - [Tiled](http://www.mapeditor.org/) - License: [GPL and BSD 2-clause license](https://github.com/bjorn/tiled/blob/master/COPYING)
 
 ## How to build
 
