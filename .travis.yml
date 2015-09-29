@@ -21,7 +21,6 @@ install:
   - sed -i s/g++/g++-4.8/g cpctelera/tools/img2cpc/Makefile.others
   - chmod +x setup.sh
   - "./setup.sh"
-  - cat /home/travis/build/CalivGames/CPCRetroDev-2015/cpctelera/cpctelera/logs/tool_building.log
   - cd ..
   - sed -i '/[ -z "$PS1" ] && return/d' ~/.bashrc
   - source ~/.bashrc
