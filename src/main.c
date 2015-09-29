@@ -43,8 +43,52 @@ void init() {
 	cpct_setVideoMode(0);
 }
 
+const u8 sinus_offsets[256]={
+	 0, 0, 0, 0, 0, 0, 0,
+	 1, 1, 1, 1, 1, 1,
+	 2, 2, 2, 2, 2, 2,
+	 3, 3, 3, 3, 3, 3,
+	 4, 4, 4, 4, 4, 4,
+	 5, 5, 5, 5, 5, 5, 5,
+	 6, 6, 6, 6, 6, 6,
+	 7, 7, 7, 7, 7, 7,
+	 8, 8, 8, 8, 8, 8,
+	 9, 9, 9, 9, 9, 9,
+	10,10,10,10,10,10,10,
+	11,11,11,11,11,11,
+	12,12,12,12,12,12,
+	13,13,13,13,13,13,
+	14,14,14,14,14,14,
+	15,15,15,15,15,15,15,
+	16,16,16,16,16,16,
+	17,17,17,17,17,17,
+	18,18,18,18,18,18,
+	19,19,19,19,19,19,
+	20,20,20,20,20,20,20,
+	21,21,21,21,21,21,
+	22,22,22,22,22,22,
+	23,23,23,23,23,23,
+	24,24,24,24,24,24,
+	25,25,25,25,25,25,25,
+	26,26,26,26,26,26,
+	27,27,27,27,27,27,
+	28,28,28,28,28,28,
+	29,29,29,29,29,29,
+	30,30,30,30,30,30,30,
+	31,31,31,31,31,31,
+	32,32,32,32,32,32,
+	33,33,33,33,33,33,
+	34,34,34,34,34,34,
+	35,35,35,35,35,35,35,
+	36,36,36,36,36,36,
+	37,37,37,37,37,37,
+	38,38,38,38,38,38,
+	39,39,39,39,39,39,
+	40,40,40,40,40,40,40,40
+};
 
 void main(void) {
+	 u8 i=0;
 
 	u8 var;
 	u8 x = 10;
@@ -54,14 +98,16 @@ void main(void) {
 	
 	// Clear Screen
 	cpct_memset(VMEM, 0, 0x4000);
-
+	
 	init();
 	drawMap();
 
 	// Loop forever
 	while (1) {
+		cpct_setVideoMemoryOffset(sinus_offsets[i++]);
 
 		memptr = cpct_getScreenPtr(VMEM, x, y);
+
 		cpct_drawSolidBox (memptr, 0, 5, 10);
 		
 		cpct_scanKeyboard_f ();
@@ -79,6 +125,10 @@ void main(void) {
 		}
 		memptr = cpct_getScreenPtr(VMEM, x, y);
 		cpct_drawSpriteMasked(character_character, memptr, 5, 10);
-		cpct_waitVSYNC();
-	}
+		
+	
+		// Synchronize with VSYNC + 1 HSYNC to slow down the movement
+		cpct_waitVSYNC();   // Wait for VSYNC signal
+		__asm__("halt");    // H
+	};
 }

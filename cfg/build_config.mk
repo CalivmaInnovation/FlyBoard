@@ -1,5 +1,5 @@
 ##-----------------------------LICENSE NOTICE------------------------------------
-##  This file is part of CPCtelera: An Amstrad CPC Game Engine 
+##  This file is part of CPCtelera: An Amstrad CPC Game Engine
 ##  Copyright (C) 2015 ronaldo / Fremos / Cheesetea / ByteRealms (@FranGallegoBR)
 ##
 ##  This program is free software: you can redistribute it and/or modify
@@ -28,10 +28,10 @@
 ###########################################################################
 
 ## CPCTELERA MAIN PATH
-##   Sets CPCTelera main path for accessing tools and configuration. This 
+##   Sets CPCTelera main path for accessing tools and configuration. This
 ##   variable must point to the folder where source and tools are contained.
 ##   Setup creates and environment variable that will be generally used.
-##   However, when environment variable is not available, this variable 
+##   However, when environment variable is not available, this variable
 ##   should have the correct value for the project to compile.
 ##   If you change folder structure, CPCT_PATH should reflect this change.
 ##   This variable should always have the absolute path value.
@@ -39,7 +39,7 @@
 #>> Uses environment variable $(CPCT_PATH)
 
 ####
-## SECTION 1: Project configuration 
+## SECTION 1: Project configuration
 ##
 ## This section establishes source and object subfolders and the binary objects to
 ## be built. Normally, you want to change the OBJ files you want to be built, selecting
@@ -51,7 +51,7 @@
 PROJNAME   := CPCRetroDevGame
 Z80CODELOC := 0x4000
 
-# Folders 
+# Folders
 SRCDIR  := src
 OBJDIR  := obj
 
@@ -72,8 +72,8 @@ TARGET  := $(CDT) $(DSK)
 ####
 ## SECTION 2: TOOL PATH CONFIGURATION
 ##
-## Paths are configured in the global_paths.mk configuration file included 
-## here. You may overwrite the values of path variables after the include 
+## Paths are configured in the global_paths.mk configuration file included
+## here. You may overwrite the values of path variables after the include
 ## if you wanted specific configuration for this project.
 ####
 include $(CPCT_PATH)/cfg/global_paths.mk
@@ -81,7 +81,7 @@ include $(CPCT_PATH)/cfg/global_paths.mk
 ####
 ## SECTION 3: COMPILATION CONFIGURATION
 ##
-##   Flags used to configure the compilation of your code. They are usually 
+##   Flags used to configure the compilation of your code. They are usually
 ##   fine for most of the projects, but you may change them for special uses.
 #####
 Z80CCFLAGS    :=
