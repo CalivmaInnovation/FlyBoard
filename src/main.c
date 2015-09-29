@@ -19,10 +19,13 @@
 #include <cpctelera.h>
 
 #include "tiles.h"
+#include "character.h"
 
 #define VMEM (u8*)0xC000
+#define MODE0_HEIGHT 190
+#define MODE0_WIDTH 75
 
-const u8 g_palette[6] = { 0, 26, 11, 22, 13, 6 };
+const u8 g_palette[7] = { 0, 26, 11, 22, 13, 6, 2 };
 
 void drawMap() {
 	// Set the internal tileset for drawing Tilemaps
@@ -34,20 +37,48 @@ void drawMap() {
 
 void init() {
 	cpct_disableFirmware();
-	cpct_fw2hw(g_palette,6);
-	cpct_setPalette(g_palette,6);
-	cpct_setBorder (g_palette[5]);
+	cpct_fw2hw(g_palette,7);
+	cpct_setPalette(g_palette,7);
+	cpct_setBorder (g_palette[1]);
 	cpct_setVideoMode(0);
 }
 
 
 void main(void) {
 
+	u8 var;
+	u8 x = 10;
+	u8 y = 130;
+	u8* memptr;
+	u8 mu;
+	
 	// Clear Screen
-   cpct_memset(VMEM, 0, 0x4000);
+	cpct_memset(VMEM, 0, 0x4000);
 
-   init();
-   drawMap();
-   // Loop forever
-   while (1);
+	init();
+	drawMap();
+
+	// Loop forever
+	while (1) {
+
+		memptr = cpct_getScreenPtr(VMEM, x, y);
+		cpct_drawSolidBox (memptr, 0, 5, 10);
+		
+		cpct_scanKeyboard_f ();
+		if ( cpct_isKeyPressed (Key_CursorUp) && y > 130) {
+			y -= 2;
+		}
+		else if ( cpct_isKeyPressed (Key_CursorDown) && y < 175) {
+			y += 2;
+		}
+		else if ( cpct_isKeyPressed (Key_CursorLeft) && x > 2) {
+			x -= 1;
+		}
+		else if ( cpct_isKeyPressed (Key_CursorRight) && x < 20) {
+			x += 1;
+		}
+		memptr = cpct_getScreenPtr(VMEM, x, y);
+		cpct_drawSpriteMasked(character_character, memptr, 5, 10);
+		cpct_waitVSYNC();
+	}
 }

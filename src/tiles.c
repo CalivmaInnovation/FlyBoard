@@ -6,6 +6,7 @@ const u8 g_background[40*50] = {
 	#include "mapa2.csv"
 };
 
+
 u8* const g_tile_tileset[25] = { 
 	g_tile_tiles_0, g_tile_tiles_1, g_tile_tiles_2, g_tile_tiles_3, g_tile_tiles_4, g_tile_tiles_5, g_tile_tiles_6, g_tile_tiles_7, g_tile_tiles_8, g_tile_tiles_9, g_tile_tiles_10, g_tile_tiles_11, g_tile_tiles_12, g_tile_tiles_13, g_tile_tiles_14, g_tile_tiles_15, g_tile_tiles_16, g_tile_tiles_17, g_tile_tiles_18, g_tile_tiles_19, g_tile_tiles_20, g_tile_tiles_21, g_tile_tiles_22, g_tile_tiles_23, g_tile_tiles_24
 };
