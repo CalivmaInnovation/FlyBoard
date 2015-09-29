@@ -24,18 +24,20 @@
 
 const u8 g_palette[6] = { 0, 26, 11, 22, 13, 6 };
 
+void drawMap() {
+	// Set the internal tileset for drawing Tilemaps
+	cpct_etm_setTileset2x4(g_tile_tileset);
+
+	// Draw the background tilemap
+	cpct_etm_drawTilemap2x4_f(40, 50, VMEM, g_background);
+}
+
 void init() {
 	cpct_disableFirmware();
 	cpct_fw2hw(g_palette,6);
 	cpct_setPalette(g_palette,6);
 	cpct_setBorder (g_palette[5]);
 	cpct_setVideoMode(0);
-	
-	// Set the internal tileset for drawing Tilemaps
-	cpct_etm_setTileset2x4(g_tile_tileset);
-
-	// Draw the background tilemap
-	cpct_etm_drawTilemap2x4_f(40, 50, VMEM, g_background);  
 }
 
 
@@ -45,6 +47,7 @@ void main(void) {
    cpct_memset(VMEM, 0, 0x4000);
 
    init();
+   drawMap();
    // Loop forever
    while (1);
 }
