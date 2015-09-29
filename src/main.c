@@ -18,23 +18,33 @@
 
 #include <cpctelera.h>
 
+#include "tiles.h"
+
+#define VMEM (u8*)0xC000
+
+const u8 g_palette[6] = { 0, 26, 11, 22, 13, 6 };
+
+void init() {
+	cpct_disableFirmware();
+	cpct_fw2hw(g_palette,6);
+	cpct_setPalette(g_palette,6);
+	cpct_setBorder (g_palette[5]);
+	cpct_setVideoMode(0);
+	
+	// Set the internal tileset for drawing Tilemaps
+	cpct_etm_setTileset2x4(g_tile_tileset);
+
+	// Draw the background tilemap
+	cpct_etm_drawTilemap2x4_f(40, 50, VMEM, g_background);  
+}
+
+
 void main(void) {
-   u8* video_memory_start  = (u8*)0xC000;
-   u8  character_line_size = 0x050;
 
-   // Clear Screen
-   cpct_memset(video_memory_start, 0, 0x4000);
+	// Clear Screen
+   cpct_memset(VMEM, 0, 0x4000);
 
-   // Draw String on the middle of the screen
-   cpct_drawStringM1("Welcome to CPCtelera",
-                     video_memory_start + character_line_size * 12,
-                     1, 0);
-   cpct_drawStringM1("This is a probe for printing strings",
-                     video_memory_start + character_line_size * 13,
-                     1, 0);
-   cpct_drawStringM1("by Caliv Games",
-                     video_memory_start + character_line_size * 14,
-                     1, 0);
+   init();
    // Loop forever
    while (1);
 }
