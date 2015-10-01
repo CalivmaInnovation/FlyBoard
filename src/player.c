@@ -37,13 +37,14 @@ void move() {
 void drawLifes() {
   u8 i;
   for (i=0; i < Player.maxLifes; i++) {
-    cpct_drawTileAligned4x8 (g_tile_tiles_4, 0xc054+(i*4));
+    cpct_drawSpriteMasked (g_tile_skate, (u8*)0xc054+(i*4), 4, 8);
+    // cpct_drawTileAligned4x8 (g_tile_tiles_4, (u8*)0xc054+(i*4));
   }
   // Dibujar X cuadrados de 8bits verdes en el hueco de vida
 }
 
 void lessLife() {
-  cpct_drawTileAligned4x8(g_tile_tiles_8, 0xc054+(Player.lifes*4));
+  cpct_drawTileAligned4x8(g_tile_tiles_8, (u8*)0xc054+(Player.lifes*4));
   Player.lifes--;
   // Cambiar el cuadrado verde por el negro
   // Sonido de perder vida

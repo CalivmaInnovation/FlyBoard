@@ -26,7 +26,7 @@
 #define MODE0_HEIGHT 190
 #define MODE0_WIDTH 75
 
-const u8 g_palette[7] = { 0, 26, 11, 22, 13, 6, 2 };
+const u8 g_palette[7] = { 0, 26, 11, 22, 13, 6, 2, 8 };
 
 void drawMap() {
 	// Set the internal tileset for drawing Tilemaps

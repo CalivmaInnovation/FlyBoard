@@ -34,4 +34,6 @@ extern const u8 g_tile_tiles_22[8];
 extern const u8 g_tile_tiles_23[8];
 extern const u8 g_tile_tiles_24[8];
 
+extern const u8 g_tile_skate[32];
+
 #endif
