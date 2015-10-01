@@ -20,6 +20,7 @@
 
 #include "tiles.h"
 #include "character.h"
+#include "player.h"
 
 #define VMEM (u8*)0xC000
 #define MODE0_HEIGHT 190
@@ -41,8 +42,12 @@ void init() {
 	cpct_setPalette(g_palette,7);
 	cpct_setBorder (g_palette[1]);
 	cpct_setVideoMode(0);
+
+	drawMap();
+	initPlayer();
 }
 
+// Esto lo dejo en el main temporalmente
 const u8 sinus_offsets[256]={
 	 0, 0, 0, 0, 0, 0, 0,
 	 1, 1, 1, 1, 1, 1,
@@ -90,43 +95,15 @@ const u8 sinus_offsets[256]={
 void main(void) {
 	 u8 i=0;
 
-	u8 var;
-	u8 x = 10;
-	u8 y = 130;
-	u8* memptr;
-	u8 mu;
-	
 	// Clear Screen
 	cpct_memset(VMEM, 0, 0x4000);
-	
 	init();
-	drawMap();
 
 	// Loop forever
 	while (1) {
-		cpct_setVideoMemoryOffset(sinus_offsets[i++]);
+		// cpct_setVideoMemoryOffset(sinus_offsets[i++]);
+		player();
 
-		memptr = cpct_getScreenPtr(VMEM, x, y);
-
-		cpct_drawSolidBox (memptr, 0, 5, 10);
-		
-		cpct_scanKeyboard_f ();
-		if ( cpct_isKeyPressed (Key_CursorUp) && y > 130) {
-			y -= 2;
-		}
-		else if ( cpct_isKeyPressed (Key_CursorDown) && y < 175) {
-			y += 2;
-		}
-		else if ( cpct_isKeyPressed (Key_CursorLeft) && x > 2) {
-			x -= 1;
-		}
-		else if ( cpct_isKeyPressed (Key_CursorRight) && x < 20) {
-			x += 1;
-		}
-		memptr = cpct_getScreenPtr(VMEM, x, y);
-		cpct_drawSpriteMasked(character_character, memptr, 5, 10);
-		
-	
 		// Synchronize with VSYNC + 1 HSYNC to slow down the movement
 		cpct_waitVSYNC();   // Wait for VSYNC signal
 		__asm__("halt");    // H
