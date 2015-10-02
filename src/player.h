@@ -21,4 +21,8 @@ void move();
 void drawLifes();
 void lessLife();
 
+// Estos metodos no son de esta clase
+void drawCars(i8 vNumber[]);
+void numberToASCII (i8 vNumber[]);
+
 #endif

@@ -26,7 +26,8 @@
 #define MODE0_HEIGHT 190
 #define MODE0_WIDTH 75
 
-const u8 g_palette[8] = { 0, 26, 11, 22, 13, 6, 2, 8 };
+// 0,3,8,13,14,16,26
+const u8 g_palette[7] = {0x14, 0x1C, 0x0D, 0x00, 0x1F, 0x07, 0x0B};
 
 void drawMap() {
 	// Set the internal tileset for drawing Tilemaps
@@ -38,8 +39,8 @@ void drawMap() {
 
 void init() {
 	cpct_disableFirmware();
-	cpct_fw2hw(g_palette,8);
-	cpct_setPalette(g_palette,8);
+	// cpct_fw2hw(g_palette,8);
+	cpct_setPalette(g_palette,7);
 	cpct_setBorder (g_palette[1]);
 	cpct_setVideoMode(0);
 
