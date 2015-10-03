@@ -3,9 +3,11 @@
 
 #include <cpctelera.h>
 #include "character.h"
-#include "tiles.h"
+#include "skate.h"
+#include "background.h"
+#include "constantes.h"
 
-#define VMEM (u8*)0xC000
+
 
 typedef struct {
   u8 x;

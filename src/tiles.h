@@ -4,8 +4,6 @@
 
 #include <types.h>
 
-extern const u8 g_background[40*50];
-
 extern u8* const g_tile_tileset[25];
 
 extern const u8 g_tile_tiles_0[8];
@@ -33,7 +31,5 @@ extern const u8 g_tile_tiles_21[8];
 extern const u8 g_tile_tiles_22[8];
 extern const u8 g_tile_tiles_23[8];
 extern const u8 g_tile_tiles_24[8];
-
-extern const u8 g_tile_skate[64];
 
 #endif

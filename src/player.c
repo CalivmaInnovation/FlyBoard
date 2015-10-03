@@ -6,8 +6,8 @@ const i8 vNumber[3] = { 22, 2, 2 };
 /////////////////////
 
 void initPlayer() {
-  Player.x=10;
-  Player.y=130;
+  Player.x=5;
+  Player.y=100;
   Player.maxLifes=4;
   Player.lifes=Player.maxLifes;
 
@@ -17,24 +17,26 @@ void initPlayer() {
 }
 
 void move() {
-  Player.memptr = cpct_getScreenPtr(VMEM, Player.x, Player.y);
-  cpct_drawSolidBox (Player.memptr, 0, 5, 10);
+	u8* memptr;
+	// Redraw a tilebox over the alien to erase it (redrawing background over it)
+	cpct_etm_drawTileBox2x4(Player.x, Player.y, PLAYER_WIDTH_TILES, PLAYER_HEIGHT_TILES, MAP_WIDTH_TILES, SCR_VMEM, g_background);
 
-  cpct_scanKeyboard_f ();
-  if ( cpct_isKeyPressed (Key_W) && Player.y > 130) {
-    Player.y -= 2;
-  }
-  else if ( cpct_isKeyPressed (Key_S) && Player.y < 175) {
-    Player.y += 2;
-  }
-  else if ( cpct_isKeyPressed (Key_A) && Player.x > 2) {
-    Player.x -= 1;
-  }
-  else if ( cpct_isKeyPressed (Key_D) && Player.x < 20) {
-    Player.x += 1;
-  }
-  Player.memptr = cpct_getScreenPtr(VMEM, Player.x, Player.y);
-  cpct_drawSpriteMasked(character_character, Player.memptr, 5, 10);
+	cpct_scanKeyboard_f ();
+	if ( cpct_isKeyPressed (Key_W) && Player.y > 65) {
+		Player.y -= 2;
+	}
+	else if ( cpct_isKeyPressed (Key_S) && Player.y < 120) {
+		Player.y += 2;
+	}
+	else if ( cpct_isKeyPressed (Key_A) && Player.x > 1) {
+		Player.x -= 1;
+	}
+	else if ( cpct_isKeyPressed (Key_D) && Player.x < 10) {
+		Player.x += 1;
+	}
+	
+	memptr = cpct_getScreenPtr(SCR_VMEM, TILEWIDTH_BYTES*Player.x, TILEHEIGHT_BYTES*Player.y);
+	cpct_drawSpriteMasked(player_character, memptr, PLAYER_WIDTH_BYTES, PLAYER_HEIGHT_BYTES);
 }
 
 void drawLifes() {
@@ -43,14 +45,14 @@ void drawLifes() {
   u8 nDigitNumber[10]= { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57 };
 
   for (i=0; i < Player.maxLifes; i++) {
-    cpct_drawSpriteMasked (g_tile_skate, (u8*)0xc054+(i*4), 4, 8);
+    cpct_drawSpriteMasked (lifes_skate, (u8*)0xc054+(i*4), 4, 8);
     // cpct_drawTileAligned4x8 (g_tile_tiles_4, (u8*)0xc054+(i*4));
   }
 }
 
 void lessLife() {
-  cpct_drawTileAligned4x8(g_tile_tiles_8, (u8*)0xc054+(Player.lifes*4));
-  Player.lifes--;
+//  cpct_drawTileAligned4x8(g_tile_tiles_8, (u8*)0xc054+(Player.lifes*4));
+//  Player.lifes--;
   // Cambiar el cuadrado verde por el negro
   // Sonido de perder vida
 }

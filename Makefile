@@ -36,3 +36,15 @@ include cfg/build_config.mk
 ## USE GLOBAL MAKEFILE (general rules for building CPCtelera projects)
 ##
 include $(CPCT_PATH)/cfg/global_main_makefile.mk
+
+
+##
+## CREATING ASSETS
+##
+PALETE={ 0 3 8 13 14 16 26 }
+generate_assets:
+	cd src/assets &&\
+	cpct_img2tileset -m 0 -pf $(PALETE) tiles.png && \
+	cpct_img2tileset -m 0 -im 0 -th 8 -tw 8 -pf $(PALETE) -nt -bn "player" character.png && \
+	cpct_img2tileset -m 0 -im 0 -th 8 -tw 8 -pf $(PALETE) -nt -bn "lifes" skate.png
+	mv src/assets/*.c src/assets/*.h src/

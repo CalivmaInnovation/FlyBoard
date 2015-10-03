@@ -19,12 +19,11 @@
 #include <cpctelera.h>
 
 #include "tiles.h"
+#include "skate.h"
 #include "character.h"
 #include "player.h"
-
-#define VMEM (u8*)0xC000
-#define MODE0_HEIGHT 190
-#define MODE0_WIDTH 75
+#include "background.h"
+#include "constantes.h"
 
 // 0,3,8,13,14,16,26
 const u8 g_palette[7] = {0x14, 0x1C, 0x0D, 0x00, 0x1F, 0x07, 0x0B};
@@ -34,12 +33,11 @@ void drawMap() {
 	cpct_etm_setTileset2x4(g_tile_tileset);
 
 	// Draw the background tilemap
-	cpct_etm_drawTilemap2x4_f(40, 50, VMEM, g_background);
+	cpct_etm_drawTilemap2x4_f(40, 50, SCR_VMEM, g_background);
 }
 
 void init() {
 	cpct_disableFirmware();
-	// cpct_fw2hw(g_palette,8);
 	cpct_setPalette(g_palette,7);
 	cpct_setBorder (g_palette[1]);
 	cpct_setVideoMode(0);
@@ -97,7 +95,7 @@ void main(void) {
 	 u8 i=0;
 
 	// Clear Screen
-	cpct_memset(VMEM, 0, 0x4000);
+	cpct_memset(SCR_VMEM, 0, 0x4000);
 	init();
 
 	// Loop forever
