@@ -6,35 +6,36 @@ const i8 vNumber[3] = { 22, 2, 2 };
 /////////////////////
 
 void initPlayer() {
-  Player.x=5;
-  Player.y=100;
-  Player.maxLifes=4;
-  Player.lifes=Player.maxLifes;
+	//x in [1,127] and y in [1,63] (However, y >= 50 will be outside normal screen, because 50*4 = 200 pixels, which is the height of a normal screen).
+	Player.x=5;
+	Player.y=35;
+	Player.maxLifes=4;
+	Player.lifes=Player.maxLifes;
 
-  drawLifes();
+	drawLifes();
 
-  drawCars(vNumber);
+	drawCars(vNumber);
 }
 
 void move() {
 	u8* memptr;
-	// Redraw a tilebox over the alien to erase it (redrawing background over it)
+	// Redraw a tilebox over the player to erase it (redrawing background over it)
 	cpct_etm_drawTileBox2x4(Player.x, Player.y, PLAYER_WIDTH_TILES, PLAYER_HEIGHT_TILES, MAP_WIDTH_TILES, SCR_VMEM, g_background);
 
 	cpct_scanKeyboard_f ();
-	if ( cpct_isKeyPressed (Key_W) && Player.y > 65) {
+	if ( cpct_isKeyPressed (Key_W) && Player.y > PLAYER_MIN_Y) {
 		Player.y -= 2;
 	}
-	else if ( cpct_isKeyPressed (Key_S) && Player.y < 120) {
+	else if ( cpct_isKeyPressed (Key_S) && Player.y < PLAYER_MAX_Y) {
 		Player.y += 2;
 	}
-	else if ( cpct_isKeyPressed (Key_A) && Player.x > 1) {
+	else if ( cpct_isKeyPressed (Key_A) && Player.x > PLAYER_MIN_X) {
 		Player.x -= 1;
 	}
-	else if ( cpct_isKeyPressed (Key_D) && Player.x < 10) {
+	else if ( cpct_isKeyPressed (Key_D) && Player.x < PLAYER_MAX_X) {
 		Player.x += 1;
 	}
-	
+	// Move the player in tiles
 	memptr = cpct_getScreenPtr(SCR_VMEM, TILEWIDTH_BYTES*Player.x, TILEHEIGHT_BYTES*Player.y);
 	cpct_drawSpriteMasked(player_character, memptr, PLAYER_WIDTH_BYTES, PLAYER_HEIGHT_BYTES);
 }

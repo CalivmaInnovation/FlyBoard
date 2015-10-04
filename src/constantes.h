@@ -16,4 +16,8 @@
 #define PLAYER_WIDTH_TILES         2
 #define PLAYER_HEIGHT_TILES        2
 
+#define PLAYER_MAX_X     10
+#define PLAYER_MIN_X      1
+#define PLAYER_MAX_Y     43
+#define PLAYER_MIN_Y     33
 #endif // _CONSTANTES_
