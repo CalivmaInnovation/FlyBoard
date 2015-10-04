@@ -97,7 +97,7 @@ void main(void) {
 	// Clear Screen
 	cpct_memset(SCR_VMEM, 0, 0x4000);
 	init();
-
+	drawRoad();
 	// Loop forever
 	while (1) {
 		// cpct_setVideoMemoryOffset(sinus_offsets[i++]);
