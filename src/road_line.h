@@ -4,6 +4,6 @@
 
 #include <types.h>
 
-extern const u8 road_road_line[256];
+extern const u8 road_road_line[64];
 
 #endif

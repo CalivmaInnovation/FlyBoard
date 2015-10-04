@@ -47,5 +47,5 @@ generate_assets:
 	cpct_img2tileset -m 0 -pf $(PALETE) tiles.png && \
 	cpct_img2tileset -m 0 -im 0 -th 8 -tw 8 -pf $(PALETE) -nt -bn "player" character.png && \
 	cpct_img2tileset -m 0 -im 0 -th 8 -tw 8 -pf $(PALETE) -nt -bn "lifes" skate.png && \
-	cpct_img2tileset -m 0 -th 16 -tw 32 -pf $(PALETE) -nt -bn "road" road_line.png
+	cpct_img2tileset -m 0 -th 16 -tw 24 -pf $(PALETE) -nt -bn "road" road_line.png
 	mv src/assets/*.c src/assets/*.h src/

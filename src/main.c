@@ -44,6 +44,7 @@ void init() {
 
 	drawMap();
 	initPlayer();
+	initRoad();
 }
 
 // Esto lo dejo en el main temporalmente
@@ -97,12 +98,11 @@ void main(void) {
 	// Clear Screen
 	cpct_memset(SCR_VMEM, 0, 0x4000);
 	init();
-	drawRoad();
 	// Loop forever
 	while (1) {
 		// cpct_setVideoMemoryOffset(sinus_offsets[i++]);
 		player();
-
+		drawRoad();
 		// Synchronize with VSYNC + 1 HSYNC to slow down the movement
 		cpct_waitVSYNC();   // Wait for VSYNC signal
 		__asm__("halt");    // H

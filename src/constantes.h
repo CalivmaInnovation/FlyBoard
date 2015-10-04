@@ -8,10 +8,10 @@
 
 #define MAP_WIDTH_TILES          40
 #define MAP_HEIGHT_TILES         50
-#define ROAD_WIDTH_BYTES         16
-#define ROAD_HEIGHT_BYTES        16
-#define ROAD_WIDTH_TILES         8
-#define ROAD_HEIGHT_TILES        4
+#define ROAD_WIDTH_BYTES         8
+#define ROAD_HEIGHT_BYTES        8
+#define ROAD_WIDTH_TILES         ROAD_WIDTH_BYTES/2
+#define ROAD_HEIGHT_TILES        ROAD_HEIGHT_BYTES/4
 
 #define TILEWIDTH_BYTES           2
 #define TILEHEIGHT_BYTES          4
