@@ -15,7 +15,7 @@ const u8 g_background[40*50] = {
 
 //
 // Variables
-#define maxLines 4                // Maximum number of road lines at the same time
+#define maxLines 7                // Maximum number of road lines at the same time
 u8 last_Line;                     // Last road line value
 TRoadLine roadlines[maxLines];    // Vector with road lines
 
@@ -24,7 +24,7 @@ TRoadLine roadlines[maxLines];    // Vector with road lines
 TRoadLine* newRoadLine(u8 x, u8 y);
         u8 moveRoadLine(u8 rl_idxidx);
       void destroyRoadLine(u8 rl_idx);
-
+      void drawRoadLine(TRoadLine* r);
 //
 // Methods implementation
 TRoadLine* newRoadLine(u8 x, u8 y) {
@@ -40,8 +40,30 @@ TRoadLine* newRoadLine(u8 x, u8 y) {
 	return new_road_line;
 }
 
-void initRoad() {
+void drawRoads() {
+   u8  i = last_Line;
 
+   // Draw Blocks (from last to first)
+   while(i--) 
+      drawRoadLine(&roadlines[i]);
+}
+
+void drawRoadLine(TRoadLine* r) {
+	u8* memptr;
+	memptr = cpct_getScreenPtr(SCR_VMEM, r->tx, r->ty);
+	cpct_drawSolidBox(memptr, 0x3C, 6, 6);
+	// 0000    0000 1011 0110
+}
+
+void initRoad() {
+	last_Line = 0;
+	newRoadLine(02, 150);
+	newRoadLine(14, 150);
+	newRoadLine(26, 150);
+	newRoadLine(38, 150);
+	newRoadLine(50, 150);
+	newRoadLine(62, 150);
+	newRoadLine(74, 150);
 }
 
 void waitNVSYNCs(u8 n) {

@@ -101,6 +101,7 @@ void main(void) {
 	// Loop forever
 	while (1) {
 		// cpct_setVideoMemoryOffset(sinus_offsets[i++]);
+		drawRoads();
 		player();
 		// Synchronize with VSYNC + 1 HSYNC to slow down the movement
 		cpct_waitVSYNC();   // Wait for VSYNC signal

@@ -3,7 +3,6 @@
 
 #include <cpctelera.h>
 #include <types.h>
-#include "road_line.h"
 #include "constantes.h"
 
 typedef struct {
@@ -19,7 +18,7 @@ extern const u8 g_background[40*50];
 
 // RoadLines methods
 void initRoad();
-//void drawRoad();
+void drawRoads();
 
 
 #endif
