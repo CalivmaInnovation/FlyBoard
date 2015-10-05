@@ -21,13 +21,14 @@ TRoadLine roadlines[maxLines];    // Vector with road lines
 
 //
 // Private methods declaration
-TRoadLine* newRoadLine(u8 x, u8 y);
-        u8 moveRoadLine(u8 rl_idxidx);
-      void destroyRoadLine(u8 rl_idx);
-      void drawRoadLine(TRoadLine* r);
+TRoadLine* new_RoadLine(u8 x, u8 y);
+        u8 move_RoadLine(u8 rl_idx);
+      void destroy_RoadLine(u8 i);
+      void draw_RoadLine(TRoadLine* r);
+
 //
 // Methods implementation
-TRoadLine* newRoadLine(u8 x, u8 y) {
+TRoadLine* new_RoadLine(u8 x, u8 y) {
 	TRoadLine *new_road_line = 0;
 	if (last_Line < maxLines) {
 		new_road_line = &roadlines[last_Line];
@@ -40,54 +41,70 @@ TRoadLine* newRoadLine(u8 x, u8 y) {
 	return new_road_line;
 }
 
+void destroy_RoadLine(u8 i) {
+	i8 nEnts = last_Line - 1; // Entities to the right of the block
+	TRoadLine *rl = &roadlines[i];
+	
+	cpct_drawSolidBox(rl->memptr_old, 0x00, 6, 6);
+
+	if (nEnts)
+		cpct_memcpy(&roadlines[i], &roadlines[i+1], nEnts*sizeof(TRoadLine));
+
+	// 1 less block   
+	--last_Line;
+
+}
+
+u8 move_RoadLine(u8 rl_idx) {
+	TRoadLine *rl = &roadlines[rl_idx];
+
+	if (rl->tx <= 1) {
+		destroy_RoadLine(rl_idx);
+		return 1;
+	}
+	
+	rl->tx -= 1;
+	return 0;
+}
+
 void drawRoads() {
    u8  i = last_Line;
 
    // Draw Blocks (from last to first)
    while(i--) 
-      drawRoadLine(&roadlines[i]);
+      draw_RoadLine(&roadlines[i]);
 }
 
-void drawRoadLine(TRoadLine* r) {
+//
+// Method for draw line
+// 0x3C -> white (see cpct_px2byteM0 for conversions)
+void draw_RoadLine(TRoadLine* r) {
 	u8* memptr;
+	cpct_drawSolidBox(r->memptr_old, 0x00, 6, 6);
 	memptr = cpct_getScreenPtr(SCR_VMEM, r->tx, r->ty);
+	r->memptr_old = memptr;
 	cpct_drawSolidBox(memptr, 0x3C, 6, 6);
-	// 0000    0000 1011 0110
+	
 }
 
 void initRoad() {
 	last_Line = 0;
-	newRoadLine(02, 150);
-	newRoadLine(14, 150);
-	newRoadLine(26, 150);
-	newRoadLine(38, 150);
-	newRoadLine(50, 150);
-	newRoadLine(62, 150);
-	newRoadLine(74, 150);
+	new_RoadLine(02, 150);
+	new_RoadLine(14, 150);
+	new_RoadLine(26, 150);
+	new_RoadLine(38, 150);
+	new_RoadLine(50, 150);
+	new_RoadLine(62, 150);
+	new_RoadLine(74, 150);
 }
 
-void waitNVSYNCs(u8 n) {
-   do {
-      cpct_waitVSYNC();
-      if (--n) {
-         __asm__ ("halt");
-         __asm__ ("halt");
-      }
-   } while (n);
-}
+void scrollRoads() {
+	u8 i;
 
-/* void drawRoad() { */
-/* 	u8* memptr; */
-/* 	u8 i; */
-/* 	for (i = 0; i < 4; i++) { */
-/* 		// Redraw a tilebox over the player to erase it (redrawing background over it) */
-/* //		cpct_etm_drawTileBox2x4(road[i]->x, road[i]->y, ROAD_WIDTH_TILES, ROAD_HEIGHT_TILES, MAP_WIDTH_TILES, SCR_VMEM, g_background); */
-/* //		road[i]->x -= 1; */
-/* //		if (road[i]->x <= 0){ road[i]->x = 35; }  */
-		
-/* 		// Move the player in tiles */
-/* 		memptr = cpct_getScreenPtr(SCR_VMEM, TILEWIDTH_BYTES*roadlines[i].tx, TILEHEIGHT_BYTES*roadlines[i].ty); */
-/* 		cpct_drawSprite(road_road_line, memptr, ROAD_WIDTH_BYTES, ROAD_HEIGHT_BYTES); */
-/* //		waitNVSYNCs(2); */
-/* 	} */
-/* } */
+	for(i=0; i < last_Line; ++i) {
+		if ( move_RoadLine(i) ) {
+			i--;
+			new_RoadLine(74, 150);
+		}
+	}	
+}

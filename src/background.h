@@ -6,8 +6,8 @@
 #include "constantes.h"
 
 typedef struct {
-	u8 tx;
-	u8 ty;
+	u8 tx, ty;
+	u8* memptr_old;
 }TRoadLine;
 
 //typedef struct {
@@ -18,6 +18,7 @@ extern const u8 g_background[40*50];
 
 // RoadLines methods
 void initRoad();
+void scrollRoads();
 void drawRoads();
 
 
