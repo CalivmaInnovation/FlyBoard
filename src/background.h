@@ -4,10 +4,13 @@
 #include <cpctelera.h>
 #include <types.h>
 #include "constantes.h"
+#include "tiles.h"
 
 typedef struct {
-	u8 tx, ty;
-	u8* memptr_old;
+	i8 tx, ty;
+	i8 dtiles;
+	u8 new;
+	// tile = g_tile_tiles_1
 }TRoadLine;
 
 //typedef struct {
