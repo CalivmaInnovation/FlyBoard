@@ -5,10 +5,22 @@
 #include "character.h"
 #include "skate.h"
 #include "background.h"
-#include "constantes.h"
 
+// Player constants
+#define PLAYER_WIDTH_BYTES         4
+#define PLAYER_HEIGHT_BYTES        8
+#define PLAYER_WIDTH_TILES         2
+#define PLAYER_HEIGHT_TILES        2
+#define PLAYER_MAX_X     10
+#define PLAYER_MIN_X      1
+#define PLAYER_MAX_Y     45
+#define PLAYER_MIN_Y     30
 
+// Player sprites
+extern const u8 sprite_skate[64];
+extern const u8 sprite_character[64];
 
+// Player struct
 typedef struct {
   u8 x;
   u8 y;
