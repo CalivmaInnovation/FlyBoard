@@ -32,4 +32,8 @@ extern const u8 g_tile_tiles_22[8];
 extern const u8 g_tile_tiles_23[8];
 extern const u8 g_tile_tiles_24[8];
 
+extern const u8 playerCharacter_player[384];
+extern const u8 build_build[1350];
+extern const u8 buildShadow_buildShadow[90];
+
 #endif

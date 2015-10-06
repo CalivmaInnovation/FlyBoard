@@ -2,6 +2,7 @@
 #define _PLAYER_H_
 
 #include <cpctelera.h>
+#include "tiles.h"
 #include "character.h"
 #include "skate.h"
 #include "background.h"

@@ -11,10 +11,10 @@
 #define TILEWIDTH_BYTES           2
 #define TILEHEIGHT_BYTES          4
 
-#define PLAYER_WIDTH_BYTES         4
-#define PLAYER_HEIGHT_BYTES        8
-#define PLAYER_WIDTH_TILES         2
-#define PLAYER_HEIGHT_TILES        2
+#define PLAYER_WIDTH_BYTES         8
+#define PLAYER_HEIGHT_BYTES        24
+#define PLAYER_WIDTH_TILES         4
+#define PLAYER_HEIGHT_TILES        6
 
 #define PLAYER_MAX_X     10
 #define PLAYER_MIN_X      1

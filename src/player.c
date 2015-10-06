@@ -38,7 +38,7 @@ void move() {
 	}
 	// Move the player in tiles
 	memptr = cpct_getScreenPtr(SCR_VMEM, TILEWIDTH_BYTES*Player.x, TILEHEIGHT_BYTES*Player.y);
-	cpct_drawSpriteMasked(player_character, memptr, PLAYER_WIDTH_BYTES, PLAYER_HEIGHT_BYTES);
+	cpct_drawSpriteMasked(playerCharacter_player, memptr, PLAYER_WIDTH_BYTES, PLAYER_HEIGHT_BYTES);
 }
 
 void drawLifes() {
