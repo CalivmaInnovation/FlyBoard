@@ -4,6 +4,6 @@
 
 #include <types.h>
 
-extern const u8 lifes_skate[64];
+extern const u8 lifes_skate[32];
 
 #endif

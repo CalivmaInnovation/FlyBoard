@@ -46,7 +46,7 @@ void drawLifes() {
   u8 nDigitNumber[10]= { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57 };
 
   for (i=0; i < Player.maxLifes; i++) {
-    cpct_drawSpriteMasked (lifes_skate, (u8*)0xc054+(i*4), 4, 8);
+    cpct_drawSprite(lifes_skate, (u8*)0xc054+(i*4), 4, 8);
     // cpct_drawTileAligned4x8 (g_tile_tiles_4, (u8*)0xc054+(i*4));
   }
 }
