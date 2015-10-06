@@ -4,7 +4,7 @@
 //
 // Background
 const u8 g_background[40*50] = {
-	#include "mapa2.csv"
+	#include "mapa.csv"
 };
 
 
@@ -86,16 +86,6 @@ u8 move_RoadLine(u8 rl_idx) {
 	return 0;
 }
 
-void waitNVSYNCs(u8 n) {
-   do {
-      cpct_waitVSYNC();
-      if (--n) {
-         __asm__ ("halt");
-         __asm__ ("halt");
-      }
-   } while (n);
-}
-
 //
 // Draw all roads
 void drawRoads() {
@@ -106,8 +96,7 @@ void drawRoads() {
 }
 
 //
-// Method for draw line
-// 0x3C -> white (see cpct_px2byteM0 for conversions)
+// Method for draw 
 void draw_RoadLine(TRoadLine* r) {
 	u8* memptr;
 	i8 i;
@@ -123,13 +112,15 @@ void draw_RoadLine(TRoadLine* r) {
 
 	// Draw n white tiles
 	for(i = 0; i < r->dtiles; ++i)
-		cpct_drawSprite(g_tile_tiles_1, memptr+(i * 2), TILEWIDTH_BYTES, TILEHEIGHT_BYTES);
+		cpct_drawSprite(g_tile_white, memptr+(i * 2), TILEWIDTH_BYTES, TILEHEIGHT_BYTES);
 	// Draw a black tile in end of line
 	if (!r->new)
-		cpct_drawSprite(g_tile_tiles_0, memptr+(r->dtiles * 2), TILEWIDTH_BYTES, TILEHEIGHT_BYTES);
+		cpct_drawSprite(g_tile_black, memptr+(r->dtiles * 2), TILEWIDTH_BYTES, TILEHEIGHT_BYTES);
 	
 }
 
+//
+// Init road lines
 void initRoad() {
 	last_Line = 0;
 	new_RoadLine(02, 150, 3, 0);
@@ -141,13 +132,17 @@ void initRoad() {
 	new_RoadLine(74, 150, 3, 0);
 }
 
+//
+// Scroll roadlines
 void scrollRoads() {
 	u8 i;
 
+	// Move all road lines to left
 	for(i=0; i < last_Line; ++i) {
 		if ( move_RoadLine(i) ) {
 			i--;
 		}
-	}	
+	}
+	// Create new road line at end
 	new_RoadLine(78, 150, 1, 1);
 }

@@ -2,11 +2,11 @@
 
 #include <types.h>
 
-u8* const g_tile_tileset[25] = { 
-	g_tile_tiles_0, g_tile_tiles_1, g_tile_tiles_2, g_tile_tiles_3, g_tile_tiles_4, g_tile_tiles_5, g_tile_tiles_6, g_tile_tiles_7, g_tile_tiles_8, g_tile_tiles_9, g_tile_tiles_10, g_tile_tiles_11, g_tile_tiles_12, g_tile_tiles_13, g_tile_tiles_14, g_tile_tiles_15, g_tile_tiles_16, g_tile_tiles_17, g_tile_tiles_18, g_tile_tiles_19, g_tile_tiles_20, g_tile_tiles_21, g_tile_tiles_22, g_tile_tiles_23, g_tile_tiles_24
+u8* const g_tile_tileset[9] = { 
+	g_tile_black, g_tile_red, g_tile_pink, g_tile_pastel_pink, g_tile_white, g_tile_pastel_blue, g_tile_gray, g_tile_tiles_7, g_tile_tiles_8
 };
 // Tile g_tile_tiles_0: 4x4 pixels, 2x4 bytes.
-const u8 g_tile_tiles_0[8] = {
+const u8 g_tile_black[8] = {
 	0x00, 0x00,
 	0x00, 0x00,
 	0x00, 0x00,
@@ -14,51 +14,51 @@ const u8 g_tile_tiles_0[8] = {
 };
 
 // Tile g_tile_tiles_1: 4x4 pixels, 2x4 bytes.
-const u8 g_tile_tiles_1[8] = {
+const u8 g_tile_red[8] = {
+	0xc0, 0xc0,
+	0xc0, 0xc0,
+	0xc0, 0xc0,
+	0xc0, 0xc0
+};
+
+// Tile g_tile_tiles_2: 4x4 pixels, 2x4 bytes.
+const u8 g_tile_pink[8] = {
+	0x0c, 0x0c,
+	0x0c, 0x0c,
+	0x0c, 0x0c,
+	0x0c, 0x0c
+};
+
+// Tile g_tile_tiles_3: 4x4 pixels, 2x4 bytes.
+const u8 g_tile_pastel_pink[8] = {
+	0xf0, 0xf0,
+	0xf0, 0xf0,
+	0xf0, 0xf0,
+	0xf0, 0xf0
+};
+
+// Tile g_tile_tiles_4: 4x4 pixels, 2x4 bytes.
+const u8 g_tile_white[8] = {
 	0x3c, 0x3c,
 	0x3c, 0x3c,
 	0x3c, 0x3c,
 	0x3c, 0x3c
 };
 
-// Tile g_tile_tiles_2: 4x4 pixels, 2x4 bytes.
-const u8 g_tile_tiles_2[8] = {
-	0xcc, 0xcc,
-	0xcc, 0xcc,
-	0xcc, 0xcc,
-	0xcc, 0xcc
-};
-
-// Tile g_tile_tiles_3: 4x4 pixels, 2x4 bytes.
-const u8 g_tile_tiles_3[8] = {
-	0x00, 0x00,
-	0x00, 0x00,
-	0x00, 0x00,
-	0x00, 0x00
-};
-
-// Tile g_tile_tiles_4: 4x4 pixels, 2x4 bytes.
-const u8 g_tile_tiles_4[8] = {
-	0x00, 0x00,
-	0x00, 0x00,
-	0x00, 0x00,
-	0x00, 0x00
-};
-
 // Tile g_tile_tiles_5: 4x4 pixels, 2x4 bytes.
-const u8 g_tile_tiles_5[8] = {
-	0xcc, 0xcc,
-	0xcc, 0xcc,
-	0xcc, 0xcc,
-	0xcc, 0xcc
-};
-
-// Tile g_tile_tiles_6: 4x4 pixels, 2x4 bytes.
-const u8 g_tile_tiles_6[8] = {
+const u8 g_tile_pastel_blue[8] = {
 	0x30, 0x30,
 	0x30, 0x30,
 	0x30, 0x30,
 	0x30, 0x30
+};
+
+// Tile g_tile_tiles_6: 4x4 pixels, 2x4 bytes.
+const u8 g_tile_gray[8] = {
+	0xcc, 0xcc,
+	0xcc, 0xcc,
+	0xcc, 0xcc,
+	0xcc, 0xcc
 };
 
 // Tile g_tile_tiles_7: 4x4 pixels, 2x4 bytes.
@@ -71,134 +71,6 @@ const u8 g_tile_tiles_7[8] = {
 
 // Tile g_tile_tiles_8: 4x4 pixels, 2x4 bytes.
 const u8 g_tile_tiles_8[8] = {
-	0x00, 0x00,
-	0x00, 0x00,
-	0x00, 0x00,
-	0x00, 0x00
-};
-
-// Tile g_tile_tiles_9: 4x4 pixels, 2x4 bytes.
-const u8 g_tile_tiles_9[8] = {
-	0x00, 0x00,
-	0x00, 0x00,
-	0x00, 0x00,
-	0x00, 0x00
-};
-
-// Tile g_tile_tiles_10: 4x4 pixels, 2x4 bytes.
-const u8 g_tile_tiles_10[8] = {
-	0x00, 0x00,
-	0x00, 0x00,
-	0x00, 0x00,
-	0x00, 0x00
-};
-
-// Tile g_tile_tiles_11: 4x4 pixels, 2x4 bytes.
-const u8 g_tile_tiles_11[8] = {
-	0x00, 0x00,
-	0x00, 0x00,
-	0x00, 0x00,
-	0x00, 0x00
-};
-
-// Tile g_tile_tiles_12: 4x4 pixels, 2x4 bytes.
-const u8 g_tile_tiles_12[8] = {
-	0x00, 0x00,
-	0x00, 0x00,
-	0x00, 0x00,
-	0x00, 0x00
-};
-
-// Tile g_tile_tiles_13: 4x4 pixels, 2x4 bytes.
-const u8 g_tile_tiles_13[8] = {
-	0x00, 0x00,
-	0x00, 0x00,
-	0x00, 0x00,
-	0x00, 0x00
-};
-
-// Tile g_tile_tiles_14: 4x4 pixels, 2x4 bytes.
-const u8 g_tile_tiles_14[8] = {
-	0x00, 0x00,
-	0x00, 0x00,
-	0x00, 0x00,
-	0x00, 0x00
-};
-
-// Tile g_tile_tiles_15: 4x4 pixels, 2x4 bytes.
-const u8 g_tile_tiles_15[8] = {
-	0x00, 0x00,
-	0x00, 0xcc,
-	0x00, 0x98,
-	0x00, 0x98
-};
-
-// Tile g_tile_tiles_16: 4x4 pixels, 2x4 bytes.
-const u8 g_tile_tiles_16[8] = {
-	0x00, 0x00,
-	0xcc, 0x00,
-	0x64, 0x00,
-	0x64, 0x00
-};
-
-// Tile g_tile_tiles_17: 4x4 pixels, 2x4 bytes.
-const u8 g_tile_tiles_17[8] = {
-	0x00, 0x00,
-	0x00, 0x00,
-	0x00, 0x00,
-	0x00, 0x00
-};
-
-// Tile g_tile_tiles_18: 4x4 pixels, 2x4 bytes.
-const u8 g_tile_tiles_18[8] = {
-	0x00, 0x00,
-	0x00, 0x00,
-	0x00, 0x00,
-	0x00, 0x00
-};
-
-// Tile g_tile_tiles_19: 4x4 pixels, 2x4 bytes.
-const u8 g_tile_tiles_19[8] = {
-	0x00, 0x00,
-	0x00, 0x00,
-	0x00, 0x00,
-	0x00, 0x00
-};
-
-// Tile g_tile_tiles_20: 4x4 pixels, 2x4 bytes.
-const u8 g_tile_tiles_20[8] = {
-	0x00, 0x98,
-	0x00, 0x98,
-	0x00, 0xcc,
-	0x00, 0x00
-};
-
-// Tile g_tile_tiles_21: 4x4 pixels, 2x4 bytes.
-const u8 g_tile_tiles_21[8] = {
-	0x64, 0x00,
-	0x64, 0x00,
-	0xcc, 0x00,
-	0x00, 0x00
-};
-
-// Tile g_tile_tiles_22: 4x4 pixels, 2x4 bytes.
-const u8 g_tile_tiles_22[8] = {
-	0xcc, 0xcc,
-	0x98, 0x64,
-	0x98, 0x64,
-	0xcc, 0xcc
-};
-
-// Tile g_tile_tiles_23: 4x4 pixels, 2x4 bytes.
-const u8 g_tile_tiles_23[8] = {
-	0x00, 0x00,
-	0x00, 0x00,
-	0x00, 0x00,
-	0x00, 0x00
-};
-
-// Tile g_tile_tiles_24: 4x4 pixels, 2x4 bytes.
-const u8 g_tile_tiles_24[8] = {
 	0x00, 0x00,
 	0x00, 0x00,
 	0x00, 0x00,
