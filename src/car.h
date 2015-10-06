@@ -4,6 +4,6 @@
 
 #include <types.h>
 
-extern const u8 cars_car[32];
+extern const u8 sprite_car[32];
 
 #endif

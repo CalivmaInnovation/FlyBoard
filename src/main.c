@@ -19,8 +19,6 @@
 #include <cpctelera.h>
 
 #include "tiles.h"
-#include "skate.h"
-#include "character.h"
 #include "player.h"
 #include "world.h"
 #include "background.h"
@@ -45,7 +43,9 @@ void init() {
 
 	drawMap();
 	initPlayer();
-	initWorld();
+	//initWorld();
+	initRoad();
+
 }
 
 // Esto lo dejo en el main temporalmente
@@ -99,13 +99,13 @@ void main(void) {
 	// Clear Screen
 	cpct_memset(SCR_VMEM, 0, 0x4000);
 	init();
-
 	// Loop forever
 	while (1) {
 		// cpct_setVideoMemoryOffset(sinus_offsets[i++]);
-		world1();
+		// world1();
+		scrollRoads();
+		drawRoads();
 		player();
-
 		// Synchronize with VSYNC + 1 HSYNC to slow down the movement
 		cpct_waitVSYNC();   // Wait for VSYNC signal
 		__asm__("halt");    // H
