@@ -6,6 +6,7 @@
 #include "skate.h"
 #include "background.h"
 #include "constantes.h"
+#include "car.h"
 
 
 
@@ -24,7 +25,6 @@ void drawLifes();
 void lessLife();
 
 // Estos metodos no son de esta clase
-void drawCars(i8 vNumber[]);
-void numberToASCII (i8 vNumber[]);
+void drawCars(u8 vNumber);
 
 #endif

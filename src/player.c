@@ -1,8 +1,9 @@
 #include "player.h"
-
+#include <stdio.h>
 // Variables Player
 TPlayer Player;
-const i8 vNumber[3] = { 22, 2, 2 };
+//const i8 vNumber[3] = { 22, 2, 2 };
+const u8 vNumber = 100;
 /////////////////////
 
 void initPlayer() {
@@ -65,30 +66,15 @@ void player() {
 // /////////////////////////////
 // Estos metodos no son de esta clase
 // i8 vNumber[3] = { numReal,firstDigit,secondDigit };
-void drawCars(i8 vNumber[]) {
-  u8 nDigitNumber[10]= { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57 };
-  u8 i=10;
-  numberToASCII (vNumber);
+void drawCars(u8 vNumber) {
+
+  u8 i=14;
+  u8 str[6];
 
   // ESTO LO TIENE K DIBUJAR ENEMYS O EL MAPA
-  cpct_drawStringM0 ("CARS:", (u8*)0xc054+(i*4), 0, 2);
-  i+= 5;
+  cpct_drawSprite(cars_car, (u8*)0xc054+(i*4), 4, 8);
+  i += 1;
 
-  if (vNumber[1]==0) {
-    cpct_drawCharM0 ((u8*)0xc054+(i*4), 0, 2, nDigitNumber[vNumber[2]]);
-  }
-  else {
-    cpct_drawCharM0 ((u8*)0xc054+(i*4), 0, 2, nDigitNumber[vNumber[1]]);
-    i++;
-    cpct_drawCharM0 ((u8*)0xc054+(i*4), 0, 2, nDigitNumber[vNumber[2]]);
-  }
-}
-
-void numberToASCII (i8 vNumber[]) {
-  if (vNumber[2]<0) {
-    vNumber[2]=9;
-    vNumber[1]-=1;
-  }
-  vNumber[0]-=1;
-  vNumber[2]-=1;
+  sprintf(str,"%u",vNumber);
+  cpct_drawStringM0 (str, (u8*)0xc054+(i*4), 0, 4);
 }
