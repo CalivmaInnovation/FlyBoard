@@ -67,14 +67,11 @@ void player() {
 // Estos metodos no son de esta clase
 // i8 vNumber[3] = { numReal,firstDigit,secondDigit };
 void drawCars(u8 vNumber) {
-
-  u8 i=14;
   u8 str[6];
 
   // ESTO LO TIENE K DIBUJAR ENEMYS O EL MAPA
-  cpct_drawSprite(cars_car, (u8*)0xc054+(i*4), 4, 8);
-  i += 1;
+  cpct_drawSprite(cars_car, (u8*)0xC08A, 4, 8);
 
   sprintf(str,"%u",vNumber);
-  cpct_drawStringM0 (str, (u8*)0xc054+(i*4), 0, 4);
+  cpct_drawStringM0 (str, (u8*)0xC090, 0, 4);
 }
