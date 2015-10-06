@@ -42,9 +42,12 @@ TRoadLine* new_RoadLine(u8 x, u8 y, u8 tiles, u8 new) {
 	return new_road_line;
 }
 
+//
+// Destroy a road line
 void destroy_RoadLine(u8 i) {
-	i8 nEnts = last_Line - 1; // Entities to the right of the block
+	i8 nEnts = last_Line - 1;
 
+	// Copy 0 roadline to 1
 	if (nEnts)
 		cpct_memcpy(&roadlines[i], &roadlines[i+1], nEnts*sizeof(TRoadLine));
 
@@ -58,14 +61,15 @@ void destroy_RoadLine(u8 i) {
 u8 move_RoadLine(u8 rl_idx) {
 	TRoadLine *rl = &roadlines[rl_idx];
 
+	// If we are new and don't have all tiles, plus one
 	if (rl->new && rl->dtiles < 3) {
 		rl->dtiles += 1;
 		rl->tx -= 1;
 	}
+	
 	// If we are out screen, draw one less tile
-	if (rl->tx <= -1) {
+	if (rl->tx <= -1)
 		rl->dtiles -= 1;
-	}
 
 	// If don't have more tiles, destroy it
 	if (rl->dtiles <= -3) {
@@ -73,9 +77,10 @@ u8 move_RoadLine(u8 rl_idx) {
 		return 1;
 	}
 
-	if(rl->dtiles == 3) {
+	// If have all dtiles, isn't new
+	if(rl->dtiles == 3) 
 		rl->new = 0;
-	}
+	
 	// Minus one position to the left
 	rl->tx -= 1;
 	return 0;
@@ -91,10 +96,11 @@ void waitNVSYNCs(u8 n) {
    } while (n);
 }
 
+//
+// Draw all roads
 void drawRoads() {
    u8 i = last_Line;
 
-   // Draw Blocks (from last to first)
    while(i--) 
       draw_RoadLine(&roadlines[i]);
 }
