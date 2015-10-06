@@ -19,8 +19,6 @@
 #include <cpctelera.h>
 
 #include "tiles.h"
-#include "skate.h"
-#include "character.h"
 #include "player.h"
 #include "background.h"
 #include "constantes.h"

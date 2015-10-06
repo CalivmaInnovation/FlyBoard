@@ -1,19 +1,20 @@
 #include "player.h"
-
+#include <stdio.h>
 // Variables Player
 TPlayer Player;
-const i8 vNumber[3] = { 22, 2, 2 };
+//const i8 vNumber[3] = { 22, 2, 2 };
+const u8 vNumber = 100;
 /////////////////////
 // Tile lifes_skate: 8x8 pixels, 4x8 bytes.
-const u8 sprite_skate[64] = {
-	0xff, 0x00, 0xff, 0x00, 0xff, 0x00, 0xaa, 0x04,
-	0xff, 0x00, 0xff, 0x00, 0xff, 0x00, 0x00, 0x0c,
-	0xff, 0x00, 0xff, 0x00, 0xaa, 0x04, 0x00, 0x0c,
-	0xff, 0x00, 0xff, 0x00, 0x00, 0x0c, 0x00, 0x4c,
-	0xff, 0x00, 0xaa, 0x04, 0x00, 0x0c, 0x00, 0xcc,
-	0xff, 0x00, 0x00, 0x0c, 0x00, 0x0c, 0xff, 0x00,
-	0xaa, 0x04, 0x00, 0x0c, 0x55, 0x88, 0xff, 0x00,
-	0x00, 0x0c, 0x00, 0x4c, 0x55, 0x88, 0xff, 0x00
+const u8 sprite_skate[32] = {
+	0x30, 0x30, 0x30, 0x24,
+	0x30, 0x30, 0x30, 0x0c,
+	0x30, 0x30, 0x24, 0x0c,
+	0x30, 0x30, 0x0c, 0x08,
+	0x30, 0x24, 0x0c, 0x00,
+	0x30, 0x0c, 0x0c, 0x30,
+	0x24, 0x0c, 0x10, 0x30,
+	0x0c, 0x08, 0x10, 0x30
 };
 
 // Tile player_character: 8x8 pixels, 4x8 bytes.
@@ -69,8 +70,7 @@ void drawLifes() {
   u8 nDigitNumber[10]= { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57 };
 
   for (i=0; i < Player.maxLifes; i++) {
-    cpct_drawSpriteMasked (sprite_skate, (u8*)0xc054+(i*4), 4, 8);
-    // cpct_drawTileAligned4x8 (g_tile_tiles_4, (u8*)0xc054+(i*4));
+    cpct_drawSprite(sprite_skate, (u8*)0xc054+(i*4), 4, 8);
   }
 }
 
@@ -88,30 +88,12 @@ void player() {
 // /////////////////////////////
 // Estos metodos no son de esta clase
 // i8 vNumber[3] = { numReal,firstDigit,secondDigit };
-void drawCars(i8 vNumber[]) {
-  u8 nDigitNumber[10]= { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57 };
-  u8 i=10;
-  numberToASCII (vNumber);
+void drawCars(u8 vNumber) {
+  u8 str[6];
 
   // ESTO LO TIENE K DIBUJAR ENEMYS O EL MAPA
-  cpct_drawStringM0 ("CARS:", (u8*)0xc054+(i*4), 0, 2);
-  i+= 5;
+  cpct_drawSprite(sprite_car, (u8*)0xC08A, 4, 8);
 
-  if (vNumber[1]==0) {
-    cpct_drawCharM0 ((u8*)0xc054+(i*4), 0, 2, nDigitNumber[vNumber[2]]);
-  }
-  else {
-    cpct_drawCharM0 ((u8*)0xc054+(i*4), 0, 2, nDigitNumber[vNumber[1]]);
-    i++;
-    cpct_drawCharM0 ((u8*)0xc054+(i*4), 0, 2, nDigitNumber[vNumber[2]]);
-  }
-}
-
-void numberToASCII (i8 vNumber[]) {
-  if (vNumber[2]<0) {
-    vNumber[2]=9;
-    vNumber[1]-=1;
-  }
-  vNumber[0]-=1;
-  vNumber[2]-=1;
+  sprintf(str,"%u",vNumber);
+  cpct_drawStringM0 (str, (u8*)0xC090, 0, 4);
 }

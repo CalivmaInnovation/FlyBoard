@@ -2,9 +2,9 @@
 #define _PLAYER_H_
 
 #include <cpctelera.h>
-#include "character.h"
-#include "skate.h"
 #include "background.h"
+// Provisional
+#include "car.h"
 
 // Player constants
 #define PLAYER_WIDTH_BYTES         4
@@ -17,7 +17,7 @@
 #define PLAYER_MIN_Y     30
 
 // Player sprites
-extern const u8 sprite_skate[64];
+extern const u8 sprite_skate[32];
 extern const u8 sprite_character[64];
 
 // Player struct
@@ -36,7 +36,6 @@ void drawLifes();
 void lessLife();
 
 // Estos metodos no son de esta clase
-void drawCars(i8 vNumber[]);
-void numberToASCII (i8 vNumber[]);
+void drawCars(u8 vNumber);
 
 #endif
