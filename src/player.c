@@ -75,8 +75,8 @@ void move() {
 	else if ( cpct_isKeyPressed (Key_D) && Player.x < PLAYER_MAX_X) {
 		Player.x += 1;
 	}
-	cpct_waitVSYNC();   // Wait for VSYNC signal
-	__asm__("halt");    // H
+	//cpct_waitVSYNC();   // Wait for VSYNC signal
+	// __asm__("halt");    // H
 
 	// Move the player in tiles
 	memptr = cpct_getScreenPtr(SCR_VMEM, TILEWIDTH_BYTES*Player.x, TILEHEIGHT_BYTES*Player.y);

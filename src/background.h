@@ -9,7 +9,10 @@
 typedef struct {
 	i8 tx, ty;
 	i8 dtiles;
+	u8 ttiles;
 	u8 new;
+	// This is a probe, until this all work
+	u8* sprites[]; 
 	// tile = g_tile_tiles_1
 }TRoadLine;
 

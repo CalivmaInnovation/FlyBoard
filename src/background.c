@@ -19,7 +19,7 @@ TRoadLine roadlines[maxLines];    // Vector with road lines
 
 //
 // Private methods declaration
-TRoadLine* new_RoadLine(u8 x, u8 y, u8 tiles, u8 new);
+TRoadLine* new_RoadLine(u8 x, u8 y, u8 tiles, u8 new, u8 ttiles);
         u8 move_RoadLine(u8 rl_idx);
       void destroy_RoadLine(u8 i);
       void draw_RoadLine(TRoadLine* r);
@@ -28,13 +28,14 @@ TRoadLine* new_RoadLine(u8 x, u8 y, u8 tiles, u8 new);
 // Methods implementation
 //
 // Create a new road line an (x,y) position
-TRoadLine* new_RoadLine(u8 x, u8 y, u8 tiles, u8 new) {
+TRoadLine* new_RoadLine(u8 x, u8 y, u8 tiles, u8 new, u8 ttiles) {
 	TRoadLine *new_road_line = 0;
 	if (last_Line < maxLines) {
 		new_road_line = &roadlines[last_Line];
 		new_road_line->tx = x;
 		new_road_line->ty = y;
 		new_road_line->dtiles = tiles;
+		new_road_line->ttiles = ttiles;
 		new_road_line->new = new;
 		last_Line += 1;
 	}
@@ -62,7 +63,7 @@ u8 move_RoadLine(u8 rl_idx) {
 	TRoadLine *rl = &roadlines[rl_idx];
 
 	// If we are new and don't have all tiles, plus one
-	if (rl->new && rl->dtiles < 3) {
+	if (rl->new && rl->dtiles < rl->ttiles) {
 		rl->dtiles += 1;
 		rl->tx -= 1;
 	}
@@ -72,13 +73,13 @@ u8 move_RoadLine(u8 rl_idx) {
 		rl->dtiles -= 1;
 
 	// If don't have more tiles, destroy it
-	if (rl->dtiles <= -3) {
+	if (rl->dtiles <= -rl->ttiles) {
 		destroy_RoadLine(rl_idx);
 		return 1;
 	}
 
 	// If have all dtiles, isn't new
-	if(rl->dtiles == 3) 
+	if(rl->dtiles == rl->ttiles) 
 		rl->new = 0;
 	
 	// Minus one position to the left
@@ -123,13 +124,13 @@ void draw_RoadLine(TRoadLine* r) {
 // Init road lines
 void initRoad() {
 	last_Line = 0;
-	new_RoadLine(02, 150, 3, 0);
-	new_RoadLine(14, 150, 3, 0);
-	new_RoadLine(26, 150, 3, 0);
-	new_RoadLine(38, 150, 3, 0);
-	new_RoadLine(50, 150, 3, 0);
-	new_RoadLine(62, 150, 3, 0);
-	new_RoadLine(74, 150, 3, 0);
+	new_RoadLine(02, 150, 3, 0, 3);
+	new_RoadLine(14, 150, 3, 0, 3);
+	new_RoadLine(26, 150, 3, 0, 3);
+	new_RoadLine(38, 150, 3, 0, 3);
+	new_RoadLine(50, 150, 3, 0, 3);
+	new_RoadLine(62, 150, 3, 0, 3);
+	new_RoadLine(74, 150, 3, 0, 3);
 }
 
 //
@@ -144,5 +145,5 @@ void scrollRoads() {
 		}
 	}
 	// Create new road line at end
-	new_RoadLine(78, 150, 1, 1);
+	new_RoadLine(78, 150, 1, 1, 3);
 }
