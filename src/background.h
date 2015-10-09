@@ -18,8 +18,11 @@ typedef struct {
 	u8* sprite;
 	u8 t_width_bytes;
 	u8 t_height_bytes;
+	u8* e_sprite;
+	u8 e_width_bytes;
+	u8 e_height_bytes;
 	// tile = g_tile_tiles_1
-}TRoadLine;
+}T_ScrollEntitie;
 
 //typedef struct {
 //}Building;

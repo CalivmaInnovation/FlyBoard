@@ -15,45 +15,48 @@ const u8 g_background[40*50] = {
 // Variables
 #define maxLines 7                // Maximum number of road lines at the same time
 u8 last_Line;                     // Last road line value
-TRoadLine roadlines[maxLines];    // Vector with road lines
+T_ScrollEntitie roadlines[maxLines];    // Vector with road lines
 
 //
 // Private methods declaration
-TRoadLine* new_RoadLine(u8 x, u8 y, u8 tiles, u8 new, u8 ttiles, u8* sprite, u8 t_width, u8 t_height);
-        u8 move_RoadLine(u8 rl_idx);
-      void destroy_RoadLine(u8 i);
-      void draw_RoadLine(TRoadLine* r);
+T_ScrollEntitie* new_ScrollEntitie(u8 x, u8 y, u8 tiles, u8 new, u8 ttiles, u8* sprite, u8 t_width, u8 t_height, u8* e_sprite, u8 e_width, u8 e_height);
+        u8 move_ScrollEntitie(u8 rl_idx);
+      void destroy_ScrollEntitie(u8 i);
+      void draw_ScrollEntitie(T_ScrollEntitie* r);
 
 //
 // Methods implementation
 //
 // Create a new road line an (x,y) position
-TRoadLine* new_RoadLine(u8 x, u8 y, u8 tiles, u8 new, u8 ttiles, u8* sprite, u8 t_width, u8 t_height) {
-	TRoadLine *new_road_line = 0;
+T_ScrollEntitie* new_ScrollEntitie(u8 x, u8 y, u8 tiles, u8 new, u8 ttiles, u8* sprite, u8 t_width, u8 t_height, u8* e_sprite, u8 e_width, u8 e_height) {
+	T_ScrollEntitie *new_scroll_enitite = 0;
 	if (last_Line < maxLines) {
-		new_road_line = &roadlines[last_Line];
-		new_road_line->tx = x;
-		new_road_line->ty = y;
-		new_road_line->dtiles = tiles;
-		new_road_line->ttiles = ttiles;
-		new_road_line->new = new;
-		new_road_line->sprite = sprite;
-		new_road_line->t_width_bytes = t_width;
-		new_road_line->t_height_bytes = t_height;
+		new_scroll_enitite = &roadlines[last_Line];
+		new_scroll_enitite->tx = x;
+		new_scroll_enitite->ty = y;
+		new_scroll_enitite->dtiles = tiles;
+		new_scroll_enitite->ttiles = ttiles;
+		new_scroll_enitite->new = new;
+		new_scroll_enitite->sprite = sprite;
+		new_scroll_enitite->t_width_bytes = t_width;
+		new_scroll_enitite->t_height_bytes = t_height;
+		new_scroll_enitite->e_sprite = e_sprite;
+		new_scroll_enitite->e_width_bytes = e_width;
+		new_scroll_enitite->e_height_bytes = e_height;
 		last_Line += 1;
 	}
 
-	return new_road_line;
+	return new_scroll_enitite;
 }
 
 //
 // Destroy a road line
-void destroy_RoadLine(u8 i) {
+void destroy_ScrollEntitie(u8 i) {
 	i8 nEnts = last_Line - 1;
 
 	// Copy 0 roadline to 1
 	if (nEnts)
-		cpct_memcpy(&roadlines[i], &roadlines[i+1], nEnts*sizeof(TRoadLine));
+		cpct_memcpy(&roadlines[i], &roadlines[i+1], nEnts*sizeof(T_ScrollEntitie));
 
 	// 1 less block
 	--last_Line;
@@ -62,8 +65,8 @@ void destroy_RoadLine(u8 i) {
 
 //
 // Move a road line and check if it is at screen border
-u8 move_RoadLine(u8 rl_idx) {
-	TRoadLine *rl = &roadlines[rl_idx];
+u8 move_ScrollEntitie(u8 rl_idx) {
+	T_ScrollEntitie *rl = &roadlines[rl_idx];
 
 	// If we are new and don't have all tiles, plus one
 	if (rl->new && rl->dtiles < rl->ttiles) {
@@ -77,7 +80,7 @@ u8 move_RoadLine(u8 rl_idx) {
 
 	// If don't have more tiles, destroy it
 	if (rl->dtiles <= -rl->ttiles) {
-		destroy_RoadLine(rl_idx);
+		destroy_ScrollEntitie(rl_idx);
 		return 1;
 	}
 
@@ -96,12 +99,12 @@ void drawRoads() {
    u8 i = last_Line;
 
    while(i--)
-      draw_RoadLine(&roadlines[i]);
+      draw_ScrollEntitie(&roadlines[i]);
 }
 
 //
 // Method for draw
-void draw_RoadLine(TRoadLine* r) {
+void draw_ScrollEntitie(T_ScrollEntitie* r) {
 	u8* memptr;
 	i8 i;
 
@@ -119,7 +122,7 @@ void draw_RoadLine(TRoadLine* r) {
 		cpct_drawSprite(r->sprite, memptr+(i * r->t_width_bytes), r->t_width_bytes, r->t_height_bytes);
 	// Draw a black tile in end of line
 	if (!r->new)
-		cpct_drawSprite(sprite_car, memptr+(r->dtiles * r->t_width_bytes), r->t_width_bytes, r->t_height_bytes);
+		cpct_drawSprite(r->e_sprite, memptr+(r->dtiles * r->e_width_bytes), r->e_width_bytes, r->e_height_bytes);
 
 }
 
@@ -127,14 +130,11 @@ void draw_RoadLine(TRoadLine* r) {
 // Init road lines
 void initRoad() {
 	// g_tile_white
+	u8 i;
 	last_Line = 0;
-	new_RoadLine(04, 142, 4, 0, 4, sprite_skate, 4, 8);
-	new_RoadLine(14, 142, 4, 0, 4, sprite_skate, 4, 8);
-	new_RoadLine(26, 142, 4, 0, 4, sprite_skate, 4, 8);
-	new_RoadLine(38, 142, 4, 0, 4, sprite_skate, 4, 8);
-	new_RoadLine(50, 142, 4, 0, 4, sprite_skate, 4, 8);
-	new_RoadLine(62, 142, 4, 0, 4, sprite_skate, 4, 8);
-	new_RoadLine(74, 142, 4, 0, 4, sprite_skate, 4, 8);
+	for (i = 2; i < maxLines*12; i+=12) {
+		new_ScrollEntitie(i, 150, 3, 0, 3, g_tile_white, 2, 4, g_tile_black, 2, 4);
+	}
 }
 
 //
@@ -144,10 +144,10 @@ void scrollRoads() {
 
 	// Move all road lines to left
 	for(i=0; i < last_Line; ++i) {
-		if ( move_RoadLine(i) ) {
+		if ( move_ScrollEntitie(i) ) {
 			i--;
 		}
 	}
 	// Create new road line at end
-	new_RoadLine(76, 142, 1, 1, 4, sprite_skate, 4, 8);
+	new_ScrollEntitie(78, 150, 1, 1, 3, g_tile_white, 2, 4, g_tile_black, 2, 4);
 }
