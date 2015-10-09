@@ -2,6 +2,7 @@
 #include <stdio.h>
 // Variables Player
 TPlayer Player;
+
 //const i8 vNumber[3] = { 22, 2, 2 };
 const u8 vNumber = 100;
 /////////////////////
@@ -53,8 +54,6 @@ void initPlayer() {
 	Player.lifes=Player.maxLifes;
 
 	drawLifes();
-
-	drawCars(vNumber);
 }
 
 void move() {
@@ -85,10 +84,7 @@ void move() {
 
 void drawLifes() {
   u8 i;
-  //u8 z=48;
-  //u8 nDigitNumber[10]= { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57 };
-
-  for (i=0; i < Player.maxLifes; i++) {
+	for (i=0; i < Player.maxLifes; i++) {
     cpct_drawSprite(sprite_skate, (u8*)0xc054+(i*4), 4, 8);
   }
 }
@@ -101,12 +97,9 @@ void lessLife() {
 }
 
 void player() {
-  move();
+	move();
 }
 
-// /////////////////////////////
-// Estos metodos no son de esta clase
-// i8 vNumber[3] = { numReal,firstDigit,secondDigit };
 void drawCars(u8 vNumber) {
   u8 str[6];
 

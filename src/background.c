@@ -66,7 +66,7 @@ u8 move_RoadLine(u8 rl_idx) {
 		rl->dtiles += 1;
 		rl->tx -= 1;
 	}
-	
+
 	// If we are out screen, draw one less tile
 	if (rl->tx <= -1)
 		rl->dtiles -= 1;
@@ -78,9 +78,9 @@ u8 move_RoadLine(u8 rl_idx) {
 	}
 
 	// If have all dtiles, isn't new
-	if(rl->dtiles == 3) 
+	if(rl->dtiles == 3)
 		rl->new = 0;
-	
+
 	// Minus one position to the left
 	rl->tx -= 1;
 	return 0;
@@ -91,12 +91,12 @@ u8 move_RoadLine(u8 rl_idx) {
 void drawRoads() {
    u8 i = last_Line;
 
-   while(i--) 
+   while(i--)
       draw_RoadLine(&roadlines[i]);
 }
 
 //
-// Method for draw 
+// Method for draw
 void draw_RoadLine(TRoadLine* r) {
 	u8* memptr;
 	i8 i;
@@ -107,7 +107,7 @@ void draw_RoadLine(TRoadLine* r) {
 	}
 	else {
 		// Else, draw where we have to draw xD!
-		memptr = cpct_getScreenPtr(SCR_VMEM, r->tx, r->ty);		
+		memptr = cpct_getScreenPtr(SCR_VMEM, r->tx, r->ty);
 	}
 
 	// Draw n white tiles
@@ -116,7 +116,7 @@ void draw_RoadLine(TRoadLine* r) {
 	// Draw a black tile in end of line
 	if (!r->new)
 		cpct_drawSprite(g_tile_black, memptr+(r->dtiles * 2), TILEWIDTH_BYTES, TILEHEIGHT_BYTES);
-	
+
 }
 
 //

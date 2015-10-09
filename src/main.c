@@ -23,6 +23,7 @@
 #include "world.h"
 #include "background.h"
 #include "constantes.h"
+#include "scroll.h"
 
 // 0,3,8,13,14,16,26
 const u8 g_palette[7] = {0x14, 0x1C, 0x0D, 0x00, 0x1F, 0x07, 0x0B};
@@ -45,7 +46,7 @@ void init() {
 	initPlayer();
 	//initWorld();
 	initRoad();
-
+	initScroll();
 }
 
 // Esto lo dejo en el main temporalmente
@@ -106,6 +107,7 @@ void main(void) {
 		scrollRoads();
 		drawRoads();
 		player();
+		Road();
 		// Synchronize with VSYNC + 1 HSYNC to slow down the movement
 		cpct_waitVSYNC();   // Wait for VSYNC signal
 		__asm__("halt");    // H

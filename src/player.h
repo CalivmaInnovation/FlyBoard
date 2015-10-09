@@ -2,6 +2,7 @@
 #define _PLAYER_H_
 
 #include <cpctelera.h>
+#include "constantes.h"
 #include "background.h"
 // Provisional
 #include "car.h"
@@ -19,7 +20,7 @@
 // Player sprites
 extern const u8 sprite_skate[32];
 extern const u8 sprite_character[384];
-
+extern const u8 bloque [32];
 // Player struct
 typedef struct {
   u8 x;
@@ -34,6 +35,10 @@ void player();
 void move();
 void drawLifes();
 void lessLife();
+
+void Road();
+void widthImageScroll(u8 tile[], u8 shadowTile[], i8 posY, u8 widthImage);
+void scroll(u8 tile[], u8 shadowTile[], i8 posX, i8 posY, i8 nextLine);
 
 // Estos metodos no son de esta clase
 void drawCars(u8 vNumber);
