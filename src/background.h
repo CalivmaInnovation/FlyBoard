@@ -5,14 +5,19 @@
 #include <types.h>
 #include "constantes.h"
 #include "tiles.h"
+#include "player.h"
+#include "car.h"
+
 
 typedef struct {
 	i8 tx, ty;
 	i8 dtiles;
-	u8 ttiles;
+	i8 ttiles;
 	u8 new;
 	// This is a probe, until this all work
-	u8* sprites[]; 
+	u8* sprite;
+	u8 t_width_bytes;
+	u8 t_height_bytes;
 	// tile = g_tile_tiles_1
 }TRoadLine;
 

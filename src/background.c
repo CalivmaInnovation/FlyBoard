@@ -19,7 +19,7 @@ TRoadLine roadlines[maxLines];    // Vector with road lines
 
 //
 // Private methods declaration
-TRoadLine* new_RoadLine(u8 x, u8 y, u8 tiles, u8 new, u8 ttiles);
+TRoadLine* new_RoadLine(u8 x, u8 y, u8 tiles, u8 new, u8 ttiles, u8* sprite, u8 t_width, u8 t_height);
         u8 move_RoadLine(u8 rl_idx);
       void destroy_RoadLine(u8 i);
       void draw_RoadLine(TRoadLine* r);
@@ -28,7 +28,7 @@ TRoadLine* new_RoadLine(u8 x, u8 y, u8 tiles, u8 new, u8 ttiles);
 // Methods implementation
 //
 // Create a new road line an (x,y) position
-TRoadLine* new_RoadLine(u8 x, u8 y, u8 tiles, u8 new, u8 ttiles) {
+TRoadLine* new_RoadLine(u8 x, u8 y, u8 tiles, u8 new, u8 ttiles, u8* sprite, u8 t_width, u8 t_height) {
 	TRoadLine *new_road_line = 0;
 	if (last_Line < maxLines) {
 		new_road_line = &roadlines[last_Line];
@@ -37,6 +37,9 @@ TRoadLine* new_RoadLine(u8 x, u8 y, u8 tiles, u8 new, u8 ttiles) {
 		new_road_line->dtiles = tiles;
 		new_road_line->ttiles = ttiles;
 		new_road_line->new = new;
+		new_road_line->sprite = sprite;
+		new_road_line->t_width_bytes = t_width;
+		new_road_line->t_height_bytes = t_height;
 		last_Line += 1;
 	}
 
@@ -67,7 +70,7 @@ u8 move_RoadLine(u8 rl_idx) {
 		rl->dtiles += 1;
 		rl->tx -= 1;
 	}
-	
+
 	// If we are out screen, draw one less tile
 	if (rl->tx <= -1)
 		rl->dtiles -= 1;
@@ -79,9 +82,9 @@ u8 move_RoadLine(u8 rl_idx) {
 	}
 
 	// If have all dtiles, isn't new
-	if(rl->dtiles == rl->ttiles) 
+	if(rl->dtiles == rl->ttiles)
 		rl->new = 0;
-	
+
 	// Minus one position to the left
 	rl->tx -= 1;
 	return 0;
@@ -92,12 +95,12 @@ u8 move_RoadLine(u8 rl_idx) {
 void drawRoads() {
    u8 i = last_Line;
 
-   while(i--) 
+   while(i--)
       draw_RoadLine(&roadlines[i]);
 }
 
 //
-// Method for draw 
+// Method for draw
 void draw_RoadLine(TRoadLine* r) {
 	u8* memptr;
 	i8 i;
@@ -108,29 +111,30 @@ void draw_RoadLine(TRoadLine* r) {
 	}
 	else {
 		// Else, draw where we have to draw xD!
-		memptr = cpct_getScreenPtr(SCR_VMEM, r->tx, r->ty);		
+		memptr = cpct_getScreenPtr(SCR_VMEM, r->tx, r->ty);
 	}
 
 	// Draw n white tiles
 	for(i = 0; i < r->dtiles; ++i)
-		cpct_drawSprite(g_tile_white, memptr+(i * 2), TILEWIDTH_BYTES, TILEHEIGHT_BYTES);
+		cpct_drawSprite(r->sprite, memptr+(i * r->t_width_bytes), r->t_width_bytes, r->t_height_bytes);
 	// Draw a black tile in end of line
 	if (!r->new)
-		cpct_drawSprite(g_tile_black, memptr+(r->dtiles * 2), TILEWIDTH_BYTES, TILEHEIGHT_BYTES);
-	
+		cpct_drawSprite(sprite_car, memptr+(r->dtiles * r->t_width_bytes), r->t_width_bytes, r->t_height_bytes);
+
 }
 
 //
 // Init road lines
 void initRoad() {
+	// g_tile_white
 	last_Line = 0;
-	new_RoadLine(02, 150, 3, 0, 3);
-	new_RoadLine(14, 150, 3, 0, 3);
-	new_RoadLine(26, 150, 3, 0, 3);
-	new_RoadLine(38, 150, 3, 0, 3);
-	new_RoadLine(50, 150, 3, 0, 3);
-	new_RoadLine(62, 150, 3, 0, 3);
-	new_RoadLine(74, 150, 3, 0, 3);
+	new_RoadLine(04, 142, 4, 0, 4, sprite_skate, 4, 8);
+	new_RoadLine(14, 142, 4, 0, 4, sprite_skate, 4, 8);
+	new_RoadLine(26, 142, 4, 0, 4, sprite_skate, 4, 8);
+	new_RoadLine(38, 142, 4, 0, 4, sprite_skate, 4, 8);
+	new_RoadLine(50, 142, 4, 0, 4, sprite_skate, 4, 8);
+	new_RoadLine(62, 142, 4, 0, 4, sprite_skate, 4, 8);
+	new_RoadLine(74, 142, 4, 0, 4, sprite_skate, 4, 8);
 }
 
 //
@@ -145,5 +149,5 @@ void scrollRoads() {
 		}
 	}
 	// Create new road line at end
-	new_RoadLine(78, 150, 1, 1, 3);
+	new_RoadLine(76, 142, 1, 1, 4, sprite_skate, 4, 8);
 }
