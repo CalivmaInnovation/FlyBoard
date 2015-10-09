@@ -39,6 +39,8 @@ void init() {
 	drawMap();
 	initPlayer();
 	initScroll();
+	drawWorld_Level(3, 2);
+	drawCars(100);
 }
 
 void main(void) {
