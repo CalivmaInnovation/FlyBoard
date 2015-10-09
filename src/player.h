@@ -1,11 +1,7 @@
 #ifndef _PLAYER_H_
 #define _PLAYER_H_
 
-#include <cpctelera.h>
 #include "constantes.h"
-#include "background.h"
-// Provisional
-#include "car.h"
 
 // Player constants
 #define PLAYER_WIDTH_BYTES         8
@@ -18,8 +14,6 @@
 #define PLAYER_MIN_Y     30
 
 // Player sprites
-extern const u8 sprite_skate[32];
-extern const u8 sprite_character[384];
 extern const u8 bloque [32];
 // Player struct
 typedef struct {

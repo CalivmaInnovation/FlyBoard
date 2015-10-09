@@ -16,17 +16,11 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //------------------------------------------------------------------------------
 
-#include <cpctelera.h>
+#include "constantes.h"
 
-#include "tiles.h"
 #include "player.h"
 #include "world.h"
-#include "background.h"
-#include "constantes.h"
 #include "scroll.h"
-
-// 0,3,8,13,14,16,26
-const u8 g_palette[7] = {0x14, 0x1C, 0x0D, 0x00, 0x1F, 0x07, 0x0B};
 
 void drawMap() {
 	// Set the internal tileset for drawing Tilemaps
@@ -44,55 +38,8 @@ void init() {
 
 	drawMap();
 	initPlayer();
-	//initWorld();
-	initRoad();
 	initScroll();
 }
-
-// Esto lo dejo en el main temporalmente
-// const u8 sinus_offsets[256]={
-// 	 0, 0, 0, 0, 0, 0, 0,
-// 	 1, 1, 1, 1, 1, 1,
-// 	 2, 2, 2, 2, 2, 2,
-// 	 3, 3, 3, 3, 3, 3,
-// 	 4, 4, 4, 4, 4, 4,
-// 	 5, 5, 5, 5, 5, 5, 5,
-// 	 6, 6, 6, 6, 6, 6,
-// 	 7, 7, 7, 7, 7, 7,
-// 	 8, 8, 8, 8, 8, 8,
-// 	 9, 9, 9, 9, 9, 9,
-// 	10,10,10,10,10,10,10,
-// 	11,11,11,11,11,11,
-// 	12,12,12,12,12,12,
-// 	13,13,13,13,13,13,
-// 	14,14,14,14,14,14,
-// 	15,15,15,15,15,15,15,
-// 	16,16,16,16,16,16,
-// 	17,17,17,17,17,17,
-// 	18,18,18,18,18,18,
-// 	19,19,19,19,19,19,
-// 	20,20,20,20,20,20,20,
-// 	21,21,21,21,21,21,
-// 	22,22,22,22,22,22,
-// 	23,23,23,23,23,23,
-// 	24,24,24,24,24,24,
-// 	25,25,25,25,25,25,25,
-// 	26,26,26,26,26,26,
-// 	27,27,27,27,27,27,
-// 	28,28,28,28,28,28,
-// 	29,29,29,29,29,29,
-// 	30,30,30,30,30,30,30,
-// 	31,31,31,31,31,31,
-// 	32,32,32,32,32,32,
-// 	33,33,33,33,33,33,
-// 	34,34,34,34,34,34,
-// 	35,35,35,35,35,35,35,
-// 	36,36,36,36,36,36,
-// 	37,37,37,37,37,37,
-// 	38,38,38,38,38,38,
-// 	39,39,39,39,39,39,
-// 	40,40,40,40,40,40,40,40
-// };
 
 void main(void) {
 	 u8 i=0;
@@ -102,10 +49,6 @@ void main(void) {
 	init();
 	// Loop forever
 	while (1) {
-		// cpct_setVideoMemoryOffset(sinus_offsets[i++]);
-		// world1();
-		scrollRoads();
-		drawRoads();
 		player();
 		Road();
 		// Synchronize with VSYNC + 1 HSYNC to slow down the movement

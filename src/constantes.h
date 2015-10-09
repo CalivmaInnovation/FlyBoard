@@ -2,6 +2,7 @@
 #define _CONSTANTES_
 
 #include <cpctelera.h>
+#include "tiles.h"
 
 #define SCR_VMEM (u8*)0xC000
 
@@ -10,6 +11,9 @@
 
 #define TILEWIDTH_BYTES           2
 #define TILEHEIGHT_BYTES          4
+
+// 0,3,8,13,14,16,26
+extern const u8 g_palette[7];
 
 // If we need a global method put here
 void waitNVSYNCs(u8 n);
