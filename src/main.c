@@ -22,18 +22,20 @@
 #include "world.h"
 #include "scroll.h"
 
+
 void drawMap() {
 	// Set the internal tileset for drawing Tilemaps
-	cpct_etm_setTileset2x4(g_tile_tileset);
+	cpct_etm_setTileset2x4(g_tile_tileset_bg);
 
 	// Draw the background tilemap
-	cpct_etm_drawTilemap2x4_f(40, 50, SCR_VMEM, g_background);
+	cpct_etm_drawTilemap2x4_f(MAP_WIDTH_TILES, MAP_HEIGHT_TILES, SCR_VMEM, g_background);
 }
 
 void init() {
 	cpct_disableFirmware();
-	cpct_setPalette(g_palette,7);
-	cpct_setBorder (g_palette[1]);
+	cpct_fw2hw(g_palette,16);
+	cpct_setPalette(g_palette,16);
+	cpct_setBorder (g_palette[15]);
 	cpct_setVideoMode(0);
 
 	drawMap();

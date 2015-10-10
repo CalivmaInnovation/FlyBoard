@@ -44,5 +44,6 @@ include $(CPCT_PATH)/cfg/global_main_makefile.mk
 PALETE={ 0 2 3 5 6 9 11 13 14 15 16 18 20 22 24 26 }
 generate_assets:
 	cd src/assets &&\
-	cpct_img2tileset -m 0 -tw 8 -th 8 -pf $(PALETE) tiles2.png && \
+	cpct_img2tileset -m 0 -tw 4 -th 4 -pf $(PALETE) tiles_bg.png
+#	cpct_img2tileset -m 0 -tw 8 -th 8 -pf $(PALETE) tiles2.png
 	mv src/assets/*.c src/assets/*.h src/

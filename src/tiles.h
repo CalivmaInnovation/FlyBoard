@@ -4,18 +4,35 @@
 
 #include <types.h>
 
-extern u8* const g_tile_tileset[9];
+extern u8* const g_tile_tileset_bg[3];
 
-/* TODO:  Change 8 to 32 */
-extern const u8 g_tile_black[8];
-extern const u8 g_tile_red[8];
-extern const u8 g_tile_pink[8];
-extern const u8 g_tile_pastel_pink[8];
-extern const u8 g_tile_white[32];
+extern const u8 g_tile_tiles_bg_0[8];
+extern const u8 g_tile_tiles_bg_1[8];
+extern const u8 g_tile_tiles_bg_2[8];
+
+//extern u8* const g_tile_tileset_bg[3];
+extern u8* const g_tile_tileset[16];
+
+extern const u8 g_tile_black_bg[8];
+extern const u8 g_tile_sky_blue_bg[8];
+extern const u8 g_tile_gray_bg[8];
+
+extern const u8 g_tile_black[32];
+extern const u8 g_tile_blue[32];
+extern const u8 g_tile_bright_blue[32];
+extern const u8 g_tile_red[32];
+extern const u8 g_tile_magenta[32];
+extern const u8 g_tile_bright_red[32];
+extern const u8 g_tile_bright_magenta[32];
+extern const u8 g_tile_green[32];
+extern const u8 g_tile_sky_blue[32];
+extern const u8 g_tile_gray[32];
 extern const u8 g_tile_pastel_blue[32];
-extern const u8 g_tile_gray[8];
-extern const u8 g_tile_tiles_7[8];
-extern const u8 g_tile_tiles_8[8];
+extern const u8 g_tile_orange[32];
+extern const u8 g_tile_pink[32];
+extern const u8 g_tile_pastel_magenta[32];
+extern const u8 g_tile_bright_yellow[32];
+extern const u8 g_tile_white[32];
 
 // Player sprites
 extern const u8 sprite_skate[32];
