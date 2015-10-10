@@ -76,5 +76,18 @@ void Road() {
 }
 
 void CarRunner() {
-
+	u8 i=17;
+  u8 j=0;
+  u8 posY=22;
+	scroll(g_tile_carRunnerSet[j], g_tile_black, i, posY,-1);
+  --i;
+  ++j;
+  scroll(g_tile_carRunnerSet[j], g_tile_black, i, posY,-1);
+  --i;
+  ++j;
+  scroll(g_tile_carRunnerSet[j], g_tile_black, i, posY,1);
+  i=16;
+  ++j;
+  ++posY;
+  scroll(g_tile_carRunnerSet[j], g_tile_black, i, posY,-1);
 }
