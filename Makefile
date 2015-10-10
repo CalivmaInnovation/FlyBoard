@@ -1,5 +1,5 @@
 ##-----------------------------LICENSE NOTICE------------------------------------
-##  This file is part of CPCtelera: An Amstrad CPC Game Engine 
+##  This file is part of CPCtelera: An Amstrad CPC Game Engine
 ##  Copyright (C) 2015 ronaldo / Fremos / Cheesetea / ByteRealms (@FranGallegoBR)
 ##
 ##  This program is free software: you can redistribute it and/or modify
@@ -41,9 +41,12 @@ include $(CPCT_PATH)/cfg/global_main_makefile.mk
 ##
 ## CREATING ASSETS
 ##
-PALETE={ 0 2 3 5 6 9 11 13 14 15 16 18 20 22 24 26 }
+PALETE={ 0 2 3 5 6 8 9 11 13 14 15 16 20 22 24 26 }
 generate_assets:
 	cd src/assets &&\
-	cpct_img2tileset -m 0 -tw 4 -th 4 -pf $(PALETE) tiles_bg.png
-#	cpct_img2tileset -m 0 -tw 8 -th 8 -pf $(PALETE) tiles2.png
-	mv src/assets/*.c src/assets/*.h src/
+	cpct_img2tileset -m 0 -tw 4 -th 4 -pf $(PALETE) tiles_bg.png &&\
+	cpct_img2tileset -m 0 -tw 8 -th 8 -pf $(PALETE) tiles.png &&\
+	cpct_img2tileset -m 0 -im 0 -tw 16 -th 24 -pf $(PALETE) player.png &&\
+	cpct_img2tileset -m 0 -tw 8 -th 8 -pf $(PALETE) car.png &&\
+	cpct_img2tileset -m 0 -tw 8 -th 8 -pf $(PALETE) skate.png
+	#mv src/assets/*.c src/assets/*.h src/
