@@ -20,7 +20,6 @@ void drawCars(u8 vNumber) {
 
 void createRunnerCar(u8 pos) {
   u8* memptr=(pos==0) ? 0xc580 : 0xc710;
-
 }
 
 void runnerCar() {

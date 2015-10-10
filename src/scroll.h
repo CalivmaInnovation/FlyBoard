@@ -4,8 +4,7 @@
 #include "constantes.h"
 
 void initScroll();
-void widthImageScroll(u8 tile[], u8 shadowTile[], i8 posY, u8 widthImage);
-void scroll(u8 tile[], u8 shadowTile[], i8 posX, i8 posY, i8 nextLine);
+void scroll(u8 tile[], /*u8 shadowTile[],*/ u8 tallTille, i8 posX, i8 posY, i8 nextLine);
 void Road();
 void Building();
 void makeWall(u8 positionY);
