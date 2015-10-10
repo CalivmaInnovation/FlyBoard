@@ -45,24 +45,19 @@ extern const u8 sprite_car[32];
 extern const u8 g_background[40*50];
 
 // Runners:
+extern const u8 sprite_carRunner[480];
 
-// Car Runner
-extern u8* const g_tile_carRunnerSet[13];
+extern u8* const g_tile_carRunnerSet[5];
+extern const u8 g_tile_carRunner_0[96];
+extern const u8 g_tile_carRunner_1[96];
+extern const u8 g_tile_carRunner_2[96];
+extern const u8 g_tile_carRunner_3[96];
+extern const u8 g_tile_carRunner_4[96];
 
-// extern const u8 g_tile_carRunner_0[32];
-extern const u8 g_tile_carRunner_1[32];
-extern const u8 g_tile_carRunner_2[32];
-extern const u8 g_tile_carRunner_3[32];
-// extern const u8 g_tile_carRunner_4[32];
-extern const u8 g_tile_carRunner_5[32];
-extern const u8 g_tile_carRunner_6[32];
-extern const u8 g_tile_carRunner_7[32];
-extern const u8 g_tile_carRunner_8[32];
-extern const u8 g_tile_carRunner_9[32];
-extern const u8 g_tile_carRunner_10[32];
-extern const u8 g_tile_carRunner_11[32];
-extern const u8 g_tile_carRunner_12[32];
-extern const u8 g_tile_carRunner_13[32];
-extern const u8 g_tile_carRunner_14[32];
+
+
+extern const u8 g_tile_roadLine[32];
+extern const u8 g_tile_wall[32];
+extern const u8 g_tile_Window[32];
 
 #endif

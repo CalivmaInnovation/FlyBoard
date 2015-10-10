@@ -40,54 +40,74 @@ void Road() {
 	u8 i=19;
 	u8 posY=19;
 
-	scroll(g_tile_white, g_tile_pastel_blue, i, posY,-1);
+	scroll(g_tile_roadLine, g_tile_black, i, posY,-1);
 	--i;
-	scroll(g_tile_white, g_tile_pastel_blue, i, posY,-1);
+	scroll(g_tile_roadLine, g_tile_black, i, posY,-1);
 	--i;
-	scroll(g_tile_white, g_tile_pastel_blue, i, posY,-1);
-	--i;
-	--i;
-	scroll(g_tile_white, g_tile_pastel_blue, i, posY,-1);
-	--i;
-	scroll(g_tile_white, g_tile_pastel_blue, i, posY,-1);
-	--i;
-	scroll(g_tile_white, g_tile_pastel_blue, i, posY,-1);
+	scroll(g_tile_roadLine, g_tile_black, i, posY,-1);
 	--i;
 	--i;
-	scroll(g_tile_white, g_tile_pastel_blue, i, posY,-1);
+	scroll(g_tile_roadLine, g_tile_black, i, posY,-1);
 	--i;
-	scroll(g_tile_white, g_tile_pastel_blue, i, posY,-1);
+	scroll(g_tile_roadLine, g_tile_black, i, posY,-1);
 	--i;
-	scroll(g_tile_white, g_tile_pastel_blue, i, posY,-1);
-	--i;
-	--i;
-	scroll(g_tile_white, g_tile_pastel_blue, i, posY,-1);
-	--i;
-	scroll(g_tile_white, g_tile_pastel_blue, i, posY,-1);
-	--i;
-	scroll(g_tile_white, g_tile_pastel_blue, i, posY,-1);
+	scroll(g_tile_roadLine, g_tile_black, i, posY,-1);
 	--i;
 	--i;
-	scroll(g_tile_white, g_tile_pastel_blue, i, posY,-1);
+	scroll(g_tile_roadLine, g_tile_black, i, posY,-1);
 	--i;
-	scroll(g_tile_white, g_tile_pastel_blue, i, posY,-1);
+	scroll(g_tile_roadLine, g_tile_black, i, posY,-1);
 	--i;
-	scroll(g_tile_white, g_tile_pastel_blue, i, posY,1);
+	scroll(g_tile_roadLine, g_tile_black, i, posY,-1);
+	--i;
+	--i;
+	scroll(g_tile_roadLine, g_tile_black, i, posY,-1);
+	--i;
+	scroll(g_tile_roadLine, g_tile_black, i, posY,-1);
+	--i;
+	scroll(g_tile_roadLine, g_tile_black, i, posY,-1);
+	--i;
+	--i;
+	scroll(g_tile_roadLine, g_tile_black, i, posY,-1);
+	--i;
+	scroll(g_tile_roadLine, g_tile_black, i, posY,-1);
+	--i;
+	scroll(g_tile_roadLine, g_tile_black, i, posY,1);
 }
 
-void CarRunner() {
-	u8 i=17;
-  u8 j=0;
-  u8 posY=22;
-	scroll(g_tile_carRunnerSet[j], g_tile_black, i, posY,-1);
+void Building() {
+  u8 i=13;
+  makeWall(i);
   --i;
-  ++j;
-  scroll(g_tile_carRunnerSet[j], g_tile_black, i, posY,-1);
+  makeWall(i);
   --i;
-  ++j;
-  scroll(g_tile_carRunnerSet[j], g_tile_black, i, posY,1);
-  i=16;
-  ++j;
-  ++posY;
-  scroll(g_tile_carRunnerSet[j], g_tile_black, i, posY,-1);
+  makeWall(i);
+  --i;
+  makeWall(i);
+  --i;
+  makeWall(i);
+  --i;
+  makeWall(i);
+  --i;
+  makeWall(i);
+  --i;
+  makeWall(i);
+  --i;
+  makeWall(i);
+}
+
+void makeWall(u8 positionY) {
+  u8 i=19;
+  scroll(g_tile_wall, g_tile_sky_blue, i, positionY,-1);
+  --i;
+  scroll(g_tile_wall, g_tile_sky_blue, i, positionY,-1);
+  --i;
+  scroll(g_tile_wall, g_tile_sky_blue, i, positionY,-1);
+  --i;
+  scroll(g_tile_wall, g_tile_sky_blue, i, positionY,-1);
+  i=8;
+  scroll(g_tile_wall, g_tile_sky_blue, i, positionY,-1);
+  --i;
+  scroll(g_tile_wall, g_tile_sky_blue, i, positionY,-1);
+
 }
