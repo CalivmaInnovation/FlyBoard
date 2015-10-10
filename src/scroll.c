@@ -38,7 +38,7 @@ void scroll(u8 tile[], u8 shadowTile[], i8 posX, i8 posY, i8 nextLine) {
 
 void Road() {
 	u8 i=19;
-	u8 posY=5;
+	u8 posY=19;
 
 	scroll(g_tile_white, g_tile_pastel_blue, i, posY,-1);
 	--i;

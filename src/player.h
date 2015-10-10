@@ -11,7 +11,7 @@
 #define PLAYER_MAX_X     10
 #define PLAYER_MIN_X      1
 #define PLAYER_MAX_Y     40
-#define PLAYER_MIN_Y     30
+#define PLAYER_MIN_Y     32
 
 // Player sprites
 extern const u8 bloque [32];
