@@ -144,5 +144,5 @@ const u8 sprite_car[32] = {
 
 // Background
 const u8 g_background[40*50] = {
-	#include "mapa.csv"
+	#include "mapa2.csv"
 };
