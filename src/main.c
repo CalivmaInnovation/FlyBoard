@@ -46,6 +46,7 @@ void main(void) {
 		computeWorld();
 		player();
 		createRunnerCar(0);
+		drawPlayer();
 		// Synchronize with VSYNC + 1 HSYNC to slow down the movement
 		cpct_waitVSYNC();   // Wait for VSYNC signal
 		__asm__("halt");    // H

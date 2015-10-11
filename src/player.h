@@ -21,11 +21,13 @@ typedef struct {
   u8 y;
   u8 maxLifes;
   u8 lifes;
+  u8* memptr;
 }TPlayer;
 
 void initPlayer();
 void player();
 void move();
+void drawPlayer(); /* provisional para comprobar pintado parpadeante */
 void drawLifes();
 void lessLife();
 
