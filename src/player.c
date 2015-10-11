@@ -6,9 +6,8 @@ const u8 vNumber = 100;
 /////////////////////
 
 void initPlayer() {
-	//x in [1,127] and y in [1,63] (However, y >= 50 will be outside normal screen, because 50*4 = 200 pixels, which is the height of a normal screen).
 	Player.x=5;
-	Player.y=35;
+	Player.y=31;
 	Player.maxLifes=4;
 	Player.lifes=Player.maxLifes;
 
@@ -22,10 +21,10 @@ void move() {
 
 	cpct_scanKeyboard_f ();
 	if ( cpct_isKeyPressed (Key_W) && Player.y > PLAYER_MIN_Y) {
-		Player.y -= 2;
+		Player.y = 31;
 	}
 	else if ( cpct_isKeyPressed (Key_S) && Player.y < PLAYER_MAX_Y) {
-		Player.y += 2;
+		Player.y = 41;
 	}
 	else if ( cpct_isKeyPressed (Key_A) && Player.x > PLAYER_MIN_X) {
 		Player.x -= 1;
@@ -35,7 +34,11 @@ void move() {
 	}
 
 	memptr = cpct_getScreenPtr(SCR_VMEM, TILEWIDTH_BYTES*Player.x, TILEHEIGHT_BYTES*Player.y);
-	cpct_drawSpriteMasked(sprite_character, memptr, PLAYER_WIDTH_BYTES, PLAYER_HEIGHT_BYTES);
+	Player.memptr = memptr;
+}
+
+void drawPlayer() {
+	cpct_drawSpriteMasked(sprite_character, Player.memptr, PLAYER_WIDTH_BYTES, PLAYER_HEIGHT_BYTES);
 }
 
 void drawLifes() {
