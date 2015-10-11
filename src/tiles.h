@@ -46,8 +46,10 @@ extern const u8 g_tile_carRunner_4[96];
 
 extern const u8 g_tile_roadLine[32];
 extern const u8 g_tile_wall32[128];
+extern const u8 g_tile_wallwindow32[128];
 extern const u8 g_tile_wallShadow[128];
 extern const u8 g_tile_wall64[256];
+extern const u8 g_tile_wallwindow64[256];
 extern const u8 g_tile_wallShadow2[256];
 extern const u8 g_tile_Window[32];
 
