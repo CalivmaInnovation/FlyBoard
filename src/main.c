@@ -20,30 +20,18 @@
 
 #include "player.h"
 #include "world.h"
-#include "scroll.h"
-#include "runners.h"
 
-
-void drawMap() {
-	// Set the internal tileset for drawing Tilemaps
-	cpct_etm_setTileset2x4(g_tile_tileset_bg);
-
-	// Draw the background tilemap
-	cpct_etm_drawTilemap2x4_f(MAP_WIDTH_TILES, MAP_HEIGHT_TILES, SCR_VMEM, g_background);
-}
-
-void init() {
+void init_CPC() {
 	cpct_disableFirmware();
 	cpct_fw2hw(g_palette,16);
 	cpct_setPalette(g_palette,16);
 	cpct_setBorder (g_palette[15]);
 	cpct_setVideoMode(0);
+}
 
-	drawMap();
+void init_game() {
+	initWorld();
 	initPlayer();
-	initScroll();
-	drawWorld_Level(3, 2);
-	drawCars(100);
 }
 
 void main(void) {
@@ -51,11 +39,11 @@ void main(void) {
 
 	// Clear Screen
 	cpct_memset(SCR_VMEM, 0, 0x4000);
-	init();
+	init_CPC();
+	init_game();
 	// Loop forever
 	while (1) {
-		Road();
-		Building();
+		computeWorld();
 		player();
 		createRunnerCar(0);
 		// Synchronize with VSYNC + 1 HSYNC to slow down the movement
