@@ -95,9 +95,7 @@ void makeWall(u8 positionY) {
   u8 i=19;
   scroll(g_tile_wall32, 32, i, positionY,-1);
   --i;
-  scroll(g_tile_wall32, 32, i, positionY,-1);
-  --i;
-  scroll(g_tile_wall32, 32, i, positionY,-1);
+  scroll(g_tile_wallwindow32, 32, i, positionY,-1);
   --i;
   scroll(g_tile_wall32, 32, i, positionY,-1);
   --i;
@@ -113,9 +111,11 @@ void makeWall(u8 positionY) {
   --i;
   scroll(g_tile_wall64, 64, i, positionY-4,-1);
   --i;
-  scroll(g_tile_wall64, 64, i, positionY-4,-1);
+  scroll(g_tile_wallwindow64, 64, i, positionY-4,-1);
   --i;
   scroll(g_tile_wall64, 64, i, positionY-4,-1);
+  --i;
+  scroll(g_tile_wallwindow64, 64, i, positionY-4,-1);
   --i;
   scroll(g_tile_wall64, 64, i, positionY-4,-1);
   --i;
