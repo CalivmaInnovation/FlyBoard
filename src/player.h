@@ -14,8 +14,6 @@
 #define PLAYER_MAX_Y     40
 #define PLAYER_MIN_Y     32
 
-// Player sprites
-extern const u8 bloque [32];
 // Player struct
 typedef struct {
   u8 x;
