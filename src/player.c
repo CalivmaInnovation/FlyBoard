@@ -2,13 +2,10 @@
 
 // Variables Player
 TPlayer Player;
-
-//const i8 vNumber[3] = { 22, 2, 2 };
 const u8 vNumber = 100;
 /////////////////////
 
 void initPlayer() {
-	//x in [1,127] and y in [1,63] (However, y >= 50 will be outside normal screen, because 50*4 = 200 pixels, which is the height of a normal screen).
 	Player.x=5;
 	Player.y=31;
 	Player.maxLifes=4;
@@ -35,6 +32,7 @@ void move() {
 	else if ( cpct_isKeyPressed (Key_D) && Player.x < PLAYER_MAX_X) {
 		Player.x += 1;
 	}
+
 	memptr = cpct_getScreenPtr(SCR_VMEM, TILEWIDTH_BYTES*Player.x, TILEHEIGHT_BYTES*Player.y);
 	Player.memptr = memptr;
 }
@@ -45,15 +43,18 @@ void drawPlayer() {
 
 void drawLifes() {
   u8 i;
-	for (i=0; i < Player.lifes; i++) {
-    cpct_drawSprite(sprite_skate, (u8*)0xc054+(i*4), 4, 8);
-  }
+	for (i=0; i < Player.maxLifes; i++) {
+		if (Player.lifes>i) {
+			cpct_drawSprite(sprite_skate, (u8*)0xc054+(i*4), 4, 8);
+		} else {
+			cpct_drawSprite(g_tile_sky_blue, (u8*)0xc054+(i*4), 4, 8);
+		}
+	}
 }
 
 void lessLife() {
-//  cpct_drawTileAligned4x8(g_tile_tiles_8, (u8*)0xc054+(Player.lifes*4));
-//  Player.lifes--;
-  // Cambiar el cuadrado verde por el negro
+		--Player.lifes;
+		drawLifes();
   // Sonido de perder vida
 }
 

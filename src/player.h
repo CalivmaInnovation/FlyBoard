@@ -2,6 +2,7 @@
 #define _PLAYER_H_
 
 #include "constantes.h"
+#include "runners.h"
 
 // Player constants
 #define PLAYER_WIDTH_BYTES         8

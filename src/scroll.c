@@ -104,7 +104,7 @@ void makeWall(u8 positionY) {
   i=10;
   scroll(g_tile_wall32, 32, i, positionY,-1);
   --i;
-  scroll(g_tile_wall32, 32, i, positionY,-1);
+  scroll(g_tile_wallwindow32, 32, i, positionY,-1);
   // --i;
   // scroll(g_tile_wallShadow, 32, i, positionY,-1);
 
