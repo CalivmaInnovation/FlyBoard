@@ -17,9 +17,7 @@
 //------------------------------------------------------------------------------
 
 #include "constantes.h"
-
-#include "player.h"
-#include "world.h"
+#include "game.h"
 
 void init_CPC() {
 	cpct_disableFirmware();
@@ -29,25 +27,16 @@ void init_CPC() {
 	cpct_setVideoMode(0);
 }
 
-void init_game() {
-	initWorld();
-	initPlayer();
-}
+
 
 void main(void) {
 	// Clear Screen
 	cpct_memset(SCR_VMEM, 0, 0x4000);
 	init_CPC();
+//	story_board(2000);
 	init_game();
 	// Loop forever
 	while (1) {
-		waitNVSYNCs(1);
-		computeWorld();
-		player();
-		createRunnerCar(0);
-		// createRunnerCar(1);
-		drawPlayer();
-		// Synchronize with VSYNC + 1 HSYNC to slow down the movement
-		waitNVSYNCs(2);
+		main_loop();
 	};
 }

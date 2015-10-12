@@ -2,7 +2,7 @@
 
 // Variables Player
 TPlayer Player;
-const u8 vNumber = 100;
+//const u8 vNumber = 100;
 /////////////////////
 
 void initPlayer() {

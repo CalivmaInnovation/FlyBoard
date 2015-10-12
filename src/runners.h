@@ -1,12 +1,13 @@
 #ifndef _RUNNERS_H_
 #define _RUNNERS_H_
 
-#include "constantes.h"
 #include <stdio.h>
+
+#include "constantes.h"
+#include "world.h"
 
 #define RUNNERCAR_WIDTH 20
 #define RUNNERCAR_HEIHGT 40
-
 
 typedef struct {
   u8 x;
