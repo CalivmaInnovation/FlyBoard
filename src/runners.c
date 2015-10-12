@@ -3,7 +3,6 @@
 // Variables de Runners
 TRunner RunnerCar;
 i8 position=0;
-//u8 n_cars = initial_cars;
 
 void initRunnerCar() {
   RunnerCar.x=10;
@@ -23,7 +22,7 @@ void drawCars(u8 vNumber) {
 void createRunnerCar(u8 posRoad) {
   u8 str[6];
   u8* memptr=(posRoad==0) ? (u8*)0xc54c : (u8*)0xc6dc; // 0xc68c;
-  
+
   if (position==0) {
 	  --initial_cars;
 	  drawCars(initial_cars);
@@ -117,7 +116,7 @@ void createRunnerCar(u8 posRoad) {
   }
   RunnerCar.y=(posRoad==0) ? 31 : 41;
   RunnerCar.x=24-position;
-  // 
+  //
   // sprintf(str,"%u",RunnerCar.y);
   // cpct_drawStringM0 (str, (u8*)0xc0a4, 0, 4);
   // sprintf(str,"%u",RunnerCar.x);

@@ -54,3 +54,6 @@ generate_assets:
 #	cpct_img2tileset -m 0 -im 0 -tw 16 -th 24 -pf $(PALETE) player.png &&\
 #	cpct_img2tileset -m 0 -tw 8 -th 8 -pf $(PALETE) car.png &&\
 #	cpct_img2tileset -m 0 -tw 8 -th 32 -pf $(PALETE) wallwindow32.png
+
+do:
+	alias do='make cleanall && make && cpct_winape'
