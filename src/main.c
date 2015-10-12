@@ -20,7 +20,7 @@
 #include "game.h"
 #include "screens.h"
 
-void init_CPC() {
+void initCPC() {
 	cpct_disableFirmware();
 	cpct_fw2hw(g_palette,16);
 	cpct_fw2hw(g_palette2,16);
@@ -33,10 +33,9 @@ void init_CPC() {
 void main(void) {
 	// Clear Screen
 	cpct_memset(SCR_VMEM, 0, 0x4000);
-	init_CPC();
-	story_board(2000);
-	gameSceene=MAINLOP;
-	init_game();
+	initCPC();
+	initGame();
+	gameSceene=CALIVGAMESSCREEN;
 	// Loop forever
 	while (1) {
 		switch (gameSceene) {
@@ -56,7 +55,7 @@ void main(void) {
 				break;
 			case CREDITSSCEENE:
 				break;
-			case MAINLOP: main_loop();
+			case MAINLOP: mainLoop();
 				break;
 		}
 	};

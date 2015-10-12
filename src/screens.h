@@ -1,8 +1,8 @@
 #ifndef _SCREENS_H_
 #define _SCREENS_H_
 
-#include "constantes.h"
 #include <stdio.h>
+#include "constantes.h"
 
 #define CALIVGAMESSCREEN 0
 #define LANGUAGESCREEN 1

@@ -75,4 +75,6 @@ extern const u8 g_tile_tiles_4_13[8];
 extern const u8 g_tile_tiles_4_14[8];
 extern const u8 g_tile_tiles_4_15[8];
 
+extern const u8 sprite_alce[5115];
+
 #endif
