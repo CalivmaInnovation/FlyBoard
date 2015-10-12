@@ -12,6 +12,8 @@
 #define TILEWIDTH_BYTES           2
 #define TILEHEIGHT_BYTES          4
 
+extern u8 gameSceene;
+
 // 0,3,8,13,14,16,26
 extern const u8 g_palette[16];
 

@@ -30,5 +30,5 @@ void story_board(u16 n) {
 		__asm__ ("halt");
 		__asm__ ("halt");
 	}
-	
+
 }

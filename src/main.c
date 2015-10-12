@@ -18,6 +18,7 @@
 
 #include "constantes.h"
 #include "game.h"
+#include "screens.h"
 
 void init_CPC() {
 	cpct_disableFirmware();
@@ -27,16 +28,35 @@ void init_CPC() {
 	cpct_setVideoMode(0);
 }
 
-
-
 void main(void) {
 	// Clear Screen
 	cpct_memset(SCR_VMEM, 0, 0x4000);
 	init_CPC();
+	// gameSceene=mainLop;
+	gameSceene=MAINLOP;
 //	story_board(2000);
 	init_game();
 	// Loop forever
 	while (1) {
-		main_loop();
+		switch (gameSceene) {
+			case CALIVGAMESSCREEN: calivGames();
+				break;
+			case LANGUAGESCREEN:
+				break;
+			case MENUSCREEN:
+				break;
+			case PLAYGAMESCREEN:
+				break;
+			case PASSSCREEN:
+				break;
+			case CONTROLSSCREEN:
+				break;
+			case GAMEOVERSCREEN:
+				break;
+			case CREDITSSCEENE:
+				break;
+			case MAINLOP: main_loop();
+				break;
+		}
 	};
 }
