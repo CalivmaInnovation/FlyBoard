@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "world.h"
 
-u8 inital_cars;
+u8 initial_cars;
 
 void drawWorld_Level(u8 nWorld, u8 nLevel) {
   u8 str[6];
