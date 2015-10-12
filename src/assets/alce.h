@@ -4,8 +4,6 @@
 
 #include <types.h>
 
-extern u8* const g_tile_tileset[1];
-
 extern const u8 g_tile_alce[5115];
 
 #endif

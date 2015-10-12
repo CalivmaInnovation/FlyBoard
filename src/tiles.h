@@ -6,12 +6,14 @@
 
 // Background tilemap created with tiled.
 extern const u8 g_background[40*50];
+extern const u8 g_backgroundLogo[40*50];
 extern u8* const g_tile_tileset_bg[3];
 
 extern const u8 g_tile_tiles_bg_0[8];
 extern const u8 g_tile_tiles_bg_1[8];
 extern const u8 g_tile_tiles_bg_2[8];
 
+extern u8* const g_tile_tileset_all[2];
 
 extern const u8 g_tile_black[32];
 extern const u8 g_tile_bright_blue[32];
@@ -53,5 +55,24 @@ extern const u8 g_tile_wall64[256];
 extern const u8 g_tile_wallwindow64[256];
 extern const u8 g_tile_wallShadow2[256];
 extern const u8 g_tile_Window[32];
+
+extern u8* const g_tile_tileset_4[16];
+
+extern const u8 g_tile_tiles_4_0[8];
+extern const u8 g_tile_tiles_4_1[8];
+extern const u8 g_tile_tiles_4_2[8];
+extern const u8 g_tile_tiles_4_3[8];
+extern const u8 g_tile_tiles_4_4[8];
+extern const u8 g_tile_tiles_4_5[8];
+extern const u8 g_tile_tiles_4_6[8];
+extern const u8 g_tile_tiles_4_7[8];
+extern const u8 g_tile_tiles_4_8[8];
+extern const u8 g_tile_tiles_4_9[8];
+extern const u8 g_tile_tiles_4_10[8];
+extern const u8 g_tile_tiles_4_11[8];
+extern const u8 g_tile_tiles_4_12[8];
+extern const u8 g_tile_tiles_4_13[8];
+extern const u8 g_tile_tiles_4_14[8];
+extern const u8 g_tile_tiles_4_15[8];
 
 #endif

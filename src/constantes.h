@@ -14,6 +14,8 @@
 
 // 0,3,8,13,14,16,26
 extern const u8 g_palette[16];
+extern const u8 g_palette2[16];
+extern const u8 g_palette3[16];
 
 // If we need a global method put here
 void waitNVSYNCs(u8 n);

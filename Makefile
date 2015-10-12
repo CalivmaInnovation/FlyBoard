@@ -44,13 +44,13 @@ include $(CPCT_PATH)/cfg/global_main_makefile.mk
 PALETE={ 0 2 3 5 6 8 9 11 13 14 15 16 20 22 24 26 }
 generate_assets:
 	cd src/assets &&\
-	cpct_img2tileset -m 0 -tw 140 -th 40 -pf $(PALETE) caliv.png &&\
-	cpct_img2tileset -m 0 -tw 136 -th 36 -pf $(PALETE) games.png
+	cpct_img2tileset -m 0 -tw 4 -th 4 -pf $(PALETE) tiles_4.png
+#	cpct_img2tileset -m 0 -tw 140 -th 40 -pf $(PALETE) caliv.png &&\
+#	cpct_img2tileset -m 0 -tw 136 -th 36 -pf $(PALETE) games.png
 #	cpct_img2tileset -m 0 -tw 8 -th 8 -pf $(PALETE) skate.png
-#	mv src/assets/*.c src/assets/*.h src/
 #	cpct_img2tileset -m 0 -tw 4 -th 4 -pf $(PALETE) tiles_bg.png &&\
 #	cpct_img2tileset -m 0 -tw 110 -th 93 -pf $(PALETE) alce.png &&\
-#	cpct_img2tileset -m 0 -tw 8 -th 8 -pf $(PALETE) tiles.png &&\
 #	cpct_img2tileset -m 0 -im 0 -tw 16 -th 24 -pf $(PALETE) player.png &&\
 #	cpct_img2tileset -m 0 -tw 8 -th 8 -pf $(PALETE) car.png &&\
 #	cpct_img2tileset -m 0 -tw 8 -th 32 -pf $(PALETE) wallwindow32.png
+#	mv src/assets/*.c src/assets/*.h src/

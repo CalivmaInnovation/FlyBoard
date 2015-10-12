@@ -22,18 +22,18 @@
 void init_CPC() {
 	cpct_disableFirmware();
 	cpct_fw2hw(g_palette,16);
+	cpct_fw2hw(g_palette2,16);
+	cpct_fw2hw(g_palette3,16);
 	cpct_setPalette(g_palette,16);
-	cpct_setBorder (g_palette[15]);
+	cpct_setBorder (g_palette[0]);
 	cpct_setVideoMode(0);
 }
-
-
 
 void main(void) {
 	// Clear Screen
 	cpct_memset(SCR_VMEM, 0, 0x4000);
 	init_CPC();
-//	story_board(2000);
+	story_board(2000);
 	init_game();
 	// Loop forever
 	while (1) {

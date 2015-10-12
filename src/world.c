@@ -23,7 +23,7 @@ void drawBackground() {
 }
 
 void initWorld() {
-	initial_cars = 50;
+	initial_cars = 15;
 	drawBackground();
 	initScroll();
 	drawWorld_Level(3, 2);
