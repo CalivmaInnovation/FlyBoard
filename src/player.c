@@ -10,7 +10,6 @@ void initPlayer() {
 	Player.y=31;
 	Player.maxLifes=4;
 	Player.lifes=Player.maxLifes;
-
 	drawLifes();
 }
 
@@ -58,6 +57,12 @@ void lessLife() {
   // Sonido de perder vida
 }
 
+void collision() {
+	if ((Player.y == RunnerCar.y) && (Player.x == RunnerCar.x))
+		lessLife();
+}
+
 void player() {
 	move();
+	collision();
 }

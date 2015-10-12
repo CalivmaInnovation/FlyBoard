@@ -25,11 +25,14 @@ typedef struct {
   u8* memptr;
 }TPlayer;
 
+extern TPlayer Player;
+
 void initPlayer();
 void player();
 void move();
 void drawPlayer(); /* provisional para comprobar pintado parpadeante */
 void drawLifes();
 void lessLife();
+void collision();
 
 #endif
