@@ -35,21 +35,19 @@ void init_game() {
 }
 
 void main(void) {
-	 u8 i=0;
-
 	// Clear Screen
 	cpct_memset(SCR_VMEM, 0, 0x4000);
 	init_CPC();
 	init_game();
 	// Loop forever
 	while (1) {
+		waitNVSYNCs(1);
 		computeWorld();
 		player();
 		createRunnerCar(0);
 		// createRunnerCar(1);
 		drawPlayer();
 		// Synchronize with VSYNC + 1 HSYNC to slow down the movement
-		cpct_waitVSYNC();   // Wait for VSYNC signal
-		__asm__("halt");    // H
+		waitNVSYNCs(2);
 	};
 }

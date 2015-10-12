@@ -16,7 +16,7 @@ void drawCars(u8 vNumber) {
   cpct_drawSprite(sprite_car, (u8*)0xC08A, 4, 8);
 
   sprintf(str,"%u",vNumber);
-  cpct_drawStringM0 (str, (u8*)0xC090, 0, 4);
+  cpct_drawStringM0 (str, (u8*)0xC090, 0, 7);
 }
 
 void createRunnerCar(u8 posRoad) {
