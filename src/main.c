@@ -32,8 +32,8 @@ void main(void) {
 	// Clear Screen
 	cpct_memset(SCR_VMEM, 0, 0x4000);
 	init_CPC();
-	// gameSceene=mainLop;
-	gameSceene=MAINLOP;
+
+	gameSceene=CALIVGAMESSCREEN;
 //	story_board(2000);
 	init_game();
 	// Loop forever
