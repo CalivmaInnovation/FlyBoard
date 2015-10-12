@@ -54,3 +54,4 @@ generate_assets:
 #	cpct_img2tileset -m 0 -tw 8 -th 8 -pf $(PALETE) car.png &&\
 #	cpct_img2tileset -m 0 -tw 8 -th 32 -pf $(PALETE) wallwindow32.png
 #	mv src/assets/*.c src/assets/*.h src/
+

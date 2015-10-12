@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "world.h"
 
 u8 initial_cars;

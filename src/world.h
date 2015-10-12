@@ -4,6 +4,7 @@
 #include "constantes.h"
 #include "scroll.h"
 #include "runners.h"
+#include <stdio.h>
 
 extern u8 initial_cars;
 

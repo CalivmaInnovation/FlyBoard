@@ -18,6 +18,7 @@
 
 #include "constantes.h"
 #include "game.h"
+#include "screens.h"
 
 void init_CPC() {
 	cpct_disableFirmware();
@@ -34,9 +35,29 @@ void main(void) {
 	cpct_memset(SCR_VMEM, 0, 0x4000);
 	init_CPC();
 	story_board(2000);
+	gameSceene=MAINLOP;
 	init_game();
 	// Loop forever
 	while (1) {
-		main_loop();
+		switch (gameSceene) {
+			case CALIVGAMESSCREEN: calivGames();
+				break;
+			case LANGUAGESCREEN:
+				break;
+			case MENUSCREEN:
+				break;
+			case PLAYGAMESCREEN:
+				break;
+			case PASSSCREEN:
+				break;
+			case CONTROLSSCREEN:
+				break;
+			case GAMEOVERSCREEN:
+				break;
+			case CREDITSSCEENE:
+				break;
+			case MAINLOP: main_loop();
+				break;
+		}
 	};
 }
