@@ -1,6 +1,6 @@
 #include "screens.h"
 
-u8 gameSceene;
+u8 gameScene;
 
 void calivGames() {
 	u8* memptr;
@@ -13,7 +13,7 @@ void calivGames() {
 	cpct_drawSprite(sprite_alce, memptr, 55, 93);
 
 	waitNVSYNCs(2000);
-	gameSceene=MAINLOP;
+	gameScene=MAINLOOP;
 }
 
 void mainMenu() {

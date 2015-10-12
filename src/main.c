@@ -34,11 +34,10 @@ void main(void) {
 	// Clear Screen
 	cpct_memset(SCR_VMEM, 0, 0x4000);
 	initCPC();
-	initGame();
-	gameSceene=CALIVGAMESSCREEN;
+	gameScene=CALIVGAMESSCREEN;
 	// Loop forever
 	while (1) {
-		switch (gameSceene) {
+		switch (gameScene) {
 			case CALIVGAMESSCREEN: calivGames();
 				break;
 			case LANGUAGESCREEN:
@@ -55,7 +54,7 @@ void main(void) {
 				break;
 			case CREDITSSCEENE:
 				break;
-			case MAINLOP: mainLoop();
+			case MAINLOOP: mainLoop();
 				break;
 		}
 	};
