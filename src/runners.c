@@ -31,7 +31,7 @@ void throwRunner() {
 			cpct_setPalette(g_palette2,16);
 		else if (rnd2 > 150)
 			cpct_setPalette(g_palette3,16);
-		
+
 		if (rnd < 100) {
 			car = 0;
 		} else if (rnd > 100) {
@@ -137,7 +137,7 @@ void createRunnerCar(u8 posRoad) {
   }
   RunnerCar.y=(posRoad==0) ? 31 : 41;
   RunnerCar.x=24-position;
-  // 
+  //
   // sprintf(str,"%u",position);
   //
   // sprintf(str,"%u",RunnerCar.y);
