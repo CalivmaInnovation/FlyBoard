@@ -1,6 +1,6 @@
 #include "world.h"
 
-u8 initial_cars;
+u16 initial_cars;
 
 void drawWorldLevel(u8 nWorld, u8 nLevel) {
   u8 str[6];
@@ -22,7 +22,7 @@ void drawBackground() {
 }
 
 void initWorld() {
-	initial_cars = 15;
+	initial_cars = 500;
 	drawBackground();
 	initScroll();
 	drawWorldLevel(3, 2);

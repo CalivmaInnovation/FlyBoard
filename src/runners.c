@@ -12,13 +12,13 @@ void initRunnerCar() {
   RunnerCar.y=31;
 }
 
-void drawCars(u8 vNumber) {
-  u8 str[6];
+void drawCars(u16 vNumber) {
+  u8 str[50];
 
   // ESTO LO TIENE K DIBUJAR ENEMYS O EL MAPA
   cpct_drawSprite(sprite_car, (u8*)0xC08A, 4, 8);
 
-  sprintf(str,"%2u",vNumber);
+  sprintf(str,"%2d",vNumber);
   cpct_drawStringM0 (str, (u8*)0xC090, 0, 7);
 }
 
