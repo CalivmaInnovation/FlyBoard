@@ -25,7 +25,7 @@ void drawCars(u16 vNumber) {
 void throwRunner() {
 	u8 rnd, rnd2;
 
-	if (initial_cars < 0) {
+	if (initial_cars == -1) {
 		// If no more cars, change status and no throw car
 		gameScene = CALIVGAMESSCREEN;
 		return;
