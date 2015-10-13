@@ -46,7 +46,7 @@ void main(void) {
 				break;
 			case CONTROLSSCREEN:
 				break;
-			case GAMEOVERSCREEN:
+		    case GAMEOVERSCREEN: gameOver();
 				break;
 			case CREDITSSCEENE:
 				break;

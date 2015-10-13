@@ -1,4 +1,4 @@
-c#include "screens.h"
+#include "screens.h"
 
 u8 gameScene;
 
@@ -11,9 +11,16 @@ void calivGames() {
 
 	memptr = cpct_getScreenPtr(SCR_VMEM, 12, 50);
 	cpct_drawSprite(sprite_alce, memptr, 55, 93);
+	waitNVSYNCs(3000);
 	gameScene=MAINLOOP;
 }
 
+void gameOver() {	
+	cpct_memset(SCR_VMEM, 0x33, 0x4000);
+	cpct_drawStringM0("GAME OVER", SCR_VMEM, 0, 1);
+	waitNVSYNCs(3000);
+	gameScene=CALIVGAMESSCREEN;
+}
 
 void mainMenu() {
 //  u8 str[6];
