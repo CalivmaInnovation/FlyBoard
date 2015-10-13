@@ -21,6 +21,6 @@ extern i8 position;
 void initRunnerCar();
 void throwRunner();
 void createRunnerCar(u8 pos);
-void drawCars(u8 vNumber);
+void drawCars(u16 vNumber);
 
 #endif /* end of include guard: _RUNNERS_H_ */

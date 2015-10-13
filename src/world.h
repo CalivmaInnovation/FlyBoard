@@ -6,7 +6,7 @@
 #include "runners.h"
 #include <stdio.h>
 
-extern u8 initial_cars;
+extern u16 initial_cars;
 
 void drawWorldLevel(u8 nWorld, u8 nLevel);
 void drawBackground();

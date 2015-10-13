@@ -40,13 +40,9 @@ void main(void) {
 		switch (gameScene) {
 			case CALIVGAMESSCREEN: calivGames();
 				break;
-			case LANGUAGESCREEN: language();
-				break;
 			case MENUSCREEN:
 				break;
 			case PLAYGAMESCREEN:
-				break;
-			case PASSSCREEN:
 				break;
 			case CONTROLSSCREEN:
 				break;
