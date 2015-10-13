@@ -2,7 +2,7 @@
 
 u8 initial_cars;
 
-void drawWorld_Level(u8 nWorld, u8 nLevel) {
+void drawWorldLevel(u8 nWorld, u8 nLevel) {
   u8 str[6];
   sprintf(str, "%u", nWorld);
   cpct_drawStringM0 ("WORLD", (u8*)0xC069, 0, 7);
@@ -22,10 +22,10 @@ void drawBackground() {
 }
 
 void initWorld() {
-	initial_cars = 50;
+	initial_cars = 15;
 	drawBackground();
 	initScroll();
-	drawWorld_Level(3, 2);
+	drawWorldLevel(3, 2);
 	drawCars(initial_cars);
 }
 

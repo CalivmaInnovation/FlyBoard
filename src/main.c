@@ -20,28 +20,27 @@
 #include "game.h"
 #include "screens.h"
 
-void init_CPC() {
+void initCPC() {
 	cpct_disableFirmware();
 	cpct_fw2hw(g_palette,16);
+	cpct_fw2hw(g_palette2,16);
+	cpct_fw2hw(g_palette3,16);
 	cpct_setPalette(g_palette,16);
-	cpct_setBorder (g_palette[15]);
+	cpct_setBorder (g_palette[0]);
 	cpct_setVideoMode(0);
 }
 
 void main(void) {
 	// Clear Screen
 	cpct_memset(SCR_VMEM, 0, 0x4000);
-	init_CPC();
-
-	gameSceene=CALIVGAMESSCREEN;
-//	story_board(2000);
-	init_game();
+	initCPC();
+	gameScene=CALIVGAMESSCREEN;
 	// Loop forever
 	while (1) {
-		switch (gameSceene) {
+		switch (gameScene) {
 			case CALIVGAMESSCREEN: calivGames();
 				break;
-			case LANGUAGESCREEN:
+			case LANGUAGESCREEN: language();
 				break;
 			case MENUSCREEN:
 				break;
@@ -55,7 +54,7 @@ void main(void) {
 				break;
 			case CREDITSSCEENE:
 				break;
-			case MAINLOP: main_loop();
+			case MAINLOOP: mainLoop();
 				break;
 		}
 	};

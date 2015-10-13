@@ -3,12 +3,10 @@
 
 #include "player.h"
 #include "world.h"
-#include "assets/caliv.h"
-#include "assets/alce.h"
-#include "assets/games.h"
 
-void story_board(u16 n);     // Provisional name
-void init_game();
-void main_loop();
+extern u8 car_totalas;
+
+void initGame();
+void mainLoop();
 
 #endif /* GAME_H */

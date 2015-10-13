@@ -16,8 +16,10 @@ typedef struct {
 }TRunner;
 
 extern TRunner RunnerCar;
+extern i8 position;
 
 void initRunnerCar();
+void throwRunner();
 void createRunnerCar(u8 pos);
 void drawCars(u8 vNumber);
 
