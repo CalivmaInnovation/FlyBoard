@@ -23,22 +23,30 @@ void drawCars(u16 vNumber) {
 }
 
 void throwRunner() {
-	u8 rnd = cpct_getRandomUniform_u8_f(0);
-	u8 rnd2 = cpct_getRandomUniform_u8_f(0);
-	if(position==0) {
-		cpct_setPalette(g_palette,16);
-		if(rnd2 < 50)
-			cpct_setPalette(g_palette2,16);
-		else if (rnd2 > 150)
-			cpct_setPalette(g_palette3,16);
+	u8 rnd, rnd2;
 
-		if (rnd < 100) {
-			car = 0;
-		} else if (rnd > 100) {
-			car = 1;
+	if (initial_cars == -1) {
+		// If no more cars, change status and no throw car
+		gameScene = CALIVGAMESSCREEN;
+		return;
+	} else {
+		rnd = cpct_getRandomUniform_u8_f(0);
+		rnd2 = cpct_getRandomUniform_u8_f(0);
+		if(position==0) {
+			cpct_setPalette(g_palette,16);
+			if(rnd2 < 50)
+				cpct_setPalette(g_palette2,16);
+			else if (rnd2 > 150)
+				cpct_setPalette(g_palette3,16);
+			
+			if (rnd < 100) {
+				car = 0;
+			} else if (rnd > 100) {
+				car = 1;
+			}
 		}
+		createRunnerCar(car);
 	}
-	createRunnerCar(car);
 }
 
 void createRunnerCar(u8 posRoad) {

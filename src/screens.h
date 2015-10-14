@@ -5,6 +5,7 @@
 #include "constantes.h"
 
 void calivGames();
+void gameOver();
 void mainMenu();
 
 #endif /* end of include guard: _SCREENS_H_ */
