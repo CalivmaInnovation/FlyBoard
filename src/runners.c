@@ -3,22 +3,17 @@
 // Variables de Runners
 TRunner RunnerCar;
 i8 position=0;
-
 u8 car = 0;
-//u8 n_cars = initial_cars;
 
 void initRunnerCar() {
   RunnerCar.x=10;
   RunnerCar.y=31;
 }
 
-void drawCars(u16 vNumber) {
+void drawCars(u16 numCars) {
   u8 str[50];
-
-  // ESTO LO TIENE K DIBUJAR ENEMYS O EL MAPA
   cpct_drawSprite(sprite_car, (u8*)0xC08A, 4, 8);
-
-  sprintf(str,"%2d",vNumber);
+  sprintf(str,"%2d",numCars);
   cpct_drawStringM0 (str, (u8*)0xC090, 0, 7);
 }
 
@@ -38,7 +33,7 @@ void throwRunner() {
 				cpct_setPalette(g_palette2,16);
 			else if (rnd2 > 150)
 				cpct_setPalette(g_palette3,16);
-			
+
 			if (rnd < 100) {
 				car = 0;
 			} else if (rnd > 100) {
@@ -50,114 +45,68 @@ void throwRunner() {
 }
 
 void createRunnerCar(u8 posRoad) {
-//  u8 str[6];
+  i8 i;
   u8* memptr=(posRoad==0) ? (u8*)0xc54c : (u8*)0xc6dc; // 0xc68c;
+  i8 point=(position<6) ? position : 5;
+
   if (position==0) {
 	  --initial_cars;
 	  drawCars(initial_cars);
-    cpct_drawSprite(sprite_carRunnerSet[0], (u8*) memptr, 4, 24);
-    ++position;
+  }
 
-  } else if (position==1) {
-    cpct_drawSprite(sprite_carRunnerSet[0], (u8*) memptr-4, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[1], (u8*) memptr, 4, 24);
-    ++position;
-  }
-  else if (position==2) {
-    cpct_drawSprite(sprite_carRunnerSet[0], (u8*) memptr-8, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[1], (u8*) memptr-4, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[2], (u8*) memptr, 4, 24);
-    ++position;
-  }
-  else if (position==3) {
-    cpct_drawSprite(sprite_carRunnerSet[0], (u8*) memptr-12, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[1], (u8*) memptr-8, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[2], (u8*) memptr-4, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[3], (u8*) memptr, 4, 24);
-    ++position;
-  }
-  else if (position==4) {
-    cpct_drawSprite(sprite_carRunnerSet[0], (u8*) memptr-16, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[1], (u8*) memptr-12, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[2], (u8*) memptr-8, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[3], (u8*) memptr-4, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[4], (u8*) memptr, 4, 24);
-    ++position;
-  } else if (position==5){
-    cpct_drawSprite(sprite_carRunnerSet[0], (u8*) memptr-20, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[1], (u8*) memptr-16, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[2], (u8*) memptr-12, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[3], (u8*) memptr-8, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[4], (u8*) memptr-4, 4, 24);
-    cpct_drawSprite(sprite_carRunnerShadow, (u8*) memptr, 4, 24);
-    ++position;
-  } else if  (position<19) {
-    cpct_drawSprite(sprite_carRunnerSet[0], (u8*) memptr-(4*position), 4, 24);
+  if (position<20) {
+    for (i=0; i <=point; ++i) {
+      if (point==position) {
+      cpct_drawSprite(sprite_carRunnerSet[i], (u8*) memptr-(4*(point-i)), 4, 24);
+        /* code */
+      } else {
+        cpct_drawSprite(sprite_carRunnerSet[i], (u8*) memptr-(4*(position-i)), 4, 24);
+      }
+    }
+  // TODO: Acabar de arreglar esto, me voy a dormir, tengo mucho suenyo
+  // }
+  // else {
+  //   point= 24-position;
+  //   for (i=0; i <=point; ++i) {
+  //     cpct_drawSprite(sprite_carRunnerSet[5-i], (u8*) memptr-(4*(position)), 4, 24);
+  //   }
+  // }
+  // } else if (position==19) {
+  //   memptr=(posRoad==0) ? (u8*)0xc500 : (u8*)0xc690; // 0xc640;
+  //   cpct_drawSprite(sprite_carRunnerSet[0], (u8*) memptr, 4, 24);
+  //   cpct_drawSprite(sprite_carRunnerSet[1], (u8*) memptr+4, 4, 24);
+  //   cpct_drawSprite(sprite_carRunnerSet[2], (u8*) memptr+8, 4, 24);
+  //   cpct_drawSprite(sprite_carRunnerSet[3], (u8*) memptr+12, 4, 24);
+  //   cpct_drawSprite(sprite_carRunnerSet[4], (u8*) memptr+16, 4, 24);
+  //   cpct_drawSprite(sprite_carRunnerSet[5], (u8*) memptr+20, 4, 24);
+  //   ++position;
+  } else if (position==20) {
     cpct_drawSprite(sprite_carRunnerSet[1], (u8*) memptr-(4*position)+4, 4, 24);
     cpct_drawSprite(sprite_carRunnerSet[2], (u8*) memptr-(4*position)+8, 4, 24);
     cpct_drawSprite(sprite_carRunnerSet[3], (u8*) memptr-(4*position)+12, 4, 24);
     cpct_drawSprite(sprite_carRunnerSet[4], (u8*) memptr-(4*position)+16, 4, 24);
-    cpct_drawSprite(sprite_carRunnerShadow, (u8*) memptr-(4*position)+20, 4, 24);
-    ++position;
-  } else if (position==19) {
-    memptr=(posRoad==0) ? (u8*)0xc500 : (u8*)0xc690; // 0xc640;
-    cpct_drawSprite(sprite_carRunnerSet[0], (u8*) memptr, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[1], (u8*) memptr+4, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[2], (u8*) memptr+8, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[3], (u8*) memptr+12, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[4], (u8*) memptr+16, 4, 24);
-    cpct_drawSprite(sprite_carRunnerShadow, (u8*) memptr+20, 4, 24);
-    ++position;
-  } else if (position==20) {
-    memptr=(posRoad==0) ? (u8*)0xc500 : (u8*)0xc690; // 0xc640;
-    cpct_drawSprite(sprite_carRunnerSet[1], (u8*) memptr, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[2], (u8*) memptr+4, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[3], (u8*) memptr+8, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[4], (u8*) memptr+12, 4, 24);
-    cpct_drawSprite(sprite_carRunnerShadow, (u8*) memptr+16, 4, 24);
-    ++position;
+    cpct_drawSprite(sprite_carRunnerSet[5], (u8*) memptr-(4*position)+20, 4, 24);
   }
   else if (position==21) {
-    memptr=(posRoad==0) ? (u8*)0xc500 : (u8*)0xc690; // 0xc640;
-    cpct_drawSprite(sprite_carRunnerSet[2], (u8*) memptr, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[3], (u8*) memptr+4, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[4], (u8*) memptr+8, 4, 24);
-    cpct_drawSprite(sprite_carRunnerShadow, (u8*) memptr+12, 4, 24);
-    ++position;
+    cpct_drawSprite(sprite_carRunnerSet[2], (u8*) memptr-(4*position)+8, 4, 24);
+    cpct_drawSprite(sprite_carRunnerSet[3], (u8*) memptr-(4*position)+12, 4, 24);
+    cpct_drawSprite(sprite_carRunnerSet[4], (u8*) memptr-(4*position)+16, 4, 24);
+    cpct_drawSprite(sprite_carRunnerSet[5], (u8*) memptr-(4*position)+20, 4, 24);
   }
   else if (position==22) {
-    memptr=(posRoad==0) ? (u8*)0xc500 : (u8*)0xc690; // 0xc640;
-    cpct_drawSprite(sprite_carRunnerSet[3], (u8*) memptr, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[4], (u8*) memptr+4, 4, 24);
-    cpct_drawSprite(sprite_carRunnerShadow, (u8*) memptr+8, 4, 24);
-    ++position;
+    cpct_drawSprite(sprite_carRunnerSet[3], (u8*) memptr-(4*position)+12, 4, 24);
+    cpct_drawSprite(sprite_carRunnerSet[4], (u8*) memptr-(4*position)+16, 4, 24);
+    cpct_drawSprite(sprite_carRunnerSet[5], (u8*) memptr-(4*position)+20, 4, 24);
   }
   else if (position==23) {
-    memptr=(posRoad==0) ? (u8*)0xc500 : (u8*)0xc690; // 0xc640;
-    cpct_drawSprite(sprite_carRunnerSet[4], (u8*) memptr, 4, 24);
-    cpct_drawSprite(sprite_carRunnerShadow, (u8*) memptr+4, 4, 24);
-    ++position;
+    cpct_drawSprite(sprite_carRunnerSet[4], (u8*) memptr-(4*position)+16, 4, 24);
+    cpct_drawSprite(sprite_carRunnerSet[5], (u8*) memptr-(4*position)+20, 4, 24);
   }
-  else if (position==24) {
-    memptr=(posRoad==0) ? (u8*)0xc500 : (u8*)0xc690; // 0xc640;
-    cpct_drawSprite(sprite_carRunnerShadow, (u8*) memptr, 4, 24);
+  if (position==24) {
+    cpct_drawSprite(sprite_carRunnerSet[5], (u8*) memptr-(4*position)+20, 4, 24);
     position=0;
   }
+  ++position;
   RunnerCar.y=(posRoad==0) ? 31 : 41;
   RunnerCar.x=24-position;
-  //
-  // sprintf(str,"%u",position);
-  //
-  // sprintf(str,"%u",RunnerCar.y);
-  // cpct_drawStringM0 (str, (u8*)0xc0a4, 0, 4);
-  // sprintf(str,"%u",RunnerCar.x);
-  // cpct_drawStringM0 (str, (u8*)0xc0a4+12, 0, 4);
-  //
-  // sprintf(str,"%u",Player.y);
-  // cpct_drawStringM0 (str, (u8*)0xc0f4, 0, 4);
-  // sprintf(str,"%u",Player.x);
-  // cpct_drawStringM0 (str, (u8*)0xc0f4+12, 0, 4);
-
-  // cpct_drawSprite(sprite_carRunnerSet[0], (u8*) memptr-(4*position), 4, 24);
-  // ++position;
 }
