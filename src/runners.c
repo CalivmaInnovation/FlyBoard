@@ -46,6 +46,7 @@ void throwRunner() {
 
 void createRunnerCar(u8 posRoad) {
   i8 i;
+  u8* z;
   u8* memptr=(posRoad==0) ? (u8*)0xc54c : (u8*)0xc6dc; // 0xc68c;
   i8 point=(position<6) ? position : 5;
 
@@ -54,58 +55,16 @@ void createRunnerCar(u8 posRoad) {
 	  drawCars(initial_cars);
   }
 
-  if (position<20) {
-    for (i=0; i <=point; ++i) {
-      if (point==position) {
-      cpct_drawSprite(sprite_carRunnerSet[i], (u8*) memptr-(4*(point-i)), 4, 24);
-        /* code */
-      } else {
-        cpct_drawSprite(sprite_carRunnerSet[i], (u8*) memptr-(4*(position-i)), 4, 24);
-      }
-    }
-  // TODO: Acabar de arreglar esto, me voy a dormir, tengo mucho suenyo
-  // }
-  // else {
-  //   point= 24-position;
-  //   for (i=0; i <=point; ++i) {
-  //     cpct_drawSprite(sprite_carRunnerSet[5-i], (u8*) memptr-(4*(position)), 4, 24);
-  //   }
-  // }
-  // } else if (position==19) {
-  //   memptr=(posRoad==0) ? (u8*)0xc500 : (u8*)0xc690; // 0xc640;
-  //   cpct_drawSprite(sprite_carRunnerSet[0], (u8*) memptr, 4, 24);
-  //   cpct_drawSprite(sprite_carRunnerSet[1], (u8*) memptr+4, 4, 24);
-  //   cpct_drawSprite(sprite_carRunnerSet[2], (u8*) memptr+8, 4, 24);
-  //   cpct_drawSprite(sprite_carRunnerSet[3], (u8*) memptr+12, 4, 24);
-  //   cpct_drawSprite(sprite_carRunnerSet[4], (u8*) memptr+16, 4, 24);
-  //   cpct_drawSprite(sprite_carRunnerSet[5], (u8*) memptr+20, 4, 24);
-  //   ++position;
-  } else if (position==20) {
-    cpct_drawSprite(sprite_carRunnerSet[1], (u8*) memptr-(4*position)+4, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[2], (u8*) memptr-(4*position)+8, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[3], (u8*) memptr-(4*position)+12, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[4], (u8*) memptr-(4*position)+16, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[5], (u8*) memptr-(4*position)+20, 4, 24);
+  i=(position<20) ? 0 : position-19;
+  for (i; i <=point; ++i) {
+    z=(position<20) ? (u8*) memptr-(4*(position-i)) : (u8*) memptr-(4*position)+(20-(4*(5-i)));
+    cpct_drawSprite(sprite_carRunnerSet[i], z, 4, 24);
   }
-  else if (position==21) {
-    cpct_drawSprite(sprite_carRunnerSet[2], (u8*) memptr-(4*position)+8, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[3], (u8*) memptr-(4*position)+12, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[4], (u8*) memptr-(4*position)+16, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[5], (u8*) memptr-(4*position)+20, 4, 24);
-  }
-  else if (position==22) {
-    cpct_drawSprite(sprite_carRunnerSet[3], (u8*) memptr-(4*position)+12, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[4], (u8*) memptr-(4*position)+16, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[5], (u8*) memptr-(4*position)+20, 4, 24);
-  }
-  else if (position==23) {
-    cpct_drawSprite(sprite_carRunnerSet[4], (u8*) memptr-(4*position)+16, 4, 24);
-    cpct_drawSprite(sprite_carRunnerSet[5], (u8*) memptr-(4*position)+20, 4, 24);
-  }
+
   if (position==24) {
-    cpct_drawSprite(sprite_carRunnerSet[5], (u8*) memptr-(4*position)+20, 4, 24);
     position=0;
   }
+
   ++position;
   RunnerCar.y=(posRoad==0) ? 31 : 41;
   RunnerCar.x=24-position;
