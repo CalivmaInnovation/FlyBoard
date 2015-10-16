@@ -18,6 +18,8 @@
 typedef struct {
   u8 x;
   u8 y;
+  u8 ox;
+  u8 oy;
   u8 maxLifes;
   u8 lifes;
   u8* memptr;

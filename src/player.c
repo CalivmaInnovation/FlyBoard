@@ -16,8 +16,8 @@ void initPlayer() {
 void move() {
 	u8* memptr;
 	// Redraw a tilebox over the player to erase it (redrawing background over it)
-	cpct_etm_drawTileBox2x4(Player.x, Player.y, PLAYER_WIDTH_TILES, PLAYER_HEIGHT_TILES, MAP_WIDTH_TILES, SCR_VMEM, g_background);
-
+	Player.ox = Player.x;
+	Player.oy = Player.y;
 	cpct_scanKeyboard_f ();
 	if ( cpct_isKeyPressed (Key_W) && Player.y > PLAYER_MIN_Y) {
 		Player.y = 31;
@@ -37,6 +37,7 @@ void move() {
 }
 
 void drawPlayer() {
+	cpct_etm_drawTileBox2x4(Player.ox, Player.oy, PLAYER_WIDTH_TILES, PLAYER_HEIGHT_TILES, MAP_WIDTH_TILES, SCR_VMEM, g_background);
 	cpct_drawSpriteMasked(sprite_character, Player.memptr, PLAYER_WIDTH_BYTES, PLAYER_HEIGHT_BYTES);
 }
 
