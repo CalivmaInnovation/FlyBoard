@@ -55,8 +55,10 @@ void createRunnerCar(u8 posRoad) {
     z=(position<20) ? (u8*) memptr-(4*(position-i)) : (u8*) memptr-(4*position)+(20-(4*(5-i)));
     cpct_drawSprite(sprite_carRunnerSet[i], z, 4, 24);
   }
+  
+  ++position;
 
-  if (position==24) {
+  if (position==25) {
     position=0;
   }
 
@@ -65,7 +67,6 @@ void createRunnerCar(u8 posRoad) {
 	  drawCars(initial_cars);
   }
 
-  ++position;
   RunnerCar.y=(posRoad==0) ? 31 : 41;
-  RunnerCar.x=24-position;
+  RunnerCar.x=25-position;
 }
