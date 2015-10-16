@@ -50,11 +50,6 @@ void createRunnerCar(u8 posRoad) {
   u8* memptr=(posRoad==0) ? (u8*)0xc54c : (u8*)0xc6dc; // 0xc68c;
   i8 point=(position<6) ? position : 5;
 
-  if (position==0) {
-	  --initial_cars;
-	  drawCars(initial_cars);
-  }
-
   i=(position<20) ? 0 : position-19;
   for (i; i <=point; ++i) {
     z=(position<20) ? (u8*) memptr-(4*(position-i)) : (u8*) memptr-(4*position)+(20-(4*(5-i)));
@@ -63,6 +58,11 @@ void createRunnerCar(u8 posRoad) {
 
   if (position==24) {
     position=0;
+  }
+
+  if (position==0) {
+	  --initial_cars;
+	  drawCars(initial_cars);
   }
 
   ++position;
