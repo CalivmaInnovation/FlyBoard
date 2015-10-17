@@ -6,7 +6,8 @@
 
 // Background tilemap created with tiled.
 extern const u8 g_background[40*50];
-extern const u8 g_backgroundLogo[40*50];
+extern const u8 g_backgroundCalivGames[40*50];
+extern const u8 g_backgroundGameOver[40*50];
 extern u8* const g_tile_tileset_bg[3];
 
 extern const u8 g_tile_tiles_bg_0[8];
@@ -73,7 +74,5 @@ extern const u8 g_tile_tiles_4_12[8];
 extern const u8 g_tile_tiles_4_13[8];
 extern const u8 g_tile_tiles_4_14[8];
 extern const u8 g_tile_tiles_4_15[8];
-
-extern const u8 sprite_alce[5115];
 
 #endif

@@ -13,15 +13,15 @@
 #define TILEHEIGHT_BYTES          4
 
 #define CALIVGAMESSCREEN 0
-#define LANGUAGESCREEN 1
-#define MENUSCREEN 2
-#define PLAYGAMESCREEN 3
-#define PASSSCREEN 4
-#define CONTROLSSCREEN 5
-#define GAMEOVERSCREEN 6
-#define CREDITSSCEENE 7
-#define NEXTLEVELSCEENE 8
-#define MAINLOOP 9
+#define LANGUAGESCREEN   1
+#define MENUSCREEN       2
+#define PLAYGAMESCREEN   3
+#define PASSSCREEN       4
+#define CONTROLSSCREEN   5
+#define GAMEOVERSCREEN   6
+#define CREDITSSCEENE    7
+#define NEXTLEVELSCEENE  8
+#define MAINLOOP         9
 
 extern u8 gameScene;
 
@@ -32,6 +32,7 @@ extern const u8 g_palette3[16];
 
 // If we need a global method put here
 void waitNVSYNCs(u8 n);
+void stopGame();
 
 
 #endif // _CONSTANTES_
