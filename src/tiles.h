@@ -33,7 +33,10 @@ extern const u8 g_tile_sky_blue[32];
 // extern const u8 g_tile_bright_yellow[32];
 // extern const u8 g_tile_white[32];
 
-extern const u8 sprite_character[384];
+extern const u8 sprite_player0[384];
+extern const u8 sprite_player1[384];
+extern const u8 sprite_player2[384];
+
 extern const u8 sprite_skate[32];
 extern const u8 sprite_car[32];
 

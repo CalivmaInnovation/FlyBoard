@@ -23,6 +23,7 @@ typedef struct {
   u8 maxLifes;
   u8 lifes;
   u8* memptr;
+  u8 animation;
 }TPlayer;
 
 extern TPlayer Player;

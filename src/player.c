@@ -10,6 +10,7 @@ void initPlayer() {
 	Player.y=31;
 	Player.maxLifes=4;
 	Player.lifes=Player.maxLifes;
+	Player.animation = 0;
 	drawLifes();
 }
 
@@ -41,7 +42,20 @@ void move() {
 
 void drawPlayer() {
 	cpct_etm_drawTileBox2x4(Player.ox, Player.oy, PLAYER_WIDTH_TILES, PLAYER_HEIGHT_TILES, MAP_WIDTH_TILES, SCR_VMEM, g_background);
-	cpct_drawSpriteMasked(sprite_character, Player.memptr, PLAYER_WIDTH_BYTES, PLAYER_HEIGHT_BYTES);
+	if (Player.animation == 0) {
+		cpct_drawSpriteMasked(sprite_player0, Player.memptr, PLAYER_WIDTH_BYTES, PLAYER_HEIGHT_BYTES);
+		Player.animation = 1;
+	}
+	else if (Player.animation == 1) {
+		cpct_drawSpriteMasked(sprite_player1, Player.memptr, PLAYER_WIDTH_BYTES, PLAYER_HEIGHT_BYTES);
+		Player.animation = 2;
+	}
+	else {
+		cpct_drawSpriteMasked(sprite_player2, Player.memptr, PLAYER_WIDTH_BYTES, PLAYER_HEIGHT_BYTES);
+		Player.animation = 0;
+	}
+		
+
 }
 
 void drawLifes() {
