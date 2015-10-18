@@ -3,8 +3,6 @@
 u8 gameScene;
 
 void calivGames() {
-	cpct_memset(SCR_VMEM, 0x33, 0x4000);
-
 	cpct_etm_setTileset2x4(g_tile_tileset_4);
 	cpct_etm_drawTilemap2x4_f(MAP_WIDTH_TILES, MAP_HEIGHT_TILES, SCR_VMEM, g_backgroundCalivGames);
 
@@ -13,8 +11,6 @@ void calivGames() {
 }
 
 void gameOver() {
-	cpct_memset(SCR_VMEM, 0x33, 0x4000);
-
 	cpct_etm_setTileset2x4(g_tile_tileset_4);
 	cpct_etm_drawTilemap2x4_f(MAP_WIDTH_TILES, MAP_HEIGHT_TILES, SCR_VMEM, g_backgroundGameOver);
 
