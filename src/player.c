@@ -20,9 +20,7 @@ void move() {
 	Player.ox = Player.x;
 	Player.oy = Player.y;
 	cpct_scanKeyboard_f ();
-	if ( cpct_isKeyPressed (Key_P) ) {
-		stopGame();
-	}
+
 	if ( cpct_isKeyPressed (Key_W) && Player.y > PLAYER_MIN_Y) {
 		Player.y = 31;
 	}

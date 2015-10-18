@@ -32,7 +32,5 @@ extern const u8 g_palette3[16];
 
 // If we need a global method put here
 void waitNVSYNCs(u8 n);
-void stopGame();
-
 
 #endif // _CONSTANTES_
