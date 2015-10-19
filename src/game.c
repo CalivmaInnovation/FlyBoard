@@ -3,11 +3,12 @@
 void initGame() {
 	initWorld();
 	initPlayer();
+	drawLifes();
 }
 
 void mainLoop() {
 	initGame();
-	while(gameScene==MAINLOOP) {
+	while(gameScene==PLAYGAMESCREEN) {
 		waitNVSYNCs(1);
 		computeWorld();
 		player();

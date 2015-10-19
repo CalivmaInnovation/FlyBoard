@@ -40,17 +40,15 @@ void main(void) {
 		switch (gameScene) {
 			case CALIVGAMESSCREEN: calivGames();
 				break;
-			case MENUSCREEN:
+			case MENUSCREEN: mainMenu();
 				break;
-			case PLAYGAMESCREEN:
+			case PLAYGAMESCREEN: mainLoop();
 				break;
-			case CONTROLSSCREEN:
+			case CONTROLSSCREEN: controls();
 				break;
 		    case GAMEOVERSCREEN: gameOver();
 				break;
-			case CREDITSSCEENE:
-				break;
-			case MAINLOOP: mainLoop();
+			case CREDITSSCEENE: credits();
 				break;
 		}
 	};

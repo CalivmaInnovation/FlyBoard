@@ -11,7 +11,10 @@ void initPlayer() {
 	Player.maxLifes=4;
 	Player.lifes=Player.maxLifes;
 	Player.animation = 0;
-	drawLifes();
+
+	Player.memptr=cpct_getScreenPtr(SCR_VMEM, TILEWIDTH_BYTES*Player.x, TILEHEIGHT_BYTES*Player.y);
+	Player.ox = Player.x;
+	Player.oy = Player.y;
 }
 
 void move() {
@@ -52,7 +55,7 @@ void drawPlayer() {
 		cpct_drawSpriteMasked(sprite_player2, Player.memptr, PLAYER_WIDTH_BYTES, PLAYER_HEIGHT_BYTES);
 		Player.animation = 0;
 	}
-		
+
 
 }
 
