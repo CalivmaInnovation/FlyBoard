@@ -100,10 +100,10 @@ void credits() {
 
 	cpct_drawStringM0 ("DEVELOPERS", getScreenPosition(5, 3), 15, 0);
 	cpct_drawStringM0 ("Cesar Ivorra Oliver", getScreenPosition(1, 5), 15, 0);
-	cpct_drawStringM0 ("Alex Almira Molla", getScreenPosition(1, 6), 15, 0);
+	cpct_drawStringM0 ("Alex Almira Molla", getScreenPosition(1, 7), 15, 0);
 
-	cpct_drawStringM0 ("GAME POWERED BY", getScreenPosition(2, 9), 15, 0);
-	cpct_drawStringM0 ("CPCtelera", getScreenPosition(5, 11), 15, 0);
+	cpct_drawStringM0 ("GAME POWERED BY", getScreenPosition(2, 11), 15, 0);
+	cpct_drawStringM0 ("CPCtelera", getScreenPosition(5, 13), 15, 0);
 
 	cpct_drawStringM0 ("SPECIAL THANKS", getScreenPosition(3, 18), 15, 0);
 	cpct_drawStringM0 ("Francisco Gallego", getScreenPosition(1, 20), 15, 0);

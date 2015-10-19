@@ -34,7 +34,8 @@ void main(void) {
 	// Clear Screen
 	cpct_memset(SCR_VMEM, 0, 0x4000);
 	initCPC();
-	gameScene=CALIVGAMESSCREEN;
+	// gameScene=CALIVGAMESSCREEN;
+	gameScene=PLAYGAMESCREEN;
 	// Loop forever
 	while (1) {
 		switch (gameScene) {

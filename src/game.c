@@ -4,6 +4,7 @@ void initGame() {
 	initWorld();
 	initPlayer();
 	drawLifes();
+	initRunnerCar();
 }
 
 void mainLoop() {

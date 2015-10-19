@@ -13,15 +13,12 @@
 #define TILEHEIGHT_BYTES          4
 
 #define CALIVGAMESSCREEN 0
-#define LANGUAGESCREEN   1
-#define MENUSCREEN       2
-#define PLAYGAMESCREEN   3
-#define PASSSCREEN       4
-#define CONTROLSSCREEN   5
-#define GAMEOVERSCREEN   6
-#define CREDITSSCEENE    7
-#define NEXTLEVELSCEENE  8
-#define MAINLOOP         9
+#define MENUSCREEN       1
+#define PLAYGAMESCREEN   2
+#define CONTROLSSCREEN   3
+#define GAMEOVERSCREEN   4
+#define CREDITSSCEENE    5
+#define NEXTLEVELSCEENE  6
 
 extern u8 gameScene;
 

@@ -13,6 +13,7 @@ typedef struct {
   u8 x;
   u8 y;
   u8* memptr;
+  i8 speed;
 }TRunner;
 
 extern TRunner RunnerCar;
