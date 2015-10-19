@@ -20,11 +20,8 @@ void drawBackground() {
 }
 
 void initWorld() {
-	initial_cars = 500;
 	drawBackground();
 	initScroll();
-	drawWorldLevel(3);
-	drawCars(initial_cars);
 }
 
 void computeWorld() {

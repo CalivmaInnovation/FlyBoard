@@ -34,16 +34,16 @@ void main(void) {
 	// Clear Screen
 	cpct_memset(SCR_VMEM, 0, 0x4000);
 	initCPC();
-	// gameScene=CALIVGAMESSCREEN;
-	gameScene=PLAYGAMESCREEN;
+	gameScene=CALIVGAMESSCREEN;
+	// gameScene=PLAYGAMESCREEN;
 	// Loop forever
 	while (1) {
 		switch (gameScene) {
-			case CALIVGAMESSCREEN: calivGames();
+		    case CALIVGAMESSCREEN: calivGames();
 				break;
 			case MENUSCREEN: mainMenu();
 				break;
-			case PLAYGAMESCREEN: mainLoop();
+			case PLAYGAMESCREEN: infinityMode();
 				break;
 			case CONTROLSSCREEN: controls();
 				break;

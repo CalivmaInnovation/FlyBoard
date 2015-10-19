@@ -21,7 +21,7 @@
 #define NEXTLEVELSCEENE  6
 
 extern u8 gameScene;
-
+extern u8 gameMode; // 0 for infinity and 1 for level mode
 // 0,3,8,13,14,16,26
 extern const u8 g_palette[16];
 extern const u8 g_palette2[16];

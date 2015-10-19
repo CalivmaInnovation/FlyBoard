@@ -60,11 +60,11 @@ void createRunnerCar(u8 posRoad) {
 
   for (i=0; i<RunnerCar.speed && position>6; ++i) {
     cpct_drawSprite(sprite_carRunnerSet[5], RunnerCar.memptr+(4*i), 4, 24);
-    // waitNVSYNCs(5);
+    //waitNVSYNCs(5);
   }
 
   position+=RunnerCar.speed;
-
+  position %= 25;
   if (position==25) {
     position=0;
     for (i=0; i<5; ++i) {
@@ -72,7 +72,7 @@ void createRunnerCar(u8 posRoad) {
     }
   }
 
-  if (position==0) {
+  if (position==0 && gameMode) {
 	  --initial_cars;
 	  drawCars(initial_cars);
   }
