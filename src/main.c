@@ -34,8 +34,8 @@ void main(void) {
 	// Clear Screen
 	cpct_memset(SCR_VMEM, 0, 0x4000);
 	initCPC();
-	gameScene=CALIVGAMESSCREEN;
-	// gameScene=PLAYGAMESCREEN;
+	//gameScene=CALIVGAMESSCREEN;
+	gameScene=MENUSCREEN;
 	// Loop forever
 	while (1) {
 		switch (gameScene) {
@@ -45,6 +45,8 @@ void main(void) {
 				break;
 			case PLAYGAMESCREEN: infinityMode();
 				break;
+    		case NEXTLEVELSCREEN: newLevel();
+	    		break;
 			case CONTROLSSCREEN: controls();
 				break;
 		    case GAMEOVERSCREEN: gameOver();

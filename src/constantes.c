@@ -14,3 +14,6 @@ void waitNVSYNCs(u8 n) {
    } while (n);
 }
 
+u8* getScreenPosition(u8 x, u8 y) {
+	return (u8*)(0xC000+(4*x)+0xC0050*y);
+}

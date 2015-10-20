@@ -4,8 +4,8 @@
 #include "constantes.h"
 #include "player.h"
 #include "world.h"
-
-extern u8 car_totalas;
+#include "levels.h"
+#include "runners.h"
 
 void initGame();
 void infinityMode();

@@ -8,7 +8,7 @@ u8 car = 0;
 void initRunnerCar() {
   RunnerCar.x=0;
   RunnerCar.y=0;
-  RunnerCar.speed=1;
+  RunnerCar.speed=0;
 }
 
 void drawCars(u16 numCars) {
@@ -23,7 +23,7 @@ void throwRunner() {
 
 	if (initial_cars == -1) {
 		// If no more cars, change status and no throw car
-		gameScene = CALIVGAMESSCREEN;
+		gameScene = NEXTLEVELSCREEN;
 		return;
 	} else {
 		rnd = cpct_getRandomUniform_u8_f(0);

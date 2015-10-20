@@ -2,6 +2,22 @@
 
 u8 gameScene;
 
+void newLevel() {
+	u8 str[6];
+	initLevel();
+	sprintf(str, "%u", level);
+	cpct_memset(SCR_VMEM, 0, 0x4000);
+	cpct_drawStringM0 ("LEVEL", getScreenPosition(7, 11), 15, 0);
+	cpct_drawStringM0 (str, getScreenPosition(13, 11), 15, 0);
+	cpct_drawStringM0 ("Press Space", getScreenPosition(4, 23), 15, 0);
+	cpct_drawStringM0 ("to go next level", getScreenPosition(2, 24), 15, 0);
+	cpct_scanKeyboard_f ();
+	while (!cpct_isKeyPressed(Key_Space)) {
+		cpct_scanKeyboard_f ();
+	}
+	levelMode();
+}
+
 void calivGames() {
 	cpct_etm_setTileset2x4(g_tile_tileset_4);
 	cpct_etm_drawTilemap2x4_f(MAP_WIDTH_TILES, MAP_HEIGHT_TILES, SCR_VMEM, g_backgroundCalivGames);
@@ -18,9 +34,55 @@ void gameOver() {
 	gameScene=MENUSCREEN;
 }
 
-u8* getScreenPosition(u8 x, u8 y) {
-	return (u8*)(0xC000+(4*x)+0xC0050*y);
+void playMenu() {
+		u8 option=0;
+
+		cpct_etm_setTileset2x4(g_tile_tileset_bg);
+		cpct_etm_drawTilemap2x4_f(MAP_WIDTH_TILES, MAP_HEIGHT_TILES, SCR_VMEM, g_background);
+
+		cpct_drawStringM0 ("PLAY GAME", getScreenPosition(5, 3), 15, 7);
+		cpct_drawStringM0 ("INFINITY MODE", getScreenPosition(6, 5), 15, 7);
+		cpct_drawStringM0 ("LEVELS MODE", getScreenPosition(6, 7), 15, 7);
+
+		initScroll();
+		initPlayer();
+		cpct_scanKeyboard_f ();
+		do {
+			Road();
+			drawPlayer();
+			if ( cpct_isKeyPressed (Key_Esc)) {
+				gameScene=MENUSCREEN;
+				return;
+			}
+			else if ( cpct_isKeyPressed (Key_CursorUp) && option != 0) {
+				--option;
+			}
+			else if ( cpct_isKeyPressed (Key_CursorDown) && option != 1) {
+				++option;
+			}
+
+			switch (option) {
+				case 0:
+					cpct_drawSprite(g_tile_sky_blue, getScreenPosition(4, 7), 4, 8);
+					cpct_drawSprite(sprite_skate, getScreenPosition(4, 5), 4, 8);
+					break;
+				case 1:
+					cpct_drawSprite(g_tile_sky_blue, getScreenPosition(4, 5), 4, 8);
+					cpct_drawSprite(sprite_skate, getScreenPosition(4, 7), 4, 8);
+					break;
+			}
+			cpct_scanKeyboard_f ();
+			waitNVSYNCs(5);
+	} while (!cpct_isKeyPressed(Key_Return));
+
+		switch (option) {
+			case 0:	gameScene=PLAYGAMESCREEN;
+				break;
+			case 1:	gameScene=NEXTLEVELSCREEN;
+				break;
+		}
 }
+
 
 void mainMenu() {
 		u8 option=0;
@@ -65,7 +127,7 @@ void mainMenu() {
 	} while (!cpct_isKeyPressed(Key_Return));
 
 		switch (option) {
-			case 0:	gameScene=PLAYGAMESCREEN;
+    		case 0:	playMenu();
 				break;
 			case 1:	gameScene=CONTROLSSCREEN;
 				break;

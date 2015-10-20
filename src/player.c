@@ -24,6 +24,9 @@ void move() {
 	Player.oy = Player.y;
 	cpct_scanKeyboard_f ();
 
+	if ( cpct_isKeyPressed (Key_Esc)) {
+		gameScene = MENUSCREEN;
+	}
 	if ( cpct_isKeyPressed (Key_W) && Player.y > PLAYER_MIN_Y) {
 		Player.y = 31;
 	}

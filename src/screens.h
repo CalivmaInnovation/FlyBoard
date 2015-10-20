@@ -5,7 +5,10 @@
 #include "constantes.h"
 #include "scroll.h"
 #include "player.h"
+#include "levels.h"
+#include "game.h"
 
+void newLevel();
 void calivGames();
 void gameOver();
 void mainMenu();

@@ -10,9 +10,10 @@ void initGame() {
 }
 
 void infinityMode() {
-	/* Make a mode for throw random speeds */
+	/* TODO:  Make a mode for throw random speeds */
 	gameMode = 0;
 	initGame();
+	RunnerCar.speed = 1;
 	cpct_drawStringM0 ("INFINITY MODE", (u8*)0xC068, 0, 7);
 	while(gameScene==PLAYGAMESCREEN) {
 		waitNVSYNCs(1);
@@ -28,9 +29,7 @@ void infinityMode() {
 void levelMode() {
 	gameMode = 1;
 	initGame();
-	initial_cars = 10;
-	drawWorldLevel(1);
-	drawCars(initial_cars);
+	nextLevel();
 	while(gameScene==PLAYGAMESCREEN) {
 		waitNVSYNCs(1);
 		computeWorld();

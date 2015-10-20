@@ -18,7 +18,7 @@
 #define CONTROLSSCREEN   3
 #define GAMEOVERSCREEN   4
 #define CREDITSSCEENE    5
-#define NEXTLEVELSCEENE  6
+#define NEXTLEVELSCREEN  6
 
 extern u8 gameScene;
 extern u8 gameMode; // 0 for infinity and 1 for level mode
@@ -29,5 +29,5 @@ extern const u8 g_palette3[16];
 
 // If we need a global method put here
 void waitNVSYNCs(u8 n);
-
+u8* getScreenPosition(u8 x, u8 y);
 #endif // _CONSTANTES_

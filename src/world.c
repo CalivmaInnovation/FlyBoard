@@ -1,15 +1,7 @@
 #include "world.h"
 
 u16 initial_cars;
-
-void drawWorldLevel(u8 nLevel) {
-  u8 str[6];
-  sprintf(str, "%u", nLevel);
-  cpct_drawStringM0 ("LEVEL", (u8*)0xC069, 0, 7);
-  cpct_drawStringM0 (str, (u8*)0xC07F, 0, 7);
-
-
-}
+u16 old_initial_cars;
 
 void drawBackground() {
 	// Set the internal tileset for drawing Tilemaps

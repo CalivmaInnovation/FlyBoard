@@ -13,6 +13,7 @@ typedef struct {
   u8 x;
   u8 y;
   u8* memptr;
+  i8 ospeed;
   i8 speed;
 }TRunner;
 

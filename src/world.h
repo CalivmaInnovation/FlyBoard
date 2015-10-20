@@ -7,8 +7,8 @@
 #include <stdio.h>
 
 extern u16 initial_cars;
+extern u16 old_initial_cars;
 
-void drawWorldLevel(u8 nLevel);
 void drawBackground();
 void initWorld();
 void computeWorld();
