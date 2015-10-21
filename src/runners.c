@@ -41,11 +41,11 @@ void throwRunner() {
 			} else if (rnd > 100) {
 				car = 1;
 			}
-      if (gameMode) {
-        --initial_cars;
-        drawCars(initial_cars);
-      }
-    RunnerCar.canColision=1;
+			if (gameMode) {
+				--initial_cars;
+				drawCars(initial_cars);
+			}
+			RunnerCar.canColision=1;
 		}
 		createRunnerCar(car);
 	}
@@ -59,10 +59,18 @@ void createRunnerCar(u8 posRoad) {
   i8 point=(position<6) ? position : 5;
   i=(position<20) ? 0 : position-19;
 
+  {
+	  u8 *del = memptr - 0x004c;
+	  cpct_drawSprite(g_tile_road, del, 40, 24);
+	  cpct_drawSprite(g_tile_road, del + 0x0028, 40, 24);
+  }
+//  cpct_drawSprite(g_tile_road, memptr-0x0025, 80, 24);
+  
   for (i; i<=point; ++i) {
     z=(position<20) ? (u8*) memptr-(4*(position-i)) : (u8*) memptr-(4*position)+(20-(4*(5-i)));
     cpct_drawSprite(sprite_carRunnerSet[i], z, 4, 24);
   }
+
   // RunnerCar.memptr=z;
   //
   // for (i=0; i<RunnerCar.speed && RunnerCar.x<14; ++i) {
@@ -73,10 +81,10 @@ void createRunnerCar(u8 posRoad) {
   RunnerCar.x=(position<20) ? 19-position : 19; // la colision es el morro del coche
 
   position+=RunnerCar.speed;
-  position %= 25;
-  if (position==25) {
+  if (position>=25) {
     position=0;
   }
+  position %= 26;
 }
 
 u8 checkColision(u8 pos) {
