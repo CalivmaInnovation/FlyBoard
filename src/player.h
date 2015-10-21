@@ -3,6 +3,7 @@
 
 #include "constantes.h"
 #include "runners.h"
+#include "levels.h"
 
 // Player constants
 #define PLAYER_WIDTH_BYTES         8

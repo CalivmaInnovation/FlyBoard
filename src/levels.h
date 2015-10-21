@@ -10,5 +10,6 @@ extern u8 level;
 void initLevel();
 void drawWorldLevel();
 void nextLevel();
+void gameOverLevel();
 
 #endif /* LEVELS_H */

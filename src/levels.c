@@ -24,3 +24,11 @@ void nextLevel() {
 	drawCars(initial_cars);
 	gameScene=PLAYGAMESCREEN;
 }
+
+void gameOverLevel() {
+	level = 0;
+	initial_cars = 0;
+	old_initial_cars = 0;
+	RunnerCar.speed = 0;
+	RunnerCar.ospeed = 0;
+}

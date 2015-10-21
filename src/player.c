@@ -76,8 +76,10 @@ void drawLifes() {
 void lessLife() {
 	--Player.lifes;
 	drawLifes();
-	if (Player.lifes == 0)
+	if (Player.lifes == 0) {
+		gameOverLevel();
 		gameScene = GAMEOVERSCREEN;
+	}
   // Sonido de perder vida
 }
 
