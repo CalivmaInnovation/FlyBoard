@@ -8,7 +8,6 @@ u8 car = 0;
 void initRunnerCar() {
   RunnerCar.x=19;
   RunnerCar.y=0;
-  RunnerCar.speed=0;
   RunnerCar.canColision=0;
 }
 
@@ -54,29 +53,20 @@ void throwRunner() {
 void createRunnerCar(u8 posRoad) {
   i8 i;
   u8* z=0;
-  // u8 y=(posRoad==0) ? 16 : 21; // 0xc68c;
   u8* memptr=(posRoad==0) ? (u8*)0xc54c : (u8*)0xc6dc; // 0xc68c;
+  u8 *del = memptr - 0x004c;
   i8 point=(position<6) ? position : 5;
   i=(position<20) ? 0 : position-19;
 
-  {
-	  u8 *del = memptr - 0x004c;
-	  cpct_drawSprite(g_tile_road, del, 40, 24);
-	  cpct_drawSprite(g_tile_road, del + 0x0028, 40, 24);
-  }
-//  cpct_drawSprite(g_tile_road, memptr-0x0025, 80, 24);
+  // erase shit of car
+  cpct_drawSprite(g_tile_road, del, 40, 24);
+  cpct_drawSprite(g_tile_road, del + 0x0028, 40, 24);
   
   for (i; i<=point; ++i) {
     z=(position<20) ? (u8*) memptr-(4*(position-i)) : (u8*) memptr-(4*position)+(20-(4*(5-i)));
     cpct_drawSprite(sprite_carRunnerSet[i], z, 4, 24);
   }
 
-  // RunnerCar.memptr=z;
-  //
-  // for (i=0; i<RunnerCar.speed && RunnerCar.x<14; ++i) {
-  //   cpct_drawSprite(sprite_carRunnerSet[0], getScreenPosition(RunnerCar.x+5+i, y), 4, 24);
-  //   // waitNVSYNCs(5);
-  // }
   RunnerCar.y=(posRoad==0) ? 31 : 41;
   RunnerCar.x=(position<20) ? 19-position : 19; // la colision es el morro del coche
 

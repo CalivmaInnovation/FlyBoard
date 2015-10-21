@@ -5,7 +5,7 @@ u8 gameScene;
 void newLevel() {
 	u8 str[6];
 	initLevel();
-	sprintf(str, "%u", level);
+	sprintf(str, "%2u", level);
 	cpct_memset(SCR_VMEM, 0, 0x4000);
 	cpct_drawStringM0 ("LEVEL", getScreenPosition(7, 11), 15, 0);
 	cpct_drawStringM0 (str, getScreenPosition(13, 11), 15, 0);

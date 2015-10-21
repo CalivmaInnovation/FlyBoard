@@ -1,7 +1,6 @@
 #include "world.h"
 
 u16 initial_cars;
-u16 old_initial_cars;
 
 void drawBackground() {
 	// Set the internal tileset for drawing Tilemaps

@@ -1,7 +1,6 @@
 #include "levels.h"
 
-u8 level = 0;
-
+u8 level = 5;
 
 void drawWorldLevel() {
 	u8 str[6];
@@ -12,14 +11,13 @@ void drawWorldLevel() {
 }
 
 void initLevel() {
+//	level = 5;
 	++level;
 }
 
 void nextLevel() {
-	initial_cars += 5 + old_initial_cars;//cpct_getRandomUniform_u8_f(5);
-	old_initial_cars = initial_cars;
-	RunnerCar.speed += 1 + RunnerCar.ospeed;
-	RunnerCar.ospeed = RunnerCar.speed;
+	initial_cars = 5 * level;
+	RunnerCar.speed = level;
 	drawWorldLevel();
 	drawCars(initial_cars);
 	gameScene=PLAYGAMESCREEN;
@@ -27,8 +25,4 @@ void nextLevel() {
 
 void gameOverLevel() {
 	level = 0;
-	initial_cars = 0;
-	old_initial_cars = 0;
-	RunnerCar.speed = 0;
-	RunnerCar.ospeed = 0;
 }
