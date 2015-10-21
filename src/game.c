@@ -16,14 +16,14 @@ void infinityMode() {
 	RunnerCar.speed = 1;
 	cpct_drawStringM0 ("INFINITY MODE", (u8*)0xC068, 0, 7);
 	while(gameScene==PLAYGAMESCREEN) {
-		waitNVSYNCs(1);
+		cpct_waitVSYNC();
 		computeWorld();
 		player();
 		throwRunner();
 		drawPlayer();
 		// Synchronize with VSYNC + 1 HSYNC to slow down the movement
 		waitNVSYNCs(2);
-	}	
+	}
 }
 
 void levelMode() {
@@ -31,7 +31,7 @@ void levelMode() {
 	initGame();
 	nextLevel();
 	while(gameScene==PLAYGAMESCREEN) {
-		waitNVSYNCs(1);
+		cpct_waitVSYNC();
 		computeWorld();
 		player();
 		throwRunner();
