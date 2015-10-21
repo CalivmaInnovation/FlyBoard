@@ -15,6 +15,7 @@ typedef struct {
   u8* memptr;
   i8 ospeed;
   i8 speed;
+  u8 canColision;
 }TRunner;
 
 extern TRunner RunnerCar;
@@ -24,5 +25,6 @@ void initRunnerCar();
 void throwRunner();
 void createRunnerCar(u8 pos);
 void drawCars(u16 vNumber);
+u8 checkColision(u8 pos);
 
 #endif /* end of include guard: _RUNNERS_H_ */

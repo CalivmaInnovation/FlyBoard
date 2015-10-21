@@ -82,8 +82,10 @@ void lessLife() {
 }
 
 void collision() {
-	if ((Player.y == RunnerCar.y) && (Player.x == RunnerCar.x))
+	if (RunnerCar.canColision && (Player.y == RunnerCar.y) && checkColision(Player.x)) {
 		lessLife();
+		RunnerCar.canColision=0;
+	}
 }
 
 void player() {
