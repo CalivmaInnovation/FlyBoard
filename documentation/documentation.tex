@@ -1,0 +1,149 @@
+\documentclass[11pt, spanish]{article}
+
+%\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+%\selectlanguage{spanish}
+
+% Datos del PDF y Colores de los enlaces
+\usepackage[colorlinks,
+citecolor=blue,
+filecolor=black,
+linkcolor=black,
+urlcolor=blue]{hyperref} 
+
+%Imagenes
+\usepackage{subfig}
+\usepackage{graphicx}
+\graphicspath{{./images/}}
+
+%opening
+\title{\textbf{FlyBoard} \\ {\footnotesize Caliv Games}}
+\author{César Ivorra Oliver \\ Alejandro Almira Molla}
+
+\begin{document}
+
+\maketitle
+%\tableofcontents
+
+\section{Introducción}
+FlyBoard es un videojuego creado por dos amigos, de modo libre e independiente para seguir con el aprendizaje de videojuegos retro en ordenadores de hardware específico.
+
+Para ambos este proyecto ha sido el segundo contacto con la programación del micro-computador Amstrad CPC 464. El año pasado eramos rivales y creamos cada uno un videojuego en equipos distintos en el contexto de la asignatura Razonamiento Automático de la Universidad de Alicante.
+Aún quedándonos mucho por aprender y mejorar en el desarrollo de videojuegos retro, realmente estamos satisfechos con el resultado que hemos obtenido, ya que nuestro pincipal objetivo era seguir aprendiendo y desarrollando nuestra creatividad.
+
+\section{Historia}
+El personaje principal no es ni mas ni menos que nuestro añorado Marty McFly, quien ha llegado de nuevo al año 2015 y como es lo normal en este tiempo ha ido a la tienda en busca de un Hoverboard! Pero quedan muchos años pasados desde que nuestro protagonista se subio por ultima vez a un Hoverboard, así que iniciándose de nuevo, coloca la tabla en sus pies para volver a recuperar la experiencia que tenia.
+Pero la falta de práctica lleva a McFly a la carretera donde tendrá que esquivar los coches si no quiere que estos acaben con el.
+
+\subsection{Objetivos del juego}
+\begin{enumerate}
+	\item El jugador esta en una carretera de dos carriles donde unicamente puede cambiar la posición entre ellos y un pequeño margen de moviviento hacia delante y hacia detras.
+	\item Debe evitar ser eliminado por los coches que vienen de frente contra el.
+	\item existen dos modos de juego:
+	\begin{itemize}
+		\item Ilimitado: el jugador juega en una carretera sin fin, donde los coches son ilimitados, el objetivo es aguantar sin ser atropellado el mayor tiempo posible.
+		\item Por niveles: en cada nivel hay un numero limitado de coches, el objetivo es superar el nivel y pasar al siguiente, con la diferencia que en cada nivel hay mas coches y van hacia el jugador a mayor velocidad.
+	\end{itemize}
+	\item En ambos modos, el juego finaliza cuando el jugador es atropellado 4 veces por un coche.
+\end{enumerate}
+
+\subsection{Personajes}
+\begin{itemize}
+	\item McFly: es el protagonista del recorrido.
+	\item Coches: su objetivo es atropellar a todo aquel que este en su carril.
+\end{itemize}
+
+\begin{figure}[h!]
+\centering
+\subfloat[McFly]{
+	\label{fig:McFly}
+	\includegraphics[width=0.2\textwidth]{McFly}
+	}
+\subfloat[Car]{
+	\label{fig:Car}
+	\includegraphics[width=0.5\textwidth]{Car}		
+	}
+\caption{Personajes}
+\end{figure}
+
+\section{Idea y desarrollo}
+Cuando empezamos a buscar ideas de que queríamos hacer para el Amstrad CPC, enseguida nos surgió, "un juego de aventuras", "un rogue", pero en esa fase de brainstorming y viendo los juegos que ya existían, pensamos en hacer algo nuevo y diferente, y decidimos hacer un runner retro, con scroll infinito.
+ 
+\subsection{Pasos de elaboración}
+\begin{itemize}
+	\item Volver a estudiar la arquitectura del ordenador, hacia un año que no volvíamos a desarrollar nada para el Amstrad CPC.
+	\item Refrescar las restricciones del hardware.
+	\item Pintar un mapa en pantalla.
+	\item Colocar un personaje que se moviera libremente.
+	\item Elaborar un scroll de lineas en la carretera del mapa.
+	\item Scrollear edificios.
+	\item Scrollear un coche (entero).
+	\item Dotar al coche de entrada al escenario por la derecha y salida por la izquierda.
+\end{itemize}
+
+\subsection{Tiempo de desarrollo}
+El tiempo podemos dividirlo en 3 etapas:
+\begin{enumerate}
+	\item La primera etapa solo consistió en la creación de los sprites y escenarios y pintarlos en la pantalla.
+	\item La segunda etapa y mas larga, fue estudiar el scroll e implementarlo una y otra vez hasta dar con la mejor solución.
+	\item La ultima etapa fue establecer el flujo de videojuego y lograr el prototipo disponible.
+\end{enumerate}
+
+\section{Tecnologías utilizadas}
+\begin{itemize}
+	\item Emuladores de Amstrad: Winape.
+	\item El ordenador Amstrad CPC 464 original.
+	\item Editores de texto: emacs y atom.
+	\item Control de versiones: Git.
+	\item Organizador de tareas: trello.com
+	\item Editor de imágenes: Gimp.
+	\item Editor de mapas 2d: Tiled
+	\item Software CDT2WAV.
+	\item Ordenadores con sistema operativo Arch Linux.
+\end{itemize}
+
+\subsection{Detalles técnicos de la implementación}
+\begin{itemize}
+	\item Uso de Gimp para la realización:
+	\begin{itemize}
+		\item Personaje y coches.
+		\item Edificios.
+		\item Iconos del juego(coches restantes, vidas).
+		\item Paleta de colores.
+	\end{itemize}
+	\item uso de Tiled:
+	\begin{itemize}
+		\item Pantalla de logo de equipo.
+		\item Fondo del juego.
+		\item Pantalla Game Over.
+	\end{itemize}
+	\item Libreria utilizada: CPCtelera.
+\end{itemize}
+
+\section{Problemas encontrados y soluciones}
+Perdimos la mayoría de nuestro tiempo de desarrollo intentando hacer un scroll continuo, primero lo intentamos con el scroll por hardware, pero al ver los resultados, muy fuera de nuestro agrado, decidimos que no podíamos hacerlo, ya que movía toda la pantalla, de forma que no podíamos tener cosas k no se movieran, como por ejemplo las vidas, coches y textos pro pantalla.
+Así k optamos por el movimiento continuo, del que obtuvimos una enorme mejora, pero entramos en el desafió de insertar cosas por la derecha y sacarlas por la izquierda de forma continua.
+La solución a este problema fue trocear los objetos mostrados por pantalla (edificios, coches) en píxeles de 8 de ancho, de esta forma obtuvimos la solución a nuestro problema, y el resultado que queríamos.
+
+Desde el primer minuto de desarrollo tuvimos en cuenta las limitaciones del hardware, de forma que cada nueva implementación debía ser una solución optima.
+
+\section{Aprendizaje}
+
+
+\section{Anécditas del desarrollo del juego}
+\begin{itemize}
+	\item El protagonista del juego iba a ser una persona corriendo, pero por ser el año de Regreso al Futuro, elegimos a McFly como protagonista y el HoverBoard como vehiculo de desplazamiento.
+	\item Al ser la idea principar un personaje corriendo los obstaculos iban a ser cajas, piedras, cubos de basura y diversos objetos encontrados al estar corriendo por la calle.
+	\item Teníamos intención de hacer mas escenarios y otros obstáculos, como por ejemplo un parque, el protagonista volando con el Hoverboard por el agua y que esquivara barcos en vez de coches. Pero por problemas surgidos en la fase final del desarrollo no se hicieron distintos mundos.
+	\item El protagonista al finalizar un escenario, se enfrentaría al líder de ese lugar mediante un minijuego, si salia victorioso obtendría powerups para los siguientes escenarios, si perdía avanzaba igualmente pero sin estos poderes.
+	\item Se propuso hacer 3 carriles en niveles mas avanzados y la establecer mas de un coche a la vez, pero por problemas de desarrollo se descartó.
+\end{itemize}
+\section{Agradecimientos}
+\begin{itemize}
+	\item Francisco Jośe Gallego Durán, por su tiempo y paciencia resolviendo todas nuestras dudas.
+	\item http://lronaldo.github.io/cpctelera
+	\item http://www.cpcwiki.eu
+	\item A nuestros amigos allegados por todo el apoyo durante el desarrollo del juego.
+\end{itemize}
+\end{document}
+
