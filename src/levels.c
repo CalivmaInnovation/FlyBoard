@@ -11,7 +11,7 @@ void drawWorldLevel() {
 }
 
 void initLevel() {
-//	level = 5;
+//	level = 4;
 	++level;
 }
 

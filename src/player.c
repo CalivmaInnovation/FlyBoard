@@ -74,12 +74,14 @@ void drawLifes() {
 }
 
 void lessLife() {
+//	cpct_akp_SFXPlay (0, 15, 35, 10, 0, 4);
 	--Player.lifes;
 	drawLifes();
 	if (Player.lifes == 0) {
 		gameOverLevel();
 		gameScene = GAMEOVERSCREEN;
 	}
+//	cpct_akp_SFXStop (4);
   // Sonido de perder vida
 }
 

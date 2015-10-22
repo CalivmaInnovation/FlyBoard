@@ -1,4 +1,5 @@
 #include "screens.h"
+#include "music.c"
 
 u8 gameScene;
 
@@ -48,6 +49,8 @@ void playMenu() {
 		initPlayer();
 		cpct_scanKeyboard_f ();
 		do {
+			waitNVSYNCs(3);
+			cpct_akp_musicPlay();
 			Road();
 			drawPlayer();
 			if ( cpct_isKeyPressed (Key_Esc)) {
@@ -72,13 +75,17 @@ void playMenu() {
 					break;
 			}
 			cpct_scanKeyboard_f ();
-			waitNVSYNCs(5);
+//			waitNVSYNCs(5);
 	} while (!cpct_isKeyPressed(Key_Return));
 
 		switch (option) {
-			case 0:	gameScene=PLAYGAMESCREEN;
+			case 0:
+				cpct_akp_stop();
+				gameScene=PLAYGAMESCREEN;
 				break;
-			case 1:	gameScene=NEXTLEVELSCREEN;
+			case 1:
+				cpct_akp_stop();
+				gameScene=NEXTLEVELSCREEN;
 				break;
 		}
 }
@@ -86,7 +93,6 @@ void playMenu() {
 
 void mainMenu() {
 		u8 option=0;
-
 		cpct_etm_setTileset2x4(g_tile_tileset_bg);
 		cpct_etm_drawTilemap2x4_f(MAP_WIDTH_TILES, MAP_HEIGHT_TILES, SCR_VMEM, g_background);
 
@@ -98,6 +104,9 @@ void mainMenu() {
 		initPlayer();
 		cpct_scanKeyboard_f ();
 		do {
+		    waitNVSYNCs(3);
+			cpct_akp_musicPlay();
+
 			Road();
 			drawPlayer();
 			if ( cpct_isKeyPressed (Key_CursorUp) && option != 0) {
@@ -123,15 +132,17 @@ void mainMenu() {
 					break;
 			}
 			cpct_scanKeyboard_f ();
-			waitNVSYNCs(5);
+//			waitNVSYNCs(5);
 	} while (!cpct_isKeyPressed(Key_Return));
 
 		switch (option) {
     		case 0:	playMenu();
 				break;
-			case 1:	gameScene=CONTROLSSCREEN;
+    		case 1: 
+				gameScene=CONTROLSSCREEN;
 				break;
-			case 2: gameScene=CREDITSSCEENE;
+		    case 2: 
+				gameScene=CREDITSSCEENE;
 				break;
 		}
 }
@@ -150,6 +161,8 @@ void controls() {
 
 	cpct_scanKeyboard_f ();
 	while (!cpct_isKeyPressed(Key_Space)) {
+		cpct_waitVSYNC();
+		cpct_akp_musicPlay();
 		cpct_scanKeyboard_f ();
 	}
 	// gameScene=MENUSCREEN;
@@ -172,9 +185,11 @@ void credits() {
 
 	cpct_drawStringM0 ("Press Space", getScreenPosition(4, 23), 15, 0);
 	cpct_drawStringM0 ("to go main menu", getScreenPosition(2, 24), 15, 0);
-
 	cpct_scanKeyboard_f ();
 	while (!cpct_isKeyPressed(Key_Space)) {
+		cpct_waitVSYNC();
+		cpct_akp_musicPlay();
+
 		cpct_scanKeyboard_f ();
 	}
 	gameScene=MENUSCREEN;

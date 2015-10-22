@@ -3,7 +3,6 @@
 #define _TILES_H_
 
 #include <types.h>
-extern const u8 g_tile_road[960];
 // Background tilemap created with tiled.
 extern const u8 g_background[40*50];
 extern const u8 g_backgroundCalivGames[40*50];

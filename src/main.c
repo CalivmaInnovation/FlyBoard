@@ -19,6 +19,7 @@
 #include "constantes.h"
 #include "game.h"
 #include "screens.h"
+#include "music.c"
 
 void initCPC() {
 	cpct_disableFirmware();
@@ -28,14 +29,16 @@ void initCPC() {
 	cpct_setPalette(g_palette,16);
 	cpct_setBorder (g_palette[0]);
 	cpct_setVideoMode(0);
+	cpct_akp_musicInit(G_menu);	
+//	cpct_akp_SFXInit (G_menu);
 }
 
 void main(void) {
 	// Clear Screen
 	cpct_memset(SCR_VMEM, 0, 0x4000);
 	initCPC();
-	//gameScene=CALIVGAMESSCREEN;
-	gameScene=MENUSCREEN;
+	gameScene=CALIVGAMESSCREEN;
+	//gameScene=MENUSCREEN;
 	// Loop forever
 	while (1) {
 		switch (gameScene) {
