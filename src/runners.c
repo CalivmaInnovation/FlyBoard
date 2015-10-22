@@ -58,15 +58,11 @@ void createRunnerCar(u8 posRoad) {
   i8 point=(position<6) ? position : 5;
   i8 aux_i = i;
   // erase shit of car
+
   cpct_drawSolidBox(del, 0, 40, 24);
   cpct_drawSolidBox(del + 0x0028, 0, 40, 24);
-  //cpct_drawSprite(g_tile_road, del, 40, 24);
-  //cpct_drawSprite(g_tile_road, del + 0x0028, 40, 24);
-  
   for (i; i<=point; ++i) {
     z=(position<20) ? (u8*) memptr-(4*(position-i)) : (u8*) memptr-(4*position)+(20-(4*(5-i)));
-//	del = z + 4;
-//	cpct_drawSolidBox(del, 0, 16, 24);
     cpct_drawSprite(sprite_carRunnerSet[i], z, 4, 24);
   }
   
@@ -77,7 +73,7 @@ void createRunnerCar(u8 posRoad) {
   if (position>=25) {
     position=0;
   }
-  position %= 26;
+  // position %= 26;
 }
 
 u8 checkColision(u8 pos) {
