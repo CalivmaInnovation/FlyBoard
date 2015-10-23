@@ -41,7 +41,7 @@ void playMenu() {
 		cpct_etm_setTileset2x4(g_tile_tileset_bg);
 		cpct_etm_drawTilemap2x4_f(MAP_WIDTH_TILES, MAP_HEIGHT_TILES, SCR_VMEM, g_background);
 
-		cpct_drawStringM0 ("FLY BOARD", getScreenPosition(5, 2), 15, 7);
+		cpct_drawSprite (g_tile_titulo, getScreenPosition(5, 2), 32, 16);
 		cpct_drawStringM0 ("PLAY GAME", getScreenPosition(5, 5), 15, 7);
 		cpct_drawStringM0 ("INFINITY MODE", getScreenPosition(6, 7), 15, 7);
 		cpct_drawStringM0 ("LEVELS MODE", getScreenPosition(6, 9), 15, 7);
@@ -97,7 +97,7 @@ void mainMenu() {
 		cpct_etm_setTileset2x4(g_tile_tileset_bg);
 		cpct_etm_drawTilemap2x4_f(MAP_WIDTH_TILES, MAP_HEIGHT_TILES, SCR_VMEM, g_background);
 
-		cpct_drawStringM0 ("FLY BOARD", getScreenPosition(5, 2), 15, 7);
+		cpct_drawSprite (g_tile_titulo, getScreenPosition(5, 2), 32, 16);
 		cpct_drawStringM0 ("PLAY GAME", getScreenPosition(5, 5), 15, 7);
 		cpct_drawStringM0 ("CONTROLS", getScreenPosition(5, 7), 15, 7);
 		cpct_drawStringM0 ("CREDITS", getScreenPosition(5, 9), 15, 7);
