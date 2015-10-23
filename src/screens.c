@@ -41,9 +41,10 @@ void playMenu() {
 		cpct_etm_setTileset2x4(g_tile_tileset_bg);
 		cpct_etm_drawTilemap2x4_f(MAP_WIDTH_TILES, MAP_HEIGHT_TILES, SCR_VMEM, g_background);
 
-		cpct_drawStringM0 ("PLAY GAME", getScreenPosition(5, 3), 15, 7);
-		cpct_drawStringM0 ("INFINITY MODE", getScreenPosition(6, 5), 15, 7);
-		cpct_drawStringM0 ("LEVELS MODE", getScreenPosition(6, 7), 15, 7);
+		cpct_drawStringM0 ("FLY BOARD", getScreenPosition(5, 2), 15, 7);
+		cpct_drawStringM0 ("PLAY GAME", getScreenPosition(5, 5), 15, 7);
+		cpct_drawStringM0 ("INFINITY MODE", getScreenPosition(6, 7), 15, 7);
+		cpct_drawStringM0 ("LEVELS MODE", getScreenPosition(6, 9), 15, 7);
 
 		initScroll();
 		initPlayer();
@@ -66,12 +67,12 @@ void playMenu() {
 
 			switch (option) {
 				case 0:
-					cpct_drawSprite(g_tile_sky_blue, getScreenPosition(4, 7), 4, 8);
-					cpct_drawSprite(sprite_skate, getScreenPosition(4, 5), 4, 8);
+					cpct_drawSprite(g_tile_sky_blue, getScreenPosition(4, 9), 4, 8);
+					cpct_drawSprite(sprite_skate, getScreenPosition(4, 7), 4, 8);
 					break;
 				case 1:
-					cpct_drawSprite(g_tile_sky_blue, getScreenPosition(4, 5), 4, 8);
-					cpct_drawSprite(sprite_skate, getScreenPosition(4, 7), 4, 8);
+					cpct_drawSprite(g_tile_sky_blue, getScreenPosition(4, 7), 4, 8);
+					cpct_drawSprite(sprite_skate, getScreenPosition(4, 9), 4, 8);
 					break;
 			}
 			cpct_scanKeyboard_f ();
@@ -96,9 +97,10 @@ void mainMenu() {
 		cpct_etm_setTileset2x4(g_tile_tileset_bg);
 		cpct_etm_drawTilemap2x4_f(MAP_WIDTH_TILES, MAP_HEIGHT_TILES, SCR_VMEM, g_background);
 
-		cpct_drawStringM0 ("PLAY GAME", getScreenPosition(5, 3), 15, 7);
-		cpct_drawStringM0 ("CONTROLS", getScreenPosition(5, 5), 15, 7);
-		cpct_drawStringM0 ("CREDITS", getScreenPosition(5, 7), 15, 7);
+		cpct_drawStringM0 ("FLY BOARD", getScreenPosition(5, 2), 15, 7);
+		cpct_drawStringM0 ("PLAY GAME", getScreenPosition(5, 5), 15, 7);
+		cpct_drawStringM0 ("CONTROLS", getScreenPosition(5, 7), 15, 7);
+		cpct_drawStringM0 ("CREDITS", getScreenPosition(5, 9), 15, 7);
 
 		initScroll();
 		initPlayer();
@@ -118,17 +120,17 @@ void mainMenu() {
 
 			switch (option) {
 				case 0:
-					cpct_drawSprite(g_tile_sky_blue, getScreenPosition(3, 5), 4, 8);
-					cpct_drawSprite(sprite_skate, getScreenPosition(3, 3), 4, 8);
-					break;
-				case 1:
-					cpct_drawSprite(g_tile_sky_blue, getScreenPosition(3, 3), 4, 8);
 					cpct_drawSprite(g_tile_sky_blue, getScreenPosition(3, 7), 4, 8);
 					cpct_drawSprite(sprite_skate, getScreenPosition(3, 5), 4, 8);
 					break;
-				case 2:
+				case 1:
 					cpct_drawSprite(g_tile_sky_blue, getScreenPosition(3, 5), 4, 8);
+					cpct_drawSprite(g_tile_sky_blue, getScreenPosition(3, 9), 4, 8);
 					cpct_drawSprite(sprite_skate, getScreenPosition(3, 7), 4, 8);
+					break;
+				case 2:
+					cpct_drawSprite(g_tile_sky_blue, getScreenPosition(3, 7), 4, 8);
+					cpct_drawSprite(sprite_skate, getScreenPosition(3, 9), 4, 8);
 					break;
 			}
 			cpct_scanKeyboard_f ();
