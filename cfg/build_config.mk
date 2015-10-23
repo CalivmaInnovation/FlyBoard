@@ -48,7 +48,7 @@
 
 # Name of the project (without spaces, as it will be used as filename)
 #   and Z80 memory location where code will start in the generated binary
-PROJNAME   := CPCRetroDevGame
+PROJNAME   := FlyBoard
 Z80CODELOC := 0x4000
 
 # Folders
