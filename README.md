@@ -14,7 +14,7 @@ There will be a special consiterations (namely, some points) to game including g
 ## Authors
 
 - Almira Mollá, Alejandro
-- Ivorra Oliver, Cesar Francisco
+- Ivorra Oliver, César Francisco
 
 ## Third-party libraries/tools
 
