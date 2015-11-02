@@ -1,6 +1,6 @@
 # FlyBoard
 
-Game developed in C++ for Amstrad platform. Also it will be presented to contest CPCRetroDev2015.
+Game developed in C for Amstrad platform. Also it will be presented to contest CPCRetroDev2015.
 
 ## Information
 
