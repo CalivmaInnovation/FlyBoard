@@ -1,5 +1,4 @@
-# CPCRetroDev-2015
-[![Build Status](https://travis-ci.org/CalivGames/CPCRetroDev-2015.svg)](https://travis-ci.org/CalivGames/CPCRetroDev-2015)
+# FlyBoard
 
 Game developed in C++ for Amstrad platform. Also it will be presented to contest CPCRetroDev2015.
 
@@ -29,8 +28,8 @@ There will be a special consiterations (namely, some points) to game including g
 
 For build, you have to type on your terminal:
 
-	git clone https://github.com/CalivGames/CPCRetroDev-2015.git
-	cd CPCRetroDev-2015/
+	git clone https://github.com/CalivmaInnovation/FlyBoard.git
+	cd FlyBoard/
 	make
 
 'name\_of\_game.dsk' and 'name\_of\_game.cdt' will be generated in project's root.
